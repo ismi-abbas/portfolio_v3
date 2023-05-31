@@ -1,7 +1,5 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
@@ -10,41 +8,67 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
     <head>
         <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     </head>
-    <body class='dark:bg-gray-800 dark:text-white'>
-        <Header title={SITE_TITLE} />
-        <main>
-            <h1 class='text-xl font-bold dark:text-white'>Hello, Abbas!</h1>
-            <p>
-                Welcome to the official <a href='https://astro.build/'>Astro</a> blog starter template. This template serves
-                as a lightweight, minimally-styled starting point for anyone looking to build a personal website, blog, or
-                portfolio with Astro.
-            </p>
-            <p>
-                This template comes with a few integrations already configured in your
-                <code>astro.config.mjs</code> file. You can customize your setup with
-                <a href='https://astro.build/integrations'>Astro Integrations</a> to add tools like Tailwind, React, or Vue
-                to your project.
-            </p>
-            <p>Here are a few ideas on how to get started with the template:</p>
-            <ul>
-                <li>Edit this page in <code>src/pages/index.astro</code></li>
-                <li>Edit the site header items in <code>src/components/Header.astro</code></li>
-                <li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-                <li>Check out the included blog posts in <code>src/pages/blog/</code></li>
-                <li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
+    <body class='container mx-auto bg-gray-800'>
+        <header class='block p-4 mb-4 sticky top-0 z-10 backdrop-filter backdrop-blur-lg'>
+            <ul class='flex justify-evenly px-4 items-center text-lg font-medium text-white'>
+                <li>
+                    <a href='/'>🦀 ismi-abbas.com</a>
+                </li>
+                <li>
+                    <a href='/'>Home</a>
+                </li>
+                <li><a href='/'>Career</a></li>
+                <li><a href='/blog'>Blog</a></li>
+                <li><a href='/uses'>Uses</a></li>
             </ul>
-            <p>
-                Have fun! If you get stuck, remember to <a href='https://docs.astro.build/'>read the docs</a> or <a
-                    href='https://astro.build/chat'>join us on Discord</a
-                > to ask questions.
-            </p>
-            <p>
-                Looking for a blog template with a bit more personality? Check out <a
-                    href='https://github.com/Charca/astro-blog-template'
-                    >astro-blog-template
-                </a> by <a href='https://twitter.com/Charca'>Maxi Ferreira</a>.
-            </p>
+        </header>
+        <main class='flex flex-col items-center justify-center px-48'>
+            <img src='/AWS_DAY.jpg' alt='Abbas Puzi' class='h-auto w-auto object-fill' />
+            <div class='bg-slate-300 mt-8 text-center p-4 w-full rounded-md text-lg font-medium'>
+                <h3>Hello, I'm a Fullstack Developer based in Malaysia!</h3>
+            </div>
+
+            <div class='mt-8 w-full text-white'>
+                <h1 class='text-4xl font-bold'>Abbas Puzi</h1>
+                <h3>Digital Craftman</h3>
+            </div>
+
+            <section class='w-full text-white mt-8'>
+                <h1 class='underline underline-offset-4 font-medium text-lg'>Work</h1>
+                <p class='text-justify leading-relaxed'>
+                    Abbas is software developer who is passionate about building web applications and solving problems.
+                    He is currently working at FPT Software Malaysia.
+                </p>
+            </section>
+
+            <button class='py-2 px-4 rounded-md bg-emerald-300 mt-4 items-center text-base font-semibold text-slate-700'
+                >My Portfolio
+                <span>{'>'}</span>
+            </button>
+
+            <section class='w-full text-white mt-8'>
+                <h1 class='underline underline-offset-4 font-medium text-lg'>Bio</h1>
+                <p class='text-justify leading-relaxed'>
+                    Abbas is software developer who is passionate about building web applications and solving problems.
+                    He is currently working at FPT Software Malaysia.
+                </p>
+            </section>
+
+            <section class='w-full text-white mt-8'>
+                <h1 class='underline underline-offset-4 font-medium text-lg'>Things that i love</h1>
+                <p class='text-justify leading-relaxed'>
+                    Abbas is software developer who is passionate about building web applications and solving problems.
+                    He is currently working at FPT Software Malaysia.
+                </p>
+            </section>
+
+            <section class='w-full text-white mt-8'>
+                <h1 class='underline underline-offset-4 font-medium text-lg'>Work</h1>
+                <p class='text-justify leading-relaxed'>
+                    Abbas is software developer who is passionate about building web applications and solving problems.
+                    He is currently working at FPT Software Malaysia.
+                </p>
+            </section>
         </main>
-        <Footer />
     </body>
 </html>

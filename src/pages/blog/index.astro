@@ -13,41 +13,37 @@ const posts = (await getCollection('blog')).sort((a, b) => a.data.pubDate.valueO
 <html lang='en'>
     <head>
         <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-        <style>
-            ul {
-                list-style-type: none;
-                padding: unset;
-            }
-            ul li {
-                display: flex;
-            }
-            ul li :global(time) {
-                flex: 0 0 130px;
-                font-style: italic;
-                color: #fff;
-                font-weight: 400;
-            }
-            ul li a:visited {
-                color: #8e32dc;
-            }
-        </style>
     </head>
-    <body>
-        <Header />
-        <main>
-            <section>
+
+    <body class='container mx-auto bg-gray-800'>
+        <header class='block p-4 mb-4 sticky top-0 z-10 backdrop-filter backdrop-blur-lg'>
+            <ul class='flex justify-evenly px-4 items-center text-lg font-medium text-white'>
+                <li>
+                    <a href='/'>🦀 ismi-abbas.com</a>
+                </li>
+                <li>
+                    <a href='/'>Home</a>
+                </li>
+                <li><a href='/'>Career</a></li>
+                <li><a href='/blog'>Blog</a></li>
+                <li><a href='/uses'>Uses</a></li>
+            </ul>
+        </header>
+        <main class='flex flex-col items-center justify-center px-48'>
+            <section class='w-full text-slate-300'>
                 <ul>
                     {
                         posts.map((post) => (
-                            <li>
+                            <li class='flex border border-slate-500 flex-col gap-2 rounded-md bg-white/20 mt-4 p-4'>
+                                <a href={`/blog/${post.slug}/`} class='text-white'>
+                                    {post.data.title}
+                                </a>
                                 <FormattedDate date={post.data.pubDate} />
-                                <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
                             </li>
                         ))
                     }
                 </ul>
             </section>
         </main>
-        <Footer />
     </body>
 </html>
