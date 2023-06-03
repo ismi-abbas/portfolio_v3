@@ -1,0 +1,17 @@
+---
+import BaseHead from './BaseHead.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+---
+
+<head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+</head>
+<body class='container mx-auto bg-gray-800'>
+    <Header />
+    <main class='flex flex-col items-center justify-center mx-auto max-w-screen-md'>
+        <slot />
+    </main>
+    <Footer />
+</body>

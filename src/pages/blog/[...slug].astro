@@ -16,6 +16,9 @@ const { Content } = await post.render();
 ---
 
 <BlogPost {...post.data}>
-    <h1>{post.data.title}</h1>
-    <Content />
+    <h1 class='text-white justify-start'>Title: {post.data.title}</h1>
+    <article
+        class='text-start items-start flex flex-col text-white px-8 prose-headings:text-lg prose-headings:font-semibold prose-h1:font-medium'>
+        <Content />
+    </article>
 </BlogPost>

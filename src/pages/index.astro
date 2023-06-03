@@ -1,6 +1,9 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Default from '../components/Default.astro';
 ---
 
 <!DOCTYPE html>
@@ -8,67 +11,59 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
     <head>
         <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     </head>
-    <body class='container mx-auto bg-gray-800'>
-        <header class='block p-4 mb-4 sticky top-0 z-10 backdrop-filter backdrop-blur-lg'>
-            <ul class='flex justify-evenly px-4 items-center text-lg font-medium text-white'>
-                <li>
-                    <a href='/'>🦀 ismi-abbas.com</a>
-                </li>
-                <li>
-                    <a href='/'>Home</a>
-                </li>
-                <li><a href='/'>Career</a></li>
-                <li><a href='/blog'>Blog</a></li>
-                <li><a href='/uses'>Uses</a></li>
-            </ul>
-        </header>
-        <main class='flex flex-col items-center justify-center px-48'>
-            <img src='/AWS_DAY.jpg' alt='Abbas Puzi' class='h-auto w-auto object-fill' />
-            <div class='bg-slate-300 mt-8 text-center p-4 w-full rounded-md text-lg font-medium'>
-                <h3>Hello, I'm a Fullstack Developer based in Malaysia!</h3>
-            </div>
+    <body class='bg-gray-800 max-w-screen-xl flex flex-col justify-center mx-auto'>
+        <Default>
+            <main class='flex flex-col items-center justify-center mx-auto max-w-screen-lg w-full'>
+                <img src='/AWS_DAY.jpg' alt='Abbas Puzi' class='h-auto w-auto object-fill' />
+                <div class='bg-slate-300 mt-8 text-center p-4 w-full rounded-md text-lg font-medium'>
+                    <h3>Hello, I'm a Fullstack Developer based in Malaysia!</h3>
+                </div>
 
-            <div class='mt-8 w-full text-white'>
-                <h1 class='text-4xl font-bold'>Abbas Puzi</h1>
-                <h3>Digital Craftman</h3>
-            </div>
+                <div class='mt-8 w-full text-white'>
+                    <h1 class='text-4xl font-bold'>Abbas Puzi</h1>
+                    <h3>Digital Craftman</h3>
+                </div>
 
-            <section class='w-full text-white mt-8'>
-                <h1 class='underline underline-offset-4 font-medium text-lg'>Work</h1>
-                <p class='text-justify leading-relaxed'>
-                    Abbas is software developer who is passionate about building web applications and solving problems.
-                    He is currently working at FPT Software Malaysia.
-                </p>
-            </section>
+                <section class='w-full text-white mt-8'>
+                    <h1 class='underline underline-offset-4 font-medium text-lg'>Work</h1>
+                    <p class='text-justify leading-relaxed'>
+                        Abbas is software developer who is passionate about building web applications and solving
+                        problems. He is currently working at FPT Software Malaysia.
+                    </p>
+                </section>
 
-            <button class='py-2 px-4 rounded-md bg-emerald-300 mt-4 items-center text-base font-semibold text-slate-700'
-                >My Portfolio
-                <span>{'>'}</span>
-            </button>
+                <button
+                    class='py-2 px-4 rounded-md bg-emerald-300 mt-4 items-center text-base font-semibold text-slate-700'>
+                    <a href='/career'>
+                        My Portfolio
+                        <span>{'>'}</span>
+                    </a>
+                </button>
 
-            <section class='w-full text-white mt-8'>
-                <h1 class='underline underline-offset-4 font-medium text-lg'>Bio</h1>
-                <p class='text-justify leading-relaxed'>
-                    Abbas is software developer who is passionate about building web applications and solving problems.
-                    He is currently working at FPT Software Malaysia.
-                </p>
-            </section>
+                <section class='w-full text-white mt-8'>
+                    <h1 class='underline underline-offset-4 font-medium text-lg'>Bio</h1>
+                    <p class='text-justify leading-relaxed'>
+                        Abbas is software developer who is passionate about building web applications and solving
+                        problems. He is currently working at FPT Software Malaysia.
+                    </p>
+                </section>
 
-            <section class='w-full text-white mt-8'>
-                <h1 class='underline underline-offset-4 font-medium text-lg'>Things that i love</h1>
-                <p class='text-justify leading-relaxed'>
-                    Abbas is software developer who is passionate about building web applications and solving problems.
-                    He is currently working at FPT Software Malaysia.
-                </p>
-            </section>
+                <section class='w-full text-white mt-8'>
+                    <h1 class='underline underline-offset-4 font-medium text-lg'>Things that i love</h1>
+                    <p class='text-justify leading-relaxed'>
+                        Abbas is software developer who is passionate about building web applications and solving
+                        problems. He is currently working at FPT Software Malaysia.
+                    </p>
+                </section>
 
-            <section class='w-full text-white mt-8'>
-                <h1 class='underline underline-offset-4 font-medium text-lg'>Work</h1>
-                <p class='text-justify leading-relaxed'>
-                    Abbas is software developer who is passionate about building web applications and solving problems.
-                    He is currently working at FPT Software Malaysia.
-                </p>
-            </section>
-        </main>
+                <section class='w-full text-white mt-8'>
+                    <h1 class='underline underline-offset-4 font-medium text-lg'>Work</h1>
+                    <p class='text-justify leading-relaxed'>
+                        Abbas is software developer who is passionate about building web applications and solving
+                        problems. He is currently working at FPT Software Malaysia.
+                    </p>
+                </section>
+            </main>
+        </Default>
     </body>
 </html>
