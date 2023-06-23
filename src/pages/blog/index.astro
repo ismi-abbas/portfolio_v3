@@ -12,11 +12,11 @@ const posts = (await getCollection('blog')).sort((a, b) => a.data.pubDate.valueO
 
 <Default>
     <section class='w-full text-slate-300'>
-        <ul>
+        <ul class='grid grid-cols-2 gap-3'>
             {
                 posts.map((post) => (
-                    <li class='flex border border-slate-500 flex-col gap-2 rounded-md bg-white/20 mt-4 p-4'>
-                        <a href={`/blog/${post.slug}/`} class='text-white'>
+                    <li class='flex border border-slate-500 flex-col gap-2 rounded-md bg-white/20 mt-4 p-4 h-auto'>
+                        <a href={`/blog/${post.slug}/`} class='text-white font-medium'>
                             {post.data.title}
                         </a>
                         <FormattedDate date={post.data.pubDate} />

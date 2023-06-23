@@ -7,8 +7,10 @@ heroImage: '/AWS_DAY.jpg'
 
 ### Study myself
 
-Sebagaimana yang anda lihat, ini adalah hantaran(post) pertama saya dalam website ini 😃.
-
-Cerita hari ini, bagaimana saya masuk ke dalam dunia komputer sains?
+Sebagaimana yang anda lihat, ini adalah hantaran(post) pertama saya dalam website ini 😃. Cerita hari ini, bagaimana saya masuk ke dalam dunia komputer sains?
 
 Jika anda nak tahu, background study saya tidak ada kena mengena langsung dengan komputer, mahupun teknologi.
+
+---
+
+asdkasmdkla
