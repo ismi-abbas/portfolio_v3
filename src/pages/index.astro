@@ -1,22 +1,32 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import Default from '../components/Default.astro';
 ---
 
-<!DOCTYPE html>
+<script lang='ts'>
+function randomizePicture(source) {
+    const random = Math.floor(Math.random() * source.length);
+    return source[random];
+}
+</script>
+
 <html lang='en'>
     <head>
         <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     </head>
-    <body class='bg-gray-800 max-w-screen-xl flex flex-col justify-center mx-auto'>
+    <body class='bg-gray-800 max-w-screen-xl flex md:p-0 p-8 flex-col justify-center mx-auto'>
         <Default>
             <main class='flex flex-col items-center justify-center mx-auto max-w-screen-lg w-full'>
-                <img src='/AWS_DAY.jpg' alt='Abbas Puzi' class='h-auto w-auto object-fill' />
-                <div class='bg-slate-300 mt-8 text-center p-4 w-full rounded-md text-lg font-medium'>
-                    <h3>Hello, I'm a Fullstack Developer based in Malaysia!</h3>
+                <div class='w-full px-10'>
+                    <img src='/AWS_DAY.jpg' alt='Abbas Puzi' class='h-auto w-auto object-cover rounded-sm' />
+                </div>
+
+                <div class='w-full max-w-lg'>
+                    <div
+                        class='bg-slate-700 mt-8 text-center p-2 w-full rounded-md text-lg font-medium backdrop-blur-lg backdrop-filter text-slate-200'>
+                        <h3>Hello, I'm a Fullstack Developer based in Malaysia!</h3>
+                    </div>
                 </div>
 
                 <div class='mt-8 w-full text-white'>
@@ -25,10 +35,12 @@ import Default from '../components/Default.astro';
                 </div>
 
                 <section class='w-full text-white mt-8'>
-                    <h1 class='underline underline-offset-4 font-medium text-lg'>Work</h1>
-                    <p class='text-justify leading-relaxed'>
+                    <h1 class='underline underline-offset-4 decoration-4 decoration-slate-600 font-medium text-lg'>
+                        Work
+                    </h1>
+                    <p class='text-justify leading-relaxed mt-4'>
                         Abbas is software developer who is passionate about building web applications and solving
-                        problems. He is currently working at FPT Software Malaysia.
+                        problems. Inspired to be a system programmer one day.
                     </p>
                 </section>
 
@@ -41,27 +53,34 @@ import Default from '../components/Default.astro';
                 </button>
 
                 <section class='w-full text-white mt-8'>
-                    <h1 class='underline underline-offset-4 font-medium text-lg'>Bio</h1>
-                    <p class='text-justify leading-relaxed'>
-                        Abbas is software developer who is passionate about building web applications and solving
-                        problems. He is currently working at FPT Software Malaysia.
-                    </p>
+                    <h1 class='underline underline-offset-4 decoration-4 decoration-slate-600 font-medium text-lg'>
+                        Bio
+                    </h1>
+                    <ul class='mt-4'>
+                        <li class='flex gap-4'>
+                            <p class='font-semibold'>1998</p>
+                            <p>Born in Gerik, Perak</p>
+                        </li>
+                        <li class='flex gap-4'>
+                            <p class='font-semibold'>2021</p>
+                            <p>Finished Bachelor of Islamic Studies</p>
+                        </li>
+                        <li class='flex gap-4'>
+                            <p class='font-semibold'>2022</p>
+                            <p>First job in IT industry at Maybank</p>
+                        </li>
+                        <li class='flex gap-4'>
+                            <p class='font-semibold'>2023</p>
+                            <p>Second job at FPT Software Malaysia - Petronas Digital</p>
+                        </li>
+                    </ul>
                 </section>
 
                 <section class='w-full text-white mt-8'>
-                    <h1 class='underline underline-offset-4 font-medium text-lg'>Things that i love</h1>
-                    <p class='text-justify leading-relaxed'>
-                        Abbas is software developer who is passionate about building web applications and solving
-                        problems. He is currently working at FPT Software Malaysia.
-                    </p>
-                </section>
-
-                <section class='w-full text-white mt-8'>
-                    <h1 class='underline underline-offset-4 font-medium text-lg'>Work</h1>
-                    <p class='text-justify leading-relaxed'>
-                        Abbas is software developer who is passionate about building web applications and solving
-                        problems. He is currently working at FPT Software Malaysia.
-                    </p>
+                    <h1 class='underline underline-offset-4 decoration-4 decoration-slate-600 font-medium text-lg'>
+                        I ❤️
+                    </h1>
+                    <p class='text-justify leading-relaxed mt-4'>Games and coding</p>
                 </section>
             </main>
         </Default>

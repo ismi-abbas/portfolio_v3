@@ -9,8 +9,6 @@ heroImage: '/AWS_DAY.jpg'
 
 Sebagaimana yang anda lihat, ini adalah hantaran(post) pertama saya dalam website ini 😃. Cerita hari ini, bagaimana saya masuk ke dalam dunia komputer sains?
 
-Jika anda nak tahu, background study saya tidak ada kena mengena langsung dengan komputer, mahupun teknologi.
+I sum up my journey into tech as a pure luck with some 'usaha'. Saya bukan CS/IT graduate. Bermula dari Asasi Pengajian Islam, bersambung dengan Ijazah Sarjana Usuluddin(Al-Quran dan Al-Hadith). Ye saya tahu, memang tak nampak macam pelajar Islamic Studies sekarang.
 
----
-
-asdkasmdkla
+During my last semester, saya terdetik nak sambung minat saya dulu. Minat saya dengan komputer ni sejak tingkatan 2. Pernah baca buku C++ dalam bahasa melayu, dan discover webpress and hosting.
