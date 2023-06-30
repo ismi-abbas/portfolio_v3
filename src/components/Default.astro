@@ -8,9 +8,9 @@ import Footer from './Footer.astro';
 <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 </head>
-<body class='container mx-auto bg-gray-800'>
+<body class='bg-gray-800 max-w-screen-md container mx-auto'>
     <Header />
-    <main class='flex flex-col items-center justify-center mx-auto max-w-screen-md w-full'>
+    <main class='mx-auto w-full justify-center flex flex-col items-center px-10 md:px-20 mb-20'>
         <slot />
     </main>
     <Footer />

@@ -1,14 +1,12 @@
 ---
 import HeaderLink from './HeaderLink.astro';
-import ThemeIcon from './ThemeIcon.astro';
-import { SITE_TITLE } from '../consts';
 ---
 
-<header class='block p-4 mb-4 sticky top-0 z-10 backdrop-filter backdrop-blur-lg'>
-    <ul class='flex justify-between px-4 items-center text-lg font-medium text-white'>
-        <HeaderLink href='/'>🦀 ismi-abbas.com</HeaderLink>
+<header class='block w-full px-24 py-4 mb-4 sticky top-0 z-10 backdrop-filter backdrop-blur-lg'>
+    <ul
+        class='flex flex-row justify-center space-x-24 items-center lg:text-lg md:text-md text-sm font-medium text-white'>
         <HeaderLink href='/'>Home</HeaderLink>
-        <HeaderLink href='/career'>Career</HeaderLink>
+        <HeaderLink href='/career'>Projects</HeaderLink>
         <HeaderLink href='/blog'>Blog</HeaderLink>
         <HeaderLink href='/uses'>Uses</HeaderLink>
     </ul>
