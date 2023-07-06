@@ -9,9 +9,9 @@ const ImageSlider = (props: Props) => {
         <div className='w-full h-96 rounded-lg'>
             <motion.img
                 src={props.url}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 5 }}
-                transition={{ duration: 1.5 }}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, type: 'spring', stiffness: 200 }}
                 style={{
                     objectFit: 'cover',
                     objectPosition: '50% 25%',

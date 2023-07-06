@@ -6,10 +6,8 @@ import Project from '../components/Project.astro';
 <!DOCTYPE html>
 <html lang='en'>
     <Default>
-        <div class='flex-container justify-center'>
-            <div class='flex flex-col justify-between items-center border-dashed border-y-0 border border-gray-700 p-4'>
-                <h1 class='text-2xl font-medium p-2 mb-4 text-slate-200 caret-sky-800'>Project</h1>
-
+        <section class='w-full'>
+            <ul class='grid grid-cols-1 auto-rows-fr'>
                 <Project
                     github_link='https://github.com/ismi-abbas/resepi-bangman'
                     app_link='https://resepi-bangman.vercel.app/'
@@ -25,7 +23,7 @@ import Project from '../components/Project.astro';
                     description='Aplikasi ringkas untuk mencari hadith'
                     image='/baca-hadith.png'
                 />
-            </div>
-        </div>
+            </ul>
+        </section>
     </Default>
 </html>
