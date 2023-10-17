@@ -9,7 +9,5 @@ import image from "@astrojs/image";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://example.com',
-  integrations: [mdx(), sitemap(), tailwind(), react(), image()],
-  site: 'https://ismiabbas.github.io',
-  base: '/portfolio_v3',
+  integrations: [mdx(), sitemap(), tailwind(), react(), image()]
 });
