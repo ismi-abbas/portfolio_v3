@@ -1,6 +1,6 @@
 ---
 import Default from '../components/Default.astro';
-import Layout from '../layouts/BlogPost.astro';
+import BarChart from '../components/charts/BarChart';
 ---
 
 <Default
@@ -9,5 +9,8 @@ import Layout from '../layouts/BlogPost.astro';
     pubDate={new Date()}
     updatedDate={new Date()}
     heroImage='/placeholder-about.jpg'>
-    <div>test</div>
+    <div>
+        <div class='text-lg text-sky-300 font-medium'>Code Stats</div>
+        <BarChart client:load />
+    </div>
 </Default>
