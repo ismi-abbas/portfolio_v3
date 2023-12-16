@@ -7,22 +7,34 @@ import Project from '../components/Project.astro';
 <html lang='en'>
     <Default>
         <section class='w-full'>
-            <ul class='grid grid-cols-1 auto-rows-fr'>
+            <ul class='grid grid-cols-2 gap-2'>
                 <Project
                     github_link='https://github.com/ismi-abbas/resepi-bangman'
                     app_link='https://resepi-bangman.vercel.app/'
                     title='Resepi Bangman'
                     description='Simple Recipe Display Apps'
                     image='/resepi-bangman.png'
+                    stacks={['React JS']}
                 />
 
                 <Project
-                    github_link='https://github.com/ismi-abbas/resepi-bangman'
+                    github_link='https://github.com/ismi-abbas/jami-kutub-sittah'
                     app_link='https://baca-hadith.vercel.app/'
                     title='Baca Hadith'
-                    description='Aplikasi ringkas untuk mencari hadith'
+                    description='Aplikasi ringkas untuk mencari hadith - discontinued'
                     image='/baca-hadith.png'
+                    stacks={['React Native']}
                 />
+
+                <Project title='Expense Split' description='Simple app to do splitting' stacks={['React Native']} />
+
+                <Project
+                    title='Barbershop System(mock)'
+                    description='Simple app to do splitting'
+                    stacks={['React Native']}
+                />
+
+                <Project title='Discharge App' description='Simple app to do splitting' stacks={['React Native']} />
             </ul>
         </section>
     </Default>

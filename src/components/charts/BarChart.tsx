@@ -10,7 +10,7 @@ import {
     ChartOptions,
     ChartData,
 } from 'chart.js';
-import codeStatData from './CodeStat.json';
+import codeStatData from '../../../public/code_stats.json';
 
 type CodeStatData = {
     sent_at: string;
@@ -24,16 +24,72 @@ type CodeStatData = {
 //
 
 const colorMap: Record<string, string> = {
-    'C#': '#F875AA',
-    JSON: '#9AD0C2',
-    Haskell: '#EEF296',
-    'TypeScript (JSX)': '#FF8F8F',
-    TypeScript: '#4EB3FF',
-    Rust: '#FD9903',
-    Go: '#9EDDFF',
-    JavaScript: '#FFCD4E',
-    'JavaScript (JSX)': '#D9CA58',
-    astro: '#FF45C8',
+    JSON: '#CFCDAC',
+    JavaScript: '#575329',
+    'Plain text': '#372101',
+    'TypeScript (JSX)': '#FFB500',
+    Markdown: '#61615A',
+    TypeScript: '#A079BF',
+    textmate: '#34362D',
+    Rust: '#5A0007',
+    ReactNativeToolsOutput: '#6B002C',
+    Go: '#1B4400',
+    scminput: '#3B5DFF',
+    'Shell Script': '#772600',
+    Docker: '#636375',
+    'java-properties': '#FF90C9',
+    HTML: '#4FC601',
+    'go.mod': '#772600',
+    CSS: '#0089A3',
+    DotEnv: '#6A3A4C',
+    Ignore: '#452C2C',
+    'JavaScript (JSX)': '#72418F',
+    Git: '#66E1D3',
+    Ruby: '#1B4400',
+    Properties: '#7ED379',
+    Log: '#C0B9B2',
+    SQL: '#1CE6FF',
+    Scala: '#99ADC0',
+    prisma: '#CFCDAC',
+    SCSS: '#D1F7CE',
+    YAML: '#CFCDAC',
+    'github-actions-workflow': '#BC23FF',
+    Perl: '#E83000',
+    Vue: '#FFF69F',
+    astro: '#FEFFE6',
+    Svelte: '#886F4C',
+    'C++': '#8FB0FF',
+    'C#': '#300018',
+    Python: '#00FECF',
+    XML: '#BC23FF',
+    Less: '#300018',
+    Terraform: '#00FECF',
+    gradle: '#DDEFFF',
+    Makefile: '#CFCDAC',
+    MDX: '#1E6E00',
+    zig: '#7B4F4B',
+    Java: '#FDE8DC',
+    C: '#004B28',
+    Swift: '#FFDBE5',
+    TOML: '#8FB0FF',
+    'ct-java': '#B77B68',
+    PHP: '#C2FFED',
+    Config: '#00A6AA',
+    'Microsoft SQL Server': '#7900D7',
+    dotnetProject: '#FF2F80',
+    'Angular HTML Template': '#404E55',
+    Angular2: '#FDE8DC',
+    'pip-requirements': '#C8D0F6',
+    CSV: '#FF913F',
+    PowerShell: '#FF6832',
+    nginx: '#0CBD66',
+    dockercompose: '#FFB500',
+    Gitignore: '#004D43',
+    MSBuild: '#6B7900',
+    Razor: '#FF6832',
+    Diff: '#BF5650',
+    'CSV (semicolon)': '#B903AA',
+    Haskell: '#7900D7',
 };
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
@@ -68,7 +124,7 @@ const datasets = Object.keys(
         label: language,
         data: labels.map((date) => groupedData[date][language] || 0),
         backgroundColor: colorMap[language] || '#000000',
-        borderWidth: 2,
+        borderWidth: 1,
         borderColor: '#fff',
         stack: 1,
     };
@@ -91,12 +147,19 @@ export const options: ChartOptions<'bar'> = {
     responsive: true,
     plugins: {
         legend: {
-            position: 'top' as const,
+            position: 'bottom' as const,
         },
         title: {
-            display: true,
+            display: false,
             text: 'Codestats XP',
         },
+    },
+    backgroundColor: '607274',
+    layout: {
+        autoPadding: true,
+    },
+    onClick: (e: any) => {
+        console.log(e);
     },
     scales: {
         x: {
@@ -112,7 +175,7 @@ export const options: ChartOptions<'bar'> = {
 
 const BarChart = () => {
     return (
-        <div className='p-5 rounded-lg mt-5  bg-slate-100 w-screen max-w-screen-lg'>
+        <div className='p-5 rounded-lg mt-5 w-screen max-w-screen-lg'>
             <Bar data={data} options={options} />
         </div>
     );
