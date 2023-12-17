@@ -1,6 +1,7 @@
 ---
 import Default from '../components/Default.astro';
 import BarChart from '../components/charts/BarChart';
+import { Calendar } from '../components/charts/Calendar';
 ---
 
 <Default
@@ -11,6 +12,7 @@ import BarChart from '../components/charts/BarChart';
     heroImage='/placeholder-about.jpg'>
     <div>
         <div class='text-lg text-sky-300 font-medium'>Code Stats</div>
-        <BarChart client:load />
+        <!-- <BarChart client:load /> -->
+        <Calendar client:load />
     </div>
 </Default>

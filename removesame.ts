@@ -140,7 +140,7 @@ type CodeStatData = {
     amount: number;
 };
 
-const jsonContent = fs.readFileSync('./public/code_stats.json', 'utf-8');
+const jsonContent = fs.readFileSync('./code_stats.json', 'utf-8');
 
 try {
     const jsonData = JSON.parse(jsonContent);

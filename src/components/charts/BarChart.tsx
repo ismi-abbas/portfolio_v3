@@ -10,7 +10,7 @@ import {
     ChartOptions,
     ChartData,
 } from 'chart.js';
-import codeStatData from '../../../public/code_stats.json';
+import codeStatData from '../../../code_stats.json';
 
 type CodeStatData = {
     sent_at: string;

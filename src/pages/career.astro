@@ -7,7 +7,7 @@ import Project from '../components/Project.astro';
 <html lang='en'>
     <Default>
         <section class='w-full'>
-            <ul class='grid grid-cols-2 gap-2'>
+            <ul class='grid grid-cols-1 md:grid-cols-2 gap-2'>
                 <Project
                     github_link='https://github.com/ismi-abbas/resepi-bangman'
                     app_link='https://resepi-bangman.vercel.app/'
@@ -26,15 +26,29 @@ import Project from '../components/Project.astro';
                     stacks={['React Native']}
                 />
 
-                <Project title='Expense Split' description='Simple app to do splitting' stacks={['React Native']} />
-
                 <Project
-                    title='Barbershop System(mock)'
-                    description='Simple app to do splitting'
+                    github_link='https://github.com/ismi-abbas/expense-split'
+                    image='../../public/app_mockup.jpg'
+                    title='Expense Split'
+                    description='Simple app to do splitting(mock)'
                     stacks={['React Native']}
                 />
 
-                <Project title='Discharge App' description='Simple app to do splitting' stacks={['React Native']} />
+                <Project
+                    github_link='https://github.com/ismi-abbas/barber-shop-system'
+                    image='../../public/app_mockup.jpg'
+                    title='Barbershop System(mock)'
+                    description='Barbershop management system'
+                    stacks={['React, ExpressJS']}
+                />
+
+                <Project
+                    github_link='https://github.com/ismi-abbas/discharge'
+                    image='../../public/app_mockup.jpg'
+                    title='Discharge App'
+                    description='A prove of concept app for petrol pump oil records. Built using React Native with Expo'
+                    stacks={['React Native']}
+                />
             </ul>
         </section>
     </Default>

@@ -33,50 +33,67 @@ const imageUrls = '/jom_launch.jpeg';
 
         <div class='mt-8 w-full text-white'>
             <h1 class='text-4xl font-bold'>Abbas Puzi</h1>
-            <h3>Digital Craftman</h3>
+            <h3 class='text-lg'>Digital <span class='bg-sky-700'>Craftman</span></h3>
         </div>
 
         <section class='w-full text-white mt-8'>
             <h1 class='underline underline-offset-4 decoration-4 decoration-slate-600 font-medium text-lg'>Work</h1>
-            <p class='text-justify leading-relaxed mt-4'>
-                Abbas is software developer who is passionate about building web applications and solving problems.
-                Inspired to be a system programmer one day.
-            </p>
+            <div class='leading-relaxed tracking-wide mt-4 space-y-3 font-thin'>
+                <p>
+                    Absolutely! Here's a simpler introduction for your portfolio website: 👋 Hi, I'm [Your Name], a
+                    software developer from Malaysia. I love building things for the web using Node.js, JavaScript,
+                    React, Next.js, and styling with Tailwind CSS.
+                </p>
+                <p>
+                    💻 As a coder, I enjoy turning ideas into functional and user-friendly solutions. Check out my
+                    portfolio to see some of my work and projects.
+                </p>
+                <p>Let's create something amazing together!</p>
+            </div>
         </section>
-
-        <Box
-            client:load
-            className='py-2 px-4 rounded-md bg-emerald-300 mt-4 items-center text-base font-semibold text-slate-700'>
-            <a href='/career'>
-                My Portfolio
-                <span>{'>'}</span>
-            </a>
-        </Box>
 
         <section class='w-full text-white mt-8'>
             <h1 class='underline underline-offset-4 decoration-4 decoration-slate-600 font-medium text-lg'>Bio</h1>
-            <ul class='mt-4'>
-                <li class='flex gap-4'>
-                    <p class='font-semibold'>1998</p>
-                    <p>Born in Gerik, Perak</p>
-                </li>
-                <li class='flex gap-4'>
-                    <p class='font-semibold'>2021</p>
-                    <p>Finish Bachelor of Islamic Studies</p>
-                </li>
-                <li class='flex gap-4'>
-                    <p class='font-semibold'>2022</p>
-                    <p>First job in IT industry at Maybank</p>
-                </li>
-                <li class='flex gap-4'>
-                    <p class='font-semibold'>2023</p>
-                    <p>Second job at Petronas Digital(FPT Software Malaysia as the vendor)</p>
-                </li>
-                <li class='flex gap-4'>
-                    <p class='font-semibold'>2024</p>
-                    <p>Pivoting to frontend at CTOS Credit System</p>
-                </li>
-            </ul>
+            <table class='mt-4 table-auto font-thin'>
+                <tbody>
+                    <tr>
+                        <td>July, 1998</td>
+                        <td>
+                            Born in the picturesque town of
+                            <span class='underline underline-offset-2 decoration-sky-700'>
+                                <a href=''>Gerik,</a>
+                            </span>
+                            Perak.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>April, 2021</td>
+                        <td>Successfully completed my Bachelor's in Islamic Studies.</td>
+                    </tr>
+                    <tr>
+                        <td>May, 2021</td>
+                        <td>Self learning software development journey begins.</td>
+                    </tr>
+                    <tr>
+                        <td>Jan, 2022</td>
+                        <td>
+                            Embraced a new opportunity at Petronas Digital, collaborating with FPT Software Malaysia as
+                            the vendor.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>April, 2023</td>
+                        <td>
+                            Embraced a new opportunity at Petronas Digital, collaborating with FPT Software Malaysia as
+                            the vendor.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Jan, 2024</td>
+                        <td>Transitioned into the dynamic world of frontend development at CTOS Credit System.</td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
 
         <section class='w-full text-white mt-8'>
