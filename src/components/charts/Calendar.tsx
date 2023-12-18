@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { format, compareAsc } from 'date-fns';
 // import { ResponsiveCalendar } from '@nivo/calendar';
 
 const token = import.meta.env.TOKEN;
@@ -23,6 +24,8 @@ interface Dates {
 
 export const Calendar = () => {
     const [codeStats, setCodeStats] = useState<CodeStatsResponse>();
+    const [level, setLevel] = useState(0);
+    const [percentage, setPercentage] = useState<number>();
 
     useEffect(() => {
         fetchData();
@@ -31,23 +34,49 @@ export const Calendar = () => {
     const fetchData = async () => {
         const response = await fetch('https://codestats.net/api/users/ismiabbas');
         const data = (await response.json()) as CodeStatsResponse;
+        const level = getLevel(data.total_xp);
+        const progress = getLevelProgress(data.total_xp);
+
+        setLevel(level);
         setCodeStats(data);
+        setPercentage(progress);
     };
 
+    const LEVEL_FACTOR = 0.025;
+
+    function getLevel(xp: number) {
+        return Math.floor(LEVEL_FACTOR * Math.sqrt(xp));
+    }
+
+    function getNextLevelXP(level: number): number {
+        return Math.pow(Math.ceil((level + 1) / LEVEL_FACTOR), 2);
+    }
+
+    function getLevelProgress(xp: number): number {
+        const level = getLevel(xp);
+        const currentLevelXP = getNextLevelXP(level - 1);
+        const nextLevelXP = getNextLevelXP(level);
+
+        const haveXP = xp - currentLevelXP;
+        const neededXP = nextLevelXP - currentLevelXP;
+
+        return Math.round((haveXP / neededXP) * 100);
+    }
+
     const today = new Date();
-    today.setDate(today.getDate() + 1);
-    today.setHours(0, 0, 0, 0);
+    const todayDate = format(today, 'dd-MMM-yyyy');
 
     return (
         <div className='flex flex-row'>
-            <div className='w-10 bg-green-500'>
-                <div className='h-[40%] bg-white'></div>
+            <div className='w-10 bg-green-500 border-2'>
+                <div className={`bg-white h-[${percentage ?? 0}%]`}></div>
+                <div className='text-center'>{percentage}</div>
             </div>
 
             <div className='ml-5'>
                 <div>
                     <div className='font-bold text-sky-500 text-2xl'>Code Stats Exp</div>
-                    <div className='text-white'>{today.toString()}</div>
+                    <div className='text-white'>{todayDate}</div>
                 </div>
                 <div className='mt-2'>
                     <div className='text-white'>TOTAL EXP: {codeStats?.total_xp} XP</div>

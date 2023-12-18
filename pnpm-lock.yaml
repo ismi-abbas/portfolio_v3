@@ -47,6 +47,9 @@ dependencies:
   convert-csv-to-json:
     specifier: ^2.0.0
     version: 2.0.0
+  date-fns:
+    specifier: ^3.0.0
+    version: 3.0.0
   framer-motion:
     specifier: ^10.16.16
     version: 10.16.16(react-dom@18.2.0)(react@18.2.0)
@@ -1878,6 +1881,10 @@ packages:
     resolution: {integrity: sha512-/eIQe/eR4kCQwq7yxi7z4c6qEXf2IYGcjoWB5OOQy4Tq9Uv39/947qlDcN2TLkiTzQWzvnsuYPB9TrWaNfipKQ==}
     dependencies:
       d3-array: 2.12.1
+    dev: false
+
+  /date-fns@3.0.0:
+    resolution: {integrity: sha512-xjDz3rNN9jp+Lh3P/4MeY4E5HkaRnEnrJCcrdRZnKdn42gJlIe6hwrrwVXePRwVR2kh1UcMnz00erYBnHF8PFA==}
     dev: false
 
   /debug@4.3.4:
