@@ -25,7 +25,7 @@ interface Dates {
 export const Calendar = () => {
     const [codeStats, setCodeStats] = useState<CodeStatsResponse>();
     const [level, setLevel] = useState(0);
-    const [percentage, setPercentage] = useState<number>();
+    const [percentage, setPercentage] = useState<number>(0);
 
     useEffect(() => {
         fetchData();
@@ -68,19 +68,25 @@ export const Calendar = () => {
 
     return (
         <div className='flex flex-row'>
-            <div className='w-10 bg-green-500 border-2'>
-                <div className={`bg-white h-[${percentage ?? 0}%]`}></div>
-                <div className='text-center'>{percentage}</div>
+            <div
+                className='text-white text-center'
+                style={{
+                    writingMode: 'vertical-rl',
+                }}>
+                Level Progress
             </div>
+            <ExpBar percentage={percentage} />
 
             <div className='ml-5'>
                 <div>
-                    <div className='font-bold text-sky-500 text-2xl'>Code Stats Exp</div>
+                    <div className='font-bold text-sky-500 text-2xl'>Code Stats</div>
                     <div className='text-white'>{todayDate}</div>
                 </div>
+
                 <div className='mt-2'>
-                    <div className='text-white'>TOTAL EXP: {codeStats?.total_xp} XP</div>
-                    <div className='text-white'>NEW EXP: {codeStats?.new_xp} XP</div>
+                    <div className='text-white'>Level: {level}</div>
+                    <div className='text-white'>Total Exp: {codeStats?.total_xp} XP</div>
+                    <div className='text-white'>New Exp Today: {codeStats?.new_xp} XP</div>
                 </div>
 
                 {/* Render languages */}
@@ -98,6 +104,19 @@ export const Calendar = () => {
                             ))}
                 </ul>
             </div>
+        </div>
+    );
+};
+
+const ExpBar = ({ percentage }: { percentage: number }) => {
+    return (
+        <div className='w-10 bg-green-500 rounded-md'>
+            <div
+                className='bg-white rounded-t-md'
+                style={{
+                    height: `${percentage}%`,
+                }}></div>
+            <div className='text-center font-semibold'>{percentage}%</div>
         </div>
     );
 };
