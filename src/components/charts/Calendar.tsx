@@ -79,7 +79,11 @@ export const Calendar = () => {
 
             <div className='ml-5'>
                 <div>
-                    <div className='font-bold text-sky-500 text-2xl'>Code Stats</div>
+                    <div className='font-bold text-sky-500 text-2xl'>
+                        <a href='https://codestats.net/users/ismiabbas' target='_blank' rel='noreferrer'>
+                            Code Stats
+                        </a>
+                    </div>
                     <div className='text-white'>{todayDate}</div>
                 </div>
 
@@ -94,12 +98,13 @@ export const Calendar = () => {
                 <ul className='text-white text-sm'>
                     {codeStats?.languages &&
                         Object.entries(codeStats.languages)
+                            .sort((a, b) => b[1].xps - a[1].xps)
                             .sort((a, b) => b[1].new_xps - a[1].new_xps)
-                            .slice(0, 10)
+                            .slice(0, 15)
                             .map(([language, data]) => (
-                                <li key={language}>
+                                <li key={language} className='leading-relaxed'>
                                     <span className='capitalize font-semibold'>{language}</span>: New XP -{' '}
-                                    {data.new_xps}, Total XP - {data.xps}
+                                    {data.new_xps} XP, Total XP - {data.xps}
                                 </li>
                             ))}
                 </ul>
@@ -110,13 +115,13 @@ export const Calendar = () => {
 
 const ExpBar = ({ percentage }: { percentage: number }) => {
     return (
-        <div className='w-10 bg-green-500 rounded-md'>
+        <div className='w-10 bg-white rounded-md overflow-hidden rotate-180'>
             <div
-                className='bg-white rounded-t-md'
+                className='bg-green-500 rounded-t-md h-full transition-height'
                 style={{
                     height: `${percentage}%`,
                 }}></div>
-            <div className='text-center font-semibold'>{percentage}%</div>
+            <div className='text-center font-semibold rotate-180'>{percentage}%</div>
         </div>
     );
 };

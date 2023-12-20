@@ -1,16 +1,61 @@
 ---
 import Default from '../components/Default.astro';
+import Equipment from '../components/Equipment.astro';
 ---
 
 <!DOCTYPE html>
 <html lang='en'>
-    <Default title='Uses' description='My tech equipment'>
-        <div class='container mx-auto'>
-            <div class='flex flex-col justify-center items-center'>
-                <h1 class='text-2xl font-medium p-2 mb-4 text-slate-200 caret-sky-800'>Uses</h1>
+    <Default title='Uses' description='Curated list of my equipments'>
+        <h1 class='text-bold text-white text-lg m-4'>Curated list of my equipments</h1>
+        <section class='w-full'>
+            <ul class='grid grid-cols-1 md:grid-cols-2 gap-2'>
+                <Equipment
+                    title='Macbook Pro 2023'
+                    description='My main machine for coding.'
+                    additionalDescription={['Apple M2 Pro Chip', 'MacOS Sonoma', '16GB ram']}
+                    image='https://www.notebookcheck.net/fileadmin/Notebooks/Apple/MacBook_Pro_14_2023_M2_Pro/AKA8518.jpg'
+                />
 
-                <h1 class='text-3xl block font-bold text-slate-300'>Coming Soon. Under Construction! 🚧</h1>
-            </div>
-        </div>
+                <Equipment
+                    title='Personal Computer'
+                    description='This is my PC setup mainly for gaming. Sometimes I do coding on it.'
+                    additionalDescription={[
+                        'Windows 11 & Linux Mint(dual boot)',
+                        'Intel i5 12th Gen',
+                        '16GB ram',
+                        'Geforce RTX 3060 11GB',
+                    ]}
+                    image='/my_pc.jpeg'
+                />
+
+                <Equipment
+                    title='Gigabyte G24 Gaming Monitor'
+                    description='Monitor for gaming, and extend macbook screen'
+                    additionalDescription={[]}
+                    image='https://www.gigabyte.com/FileUpload/Global/KeyFeature/1802/innergigabyteimages//bg1_m.png'
+                />
+
+                <Equipment
+                    title='SteelSeries Arctis 7 2019 Edition Wireless'
+                    description='My headset for gaming and attend meet!. Wireless with no bluetooth connection.'
+                    additionalDescription={[]}
+                    image='https://i.rtings.com/assets/products/THhpS8PE/steelseries-arctis-7-2019-edition-wireless/design-medium.jpg'
+                />
+
+                <Equipment
+                    title='AKKO 5075B Plus Tri Mode'
+                    description='Keybaord for the PC. No extra keyboard for my mac'
+                    additionalDescription={['Feker Panda Tactile Switch', 'Stock Keycaps', 'No Mods']}
+                    image='https://media.karousell.com/media/photos/products/2023/2/3/akko_5075b_plus_blue_on_white__1675414929_cb83d785'
+                />
+
+                <Equipment
+                    title='Glorious Model O Minus'
+                    description='Wireless mouse for gaming and basic stuffs.'
+                    additionalDescription={[]}
+                    image='https://thegamingsetup.com/wp-content/uploads/glorious-model-o-minus-box.jpg'
+                />
+            </ul>
+        </section>
     </Default>
 </html>

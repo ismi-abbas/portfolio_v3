@@ -2,3 +2,9 @@
 body {
     font-family: 'Space Grotesk', sans-serif;
 }
+
+.transition-height {
+    transition-property: height;
+    transition-duration: 1s;
+    transition-timing-function: ease;
+}
