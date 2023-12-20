@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<Default>
+<Default title='ismi-abbas.com' description="ismi-abbas's portfolio site">
     <section class='w-full text-slate-300'>
         <ul class='grid grid-cols-1 md:grid-cols-2 gap-5 auto-rows-fr'>
             {

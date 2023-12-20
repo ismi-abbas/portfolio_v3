@@ -7,20 +7,13 @@ import ImageSlider from '../components/motions/ImageSlider';
 const imageUrls = '/jom_launch.jpeg';
 ---
 
-<script lang='ts'>
-    function randomizePicture(source) {
-        const random = Math.floor(Math.random() * source.length);
-        return source[random];
-    }
-</script>
-
 <html lang='en'>
     <head>
         <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     </head>
     <Default>
         <div class='w-full px-10 flex gap-2'>
-            <ImageSlider client:load url={imageUrls} />
+            <ImageSlider client:load url={imageUrls} alt='website-picture' />
         </div>
 
         <div class='w-full max-w-lg'>

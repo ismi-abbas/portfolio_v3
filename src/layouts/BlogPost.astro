@@ -8,7 +8,7 @@ type Props = CollectionEntry<'blog'>['data'];
 const { title, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
-<Default>
+<Default title='Blog' description='Personnal blog'>
     <article class='flex flex-col justify-start items-center'>
         {heroImage && <img width={520} height={360} src={heroImage} alt='' class='rounded-md' />}
         <h1 class='text-xl mt-4 text-sky-200'>{title}</h1>

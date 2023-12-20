@@ -2,12 +2,14 @@ import { motion } from 'framer-motion';
 
 type Props = {
     url: string;
+    alt: string;
 };
 
 const ImageSlider = (props: Props) => {
     return (
         <div className='w-full h-96 rounded-lg'>
             <motion.img
+                alt={props.alt}
                 src={props.url}
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
