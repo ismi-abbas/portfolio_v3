@@ -4,9 +4,17 @@ const today = (new Date().getFullYear() + 1).toString();
 
 <footer
     class='fixed bottom-0 left-0 right-0 flex justify-center items-start p-5 bg-gradient-to-r from-transparent to-background bg-radial-pattern bg-radial-sm backdrop-filter backdrop-blur-md bg-opacity-20 text-sm leading-sm text-white'>
-    &copy; {today} ismi-abbas.com. Built with&nbsp;<a href='https://astro.build/' target='_blank'>Astro</a>
+    &copy; <span id='year'></span>&nbsp;ismi-abbas.com. Built with&nbsp;<a href='https://astro.build/' target='_blank'
+        >Astro</a
+    >
     &nbsp;
     <a href='https://github.com/ismi-abbas/portfolio_v3' target='_blank' rel='noreferer'>
         <img src='/github-mark-white.svg' alt='Github Mark' class='h-4 w-4' />
     </a>
 </footer>
+
+<script lang='js'>
+    const year = document.getElementById('year');
+    const today = (new Date().getFullYear() + 1).toString();
+    year.innerHTML = today;
+</script>
