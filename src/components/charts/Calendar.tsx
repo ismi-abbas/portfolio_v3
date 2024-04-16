@@ -103,8 +103,9 @@ export const Calendar = () => {
                             .slice(0, 15)
                             .map(([language, data]) => (
                                 <li key={language} className='leading-relaxed'>
-                                    <span className='capitalize font-semibold'>{language}</span>: New XP -{' '}
-                                    {data.new_xps} XP, Total XP - {data.xps}
+                                    <span className='capitalize font-semibold'>{language}</span>: {data.xps} XP{' '}
+                                    {data.new_xps > 0 ? '⬆️' : '➡️'}
+                                    {data.new_xps} XP
                                 </li>
                             ))}
                 </ul>
