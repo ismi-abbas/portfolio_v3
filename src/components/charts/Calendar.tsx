@@ -95,20 +95,36 @@ export const Calendar = () => {
 
                 {/* Render languages */}
                 <div className='text-white text-lg mt-4'>Languages:</div>
-                <ul className='text-white text-sm'>
-                    {codeStats?.languages &&
-                        Object.entries(codeStats.languages)
-                            .sort((a, b) => b[1].xps - a[1].xps)
-                            .sort((a, b) => b[1].new_xps - a[1].new_xps)
-                            .slice(0, 15)
-                            .map(([language, data]) => (
-                                <li key={language} className='leading-relaxed'>
-                                    <span className='capitalize font-semibold'>{language}</span>: {data.xps} XP{' '}
-                                    {data.new_xps > 0 ? '⬆️' : '➡️'}
-                                    {data.new_xps} XP
-                                </li>
-                            ))}
-                </ul>
+                <div className='grid grid-cols-2 gap-5'>
+                    <ul className='text-white text-sm'>
+                        {codeStats?.languages &&
+                            Object.entries(codeStats.languages)
+                                .sort((a, b) => b[1].xps - a[1].xps)
+                                .sort((a, b) => b[1].new_xps - a[1].new_xps)
+                                .slice(0, 7)
+                                .map(([language, data]) => (
+                                    <li key={language} className='leading-relaxed'>
+                                        <span className='capitalize font-semibold'>{language}</span>: {data.xps} XP{' '}
+                                        {data.new_xps > 0 ? '⬆️' : '➡️'}
+                                        {data.new_xps} XP
+                                    </li>
+                                ))}
+                    </ul>
+                    <ul className='text-white text-sm'>
+                        {codeStats?.languages &&
+                            Object.entries(codeStats.languages)
+                                .sort((a, b) => b[1].xps - a[1].xps)
+                                .sort((a, b) => b[1].new_xps - a[1].new_xps)
+                                .slice(7, 15)
+                                .map(([language, data]) => (
+                                    <li key={language} className='leading-relaxed'>
+                                        <span className='capitalize font-semibold'>{language}</span>: {data.xps} XP{' '}
+                                        {data.new_xps > 0 ? '⬆️' : '➡️'}
+                                        {data.new_xps} XP
+                                    </li>
+                                ))}
+                    </ul>
+                </div>
             </div>
         </div>
     );

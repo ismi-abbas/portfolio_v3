@@ -2,7 +2,7 @@
 title: 'From Islamic Studies to Computer Science'
 description: 'Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.'
 pubDate: 'Nov 20 2023'
-heroImage: '/AWS_DAY.jpg'
+heroImage: '/AWS_DAY.webp'
 ---
 
 ### A self-taught developer
