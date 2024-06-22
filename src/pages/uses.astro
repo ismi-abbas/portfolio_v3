@@ -1,60 +1,53 @@
 ---
 import Default from '../components/Default.astro';
-import Equipment from '../components/Equipment.astro';
+import Equipment, { type EquipmentProps } from '../components/Equipment.astro';
+
+const equipments: EquipmentProps[] = [
+  {
+    title: 'Macbook Pro M2 2023',
+    description: 'My main machine for coding.',
+    image: '/macbook.webp',
+  },
+  {
+    title: 'Personal Computer',
+    description: 'This is my PC setup mainly for gaming. Sometimes I do coding on it.',
+    additionalDescription: ['Windows 11 & Linux Mint(dual boot)', 'Intel i5 12th Gen', '16GB ram', 'Geforce RTX 3060'],
+    image: '/my_pc.webp',
+  },
+  {
+    title: 'Gigabyte G24 Gaming Monitor',
+    description: 'Monitor for gaming, and extend macbook screen',
+    additionalDescription: [],
+    image: '/monitor.webp',
+  },
+  {
+    title: 'SteelSeries Arctis 7 2019 Edition Wireless',
+    description: 'My headset for gaming and attend meet!. Wireless with no bluetooth connection.',
+    additionalDescription: [],
+    image: '/headphone.webp',
+  },
+  {
+    title: 'AKKO 5075B Plus Tri Mode',
+    description: 'Keybaord for the PC. No extra keyboard for my mac',
+    additionalDescription: ['Feker Panda Tactile Switch', 'Stock Keycaps', 'No Mods'],
+    image: '/keyboard.jpeg',
+  },
+  {
+    title: 'Glorious Model O Minus',
+    description: 'Wireless mouse for gaming and basic stuffs.',
+    additionalDescription: [],
+    image: '/mouse.webp',
+  },
+];
 ---
 
 <!doctype html>
 <html lang='en'>
   <Default title='Uses' description='Curated list of my equipments'>
-    <h1 class='text-bold text-white text-lg m-4'>Curated list of my equipments</h1>
+    <h1 class='text-bold text-white text-lg md:text-xl m-4'>Curated list of my equipments</h1>
     <section class='w-full'>
       <ul class='grid grid-cols-1 md:grid-cols-2 gap-2'>
-        <Equipment
-          title='Macbook Pro 2023'
-          description='My main machine for coding.'
-          additionalDescription={['Apple M2 Pro Chip', 'MacOS Sonoma', '16GB ram']}
-          image='/macbook.webp'
-        />
-
-        <Equipment
-          title='Personal Computer'
-          description='This is my PC setup mainly for gaming. Sometimes I do coding on it.'
-          additionalDescription={[
-            'Windows 11 & Linux Mint(dual boot)',
-            'Intel i5 12th Gen',
-            '16GB ram',
-            'Geforce RTX 3060 11GB',
-          ]}
-          image='/my_pc.webp'
-        />
-
-        <Equipment
-          title='Gigabyte G24 Gaming Monitor'
-          description='Monitor for gaming, and extend macbook screen'
-          additionalDescription={[]}
-          image='/monitor.webp'
-        />
-
-        <Equipment
-          title='SteelSeries Arctis 7 2019 Edition Wireless'
-          description='My headset for gaming and attend meet!. Wireless with no bluetooth connection.'
-          additionalDescription={[]}
-          image='/headphone.webp'
-        />
-
-        <Equipment
-          title='AKKO 5075B Plus Tri Mode'
-          description='Keybaord for the PC. No extra keyboard for my mac'
-          additionalDescription={['Feker Panda Tactile Switch', 'Stock Keycaps', 'No Mods']}
-          image='/keyboard.jpeg'
-        />
-
-        <Equipment
-          title='Glorious Model O Minus'
-          description='Wireless mouse for gaming and basic stuffs.'
-          additionalDescription={[]}
-          image='/mouse.webp'
-        />
+        {equipments.map((equipment) => <Equipment {...equipment} />)}
       </ul>
     </section>
   </Default>

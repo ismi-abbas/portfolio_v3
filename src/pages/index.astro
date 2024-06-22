@@ -52,12 +52,12 @@ const biography = [
     </div>
 
     <div class='mt-8 w-full text-white'>
-      <h1 class='text-4xl font-bold'>Abbas Puzi</h1>
-      <h3 class='text-lg'>Digital <span class='bg-sky-700 px-1'>Craftman</span></h3>
+      <h1 class='text-4xl font-semibold'>Abbas Puzi</h1>
+      <h3 class='text-lg'>Digital <span class='bg-sky-800 px-1'>Craftman</span></h3>
     </div>
 
-    <section class='w-full text-white mt-8'>
-      <h1 class='underline underline-offset-4 decoration-4 decoration-slate-600 font-medium text-lg'>Work</h1>
+    <section class='w-full text-white mt-4'>
+      <h1 class='underline underline-offset-4 decoration-2 decoration-slate-600 font-medium text-lg'>Work</h1>
       <div class='leading-relaxed tracking-wide mt-4 space-y-3 font-thin'>
         <p>
           👋 Hi, I'm Abbas, a software developer from Malaysia. I love building things for the web using Node.js,
@@ -71,24 +71,23 @@ const biography = [
       </div>
     </section>
 
-    <section class='w-full text-white mt-8'>
-      <h1 class='underline underline-offset-4 decoration-4 decoration-slate-600 font-medium text-lg'>Bio</h1>
-
-      <div class='flex flex-col font-light mt-4 debug space-y-2'>
+    <section class='w-full text-white mt-4'>
+      <h1 class='underline underline-offset-4 decoration-2 decoration-slate-600 font-medium text-lg'>Bio</h1>
+      <div class='flex flex-col font-light mt-2 space-y-1'>
         {
           biography.map((entry) => (
-            <div class='flex gap-4'>
+            <div class='flex items-start'>
               <div class='w-24'>{entry.date}</div>
-              <div class='flex flex-1'>{entry.description}</div>
+              <div class='flex flex-1 text-pretty'>{entry.description}</div>
             </div>
           ))
         }
       </div>
     </section>
 
-    <section class='w-full text-white mt-8'>
-      <h1 class='underline underline-offset-4 decoration-4 decoration-slate-600 font-medium text-lg'>I ❤️</h1>
-      <p class='text-justify leading-relaxed mt-4'>Games and coding</p>
+    <section class='w-full text-white mt-4'>
+      <h1 class='underline underline-offset-4 decoration-2 decoration-slate-600 font-medium text-lg'>I ❤️</h1>
+      <p class='text-justify leading-relaxed mt-2'>Games and coding</p>
     </section>
   </Default>
 </html>

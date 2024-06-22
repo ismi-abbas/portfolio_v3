@@ -1,55 +1,71 @@
 ---
 import Default from '../components/Default.astro';
-import Project from '../components/Project.astro';
+import Project, { type Projects } from '../components/Project.astro';
+
+const projects: Projects[] = [
+  {
+    title: 'WTF Tech By Karbon Kore',
+    description: 'Landing page for WTF Tech by Karbon Kore. A community hackathon event',
+    image: '/wtf-tech.png',
+    techStacks: ['NextJs', 'TailwindCSS', 'Vercel'],
+    githubLink: 'https://github.com/cc0-lib/wtf-tech',
+    appLink: 'https://tech.karbon.wtf/',
+  },
+  {
+    title: 'Resepi Bangman',
+    description: 'Simple Recipe Display Apps',
+    image: '/resepi-bangman.png',
+    techStacks: ['Astro'],
+    githubLink: 'https://github.com/ismi-abbas/resepi-bangman',
+    appLink: 'https://resepi-bangman.vercel.app/',
+  },
+  {
+    title: 'Baca Hadith',
+    description: 'Aplikasi ringkas untuk mencari hadith - discontinued',
+    image: '/baca-hadith.webp',
+    techStacks: ['NextJS'],
+    githubLink: 'https://github.com/ismi-abbas/jami-kutub-sittah',
+    appLink: 'https://baca-hadith.vercel.app/',
+  },
+  {
+    title: 'Expense Split',
+    description: 'Simple app to do splitting(mock)',
+    techStacks: ['React Native', 'Supabase'],
+    githubLink: 'https://github.com/ismi-abbas/jami-kutub-sittah',
+    appLink: '',
+  },
+  {
+    title: 'Barbershop System(mock)',
+    description: 'Barbershop management system - mockup',
+    techStacks: ['React Native', 'Supabase'],
+    githubLink: 'https://github.com/ismi-abbas/barber-shop-system',
+    appLink: '',
+  },
+  {
+    title: 'Discharge App',
+    description: 'A prove of concept app for petrol pump oil records. Built using React Native with Expo',
+    techStacks: ['React Native', 'Expo'],
+    githubLink: 'https://github.com/ismi-abbas/discharge',
+    appLink: '',
+  },
+];
 ---
 
 <Default title='Project' description='My open-source and company projects list'>
   <section class='w-full'>
     <ul class='grid grid-cols-1 md:grid-cols-2 gap-2'>
-      <Project
-        github_link='https://github.com/ismi-abbas/resepi-bangman'
-        app_link='https://resepi-bangman.vercel.app/'
-        title='Resepi Bangman'
-        description='Simple Recipe Display Apps'
-        image='/resepi-bangman.webp'
-        techStacks={['Astro']}
-      />
-
-      <Project
-        github_link='https://github.com/ismi-abbas/jami-kutub-sittah'
-        app_link='https://baca-hadith.vercel.app/'
-        title='Baca Hadith'
-        description='Aplikasi ringkas untuk mencari hadith - discontinued'
-        image='/baca-hadith.webp'
-        techStacks={['NextJS']}
-      />
-
-      <Project
-        github_link='https://github.com/ismi-abbas/expense-split'
-        app_link=''
-        image='/app_mockup.webp'
-        title='Expense Split'
-        description='Simple app to do splitting(mock)'
-        techStacks={['React Native', 'Supabase']}
-      />
-
-      <Project
-        github_link='https://github.com/ismi-abbas/barber-shop-system'
-        app_link=''
-        image='/app_mockup.webp'
-        title='Barbershop System(mock)'
-        description='Barbershop management system'
-        techStacks={['React', 'ExpressJS', 'MySQL']}
-      />
-
-      <Project
-        github_link='https://github.com/ismi-abbas/discharge'
-        app_link=''
-        image='/app_mockup.webp'
-        title='Discharge App'
-        description='A prove of concept app for petrol pump oil records. Built using React Native with Expo'
-        techStacks={['React Native', 'Expo']}
-      />
+      {
+        projects.map((project) => (
+          <Project
+            title={project.title}
+            description={project.description}
+            image={project.image}
+            techStacks={project.techStacks}
+            githubLink={project.githubLink}
+            appLink={project.appLink}
+          />
+        ))
+      }
     </ul>
   </section>
 </Default>

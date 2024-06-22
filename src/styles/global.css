@@ -1,6 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-space: 'Space Grotesk', sans-serif;
+    --font-garamond: 'EB Garamond', serif;
+  }
+}
+
 body {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-space);
+}
+
+.font-garamond {
+  font-family: var(--font-garamond);
 }
 
 .transition-height {

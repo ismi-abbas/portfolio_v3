@@ -1,11 +1,9 @@
 import { defineCollection, z } from 'astro:content';
 
-const blog = getCollection({
-  // Type-check frontmatter using a schema
+const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    // Transform string to Date object
     pubDate: z
       .string()
       .or(z.date())

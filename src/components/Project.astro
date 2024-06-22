@@ -1,45 +1,45 @@
 ---
-const { title, description, techStacks, app_link, github_link, image } = Astro.props;
 import { motion } from 'framer-motion';
 
-interface Props {
-    title: string;
-    description: string;
-    techStacks: string[];
-    app_link: string;
-    github_link: string;
-    image: string;
+export interface Projects {
+  title: string;
+  description: string;
+  techStacks: string[];
+  appLink: string;
+  githubLink: string;
+  image?: string;
 }
+
+const { title, description, techStacks, appLink, githubLink, image } = Astro.props as Projects;
 ---
 
 <motion.div
-    className='mt-2 h-auto p-2 border border-slate-600/80'
-    initial={{ opacity: 0, y: 50 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 2, type: 'spring', stiffness: 300 }}
-    client:load>
-    <div class='flex-1 flex flex-col justify-between p-2'>
-        <img src={image} alt='logo' loading='lazy' class='h-56 object-contain bg-white' />
-        <div class='flex-col mt-8'>
-            <h1 class='text-white'>{title}</h1>
-            <h3 class='text-white text-sm leading-tight'>{description}</h3>
+  className='h-auto p-2 border border-slate-600/80'
+  initial={{ opacity: 0, y: 50 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 2, type: 'spring', stiffness: 300 }}
+  client:load>
+  <div class='flex-1 flex flex-col justify-between p-2'>
+    <img src={image ?? '/no-image.png'} alt='logo' loading='lazy' class='object-cover border border-gray-600/40' />
+    <div class='flex-col mt-8 justify-between flex h-48'>
+      <div class='flex flex-col'>
+        <h1 class='text-white'>{title}</h1>
+        <h3 class='text-white text-sm leading-tight'>{description}</h3>
+        <ul class='mt-2'>
+          {
+            techStacks ? (
+              techStacks.map((item) => <li class='text-white text-sm list-disc list-inside'>{item}</li>)
+            ) : (
+              <div />
+            )
+          }
+        </ul>
+      </div>
 
-            <ul class='mt-2'>
-                {
-                    techStacks ? (
-                        techStacks.map((item) => <li class='text-white text-sm list-disc list-inside'>{item}</li>)
-                    ) : (
-                        <div />
-                    )
-                }
-            </ul>
-
-            <div class='mt-2 flex flex-col'>
-                <a href={app_link} target='_blank' class='underline underline-offset-2 text-sky-500 text-sm'>Site</a>
-                <a href={github_link} target='_blank' class='underline underline-offset-2 text-sky-500 text-sm'
-                    >Github</a
-                >
-            </div>
-        </div>
+      <div class='mt-2 flex flex-col'>
+        <a href={appLink} target='_blank' class='underline underline-offset-2 text-sky-500 text-sm'>Site</a>
+        <a href={githubLink} target='_blank' class='underline underline-offset-2 text-sky-500 text-sm'>Github</a>
+      </div>
     </div>
+  </div>
 </motion.div>
