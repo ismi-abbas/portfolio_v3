@@ -4,14 +4,12 @@ import { Calendar } from '../components/charts/Calendar';
 ---
 
 <Default
-    title='Coding Statistic'
-    description='My codestats from codestats.com'
-    pubDate={new Date()}
-    updatedDate={new Date()}
-    heroImage='/placeholder-about.jpg'>
-    <div>
-        <!-- <div class='text-lg text-sky-300 font-medium'>Code Stats</div> -->
-        <!-- <BarChart client:load /> -->
-        <Calendar client:load />
-    </div>
+  title='Coding Statistic'
+  description='My codestats from codestats.com'
+  pubDate={new Date()}
+  updatedDate={new Date()}
+  heroImage='/og-image.png'>
+  <div class='w-full max-w-[450px]'>
+    <Calendar client:load />
+  </div>
 </Default>

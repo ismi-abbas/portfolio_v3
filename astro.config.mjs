@@ -8,6 +8,6 @@ import image from '@astrojs/image';
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://site-ismi-abbas.vercel.app/',
-    integrations: [mdx(), sitemap(), tailwind(), react(), image()],
+  site: 'https://ismiabbas.site/',
+  integrations: [mdx(), sitemap(), tailwind(), react(), image()],
 });

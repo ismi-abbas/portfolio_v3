@@ -1,10 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 body {
-    font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 .transition-height {
-    transition-property: height;
-    transition-duration: 1s;
-    transition-timing-function: ease;
+  transition-property: height;
+  transition-duration: 1s;
+  transition-timing-function: ease;
+}
+
+.debug {
+  @apply border border-red-500;
 }

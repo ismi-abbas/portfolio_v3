@@ -9,22 +9,22 @@ const { title, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
 <Default title='Blog' description='Personnal blog'>
-    <article class='flex flex-col justify-start items-center'>
-        {heroImage && <img width={520} height={360} src={heroImage} alt='' class='rounded-md' />}
-        <h1 class='text-xl mt-4 text-sky-200'>{title}</h1>
-        {
-            updatedDate && (
-                <div class='text-gray-600 dark:text-gray-400 mt-2'>
-                    Last updated on <FormattedDate date={updatedDate} />
-                </div>
-            )
-        }
-        <div
-            class='prose prose-base max-w-none prose-headings:text-sky-200 prose-p:text-sky-50 prose-p:text-justify prose-a:text-red-200 prose-strong:text-red-200'>
-            <slot />
+  <article class='flex flex-col justify-start items-center'>
+    {heroImage && <img width={520} height={360} src={heroImage} alt='' class='rounded-md' />}
+    <h1 class='text-xl mt-4 text-sky-200'>{title}</h1>
+    {
+      updatedDate && (
+        <div class='text-gray-600 dark:text-gray-400 mt-2'>
+          Last updated on <FormattedDate date={updatedDate} />
         </div>
-        <div class='text-gray-600 dark:text-gray-400 mt-4'>
-            Published on <FormattedDate date={pubDate} />
-        </div>
-    </article>
+      )
+    }
+    <div
+      class='prose prose-base max-w-none prose-headings:text-sky-200 prose-p:text-sky-50 prose-p:text-justify prose-a:text-red-200 prose-strong:text-red-200'>
+      <slot />
+    </div>
+    <div class='text-gray-600 dark:text-gray-400 mt-4'>
+      Published on <FormattedDate date={pubDate} />
+    </div>
+  </article>
 </Default>
