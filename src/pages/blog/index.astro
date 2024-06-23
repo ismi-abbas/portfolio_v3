@@ -16,7 +16,7 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueO
             className='mt-2 h-auto hover:cursor-pointer hover:ring-1 hover:ring-sky-700 p-4 border border-slate-600/80'
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 2, type: 'spring', stiffness: 300 }}
+            transition={{ duration: 2, type: 'spring', stiffness: 100 }}
             whileHover={{ scale: 1.03 }}
             client:load>
             <a href={`/blog/${post.slug}/`}>

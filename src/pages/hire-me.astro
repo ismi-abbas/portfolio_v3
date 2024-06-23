@@ -1,0 +1,37 @@
+---
+import Default from '../components/Default.astro';
+---
+
+<Default title='Project' description='My open-source and company projects list' />
+<form action='/hire-me/submit' class='flex flex-col gap-4 px-14 py-10 border border-dashed border-neutral-500/30'>
+  <p class='text-white text-lg'>
+    I offer service for building static landing pages, small scale web application, and application debugging. Contact
+    me for more information.
+  </p>
+  <div class='flex justify-center flex-col debug'>
+    <div class='flex flex-col mt-4'>
+      <label class='text-xl text-white'>Name</label>
+      <input
+        type='text'
+        name='name'
+        class='text-xl py-2 border-b px-3 bg-transparent text-white focus:ring-0 focus:outline-none'
+        placeholder='Name'
+        required='required'
+      />
+    </div>
+    <div class='flex flex-col'>
+      <label class='text-xl text-white'>Contact</label>
+      <input
+        type='email'
+        name='contact'
+        class='text-xl py-2 border-b px-3 bg-transparent text-white focus:ring-0 focus:outline-none'
+        placeholder='Contact'
+        required='required'
+      />
+    </div>
+  </div>
+
+  <div class='flex justify-center'>
+    <button type='submit' class='bg-sky-600 text-white py-2 px-2 hover:bg-sky-700'>Submit</button>
+  </div>
+</form>
