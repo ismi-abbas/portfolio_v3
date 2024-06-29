@@ -11,6 +11,8 @@ export interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description, image = '/og-image.png' } = Astro.props;
+
+import { BeamAnalytics } from 'astro-beam';
 ---
 
 <!-- Global Metadata -->
@@ -44,10 +46,7 @@ const { title, description, image = '/og-image.png' } = Astro.props;
   href='https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap'
   rel='stylesheet'
 />
-<script
-  src='https://beamanalytics.b-cdn.net/beam.min.js'
-  data-token='8cb423f7-eac0-456e-9f63-7dec67930d06'
-  async
-  is:inline></script>
+
+<BeamAnalytics token='8cb423f7-eac0-456e-9f63-7dec67930d06' />
 
 <ViewTransitions />
