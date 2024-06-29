@@ -13,6 +13,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const { title, description, image = '/og-image.png' } = Astro.props;
 
 import { BeamAnalytics } from 'astro-beam';
+
+const BEAM_TOKEN = import.meta.env.BEAM_TOKEN;
 ---
 
 <!-- Global Metadata -->
@@ -47,6 +49,6 @@ import { BeamAnalytics } from 'astro-beam';
   rel='stylesheet'
 />
 
-<BeamAnalytics token='8cb423f7-eac0-456e-9f63-7dec67930d06' />
+<BeamAnalytics token={BEAM_TOKEN} />
 
 <ViewTransitions />
