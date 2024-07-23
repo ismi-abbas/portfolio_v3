@@ -57,37 +57,42 @@ const biography = [
     </div>
 
     <section class='w-full text-white mt-4'>
-      <h1 class='underline underline-offset-4 decoration-2 decoration-slate-600 font-medium text-lg'>Work</h1>
-      <div class='leading-relaxed tracking-wide mt-4 space-y-3 font-thin'>
-        <p>
-          👋 Hi, I'm Abbas, a software developer from Malaysia. I love building things for the web using Node.js,
-          JavaScript, Typescript, React, Next.js, and styling with Tailwind CSS.
-        </p>
-        <p>
-          💻 As a coder, I enjoy turning ideas into functional and user-friendly solutions. Check out my portfolio to
-          see some of my work and projects.
-        </p>
-        <p>Let's create something amazing together!</p>
-      </div>
-    </section>
-
-    <section class='w-full text-white mt-4'>
       <h1 class='underline underline-offset-4 decoration-2 decoration-slate-600 font-medium text-lg'>Bio</h1>
-      <div class='flex flex-col font-light mt-2 space-y-1'>
-        {
-          biography.map((entry) => (
-            <div class='flex items-start'>
-              <div class='w-24'>{entry.date}</div>
-              <div class='flex flex-1 text-pretty'>{entry.description}</div>
-            </div>
-          ))
-        }
+      <div class='leading-relaxed tracking-wide mt-4 space-y-3 font-thin text-pretty'>
+        <p>
+          👋 Greetings! I'm Abbas, a passionate software developer hailing from the vibrant tech scene of Malaysia. My
+          expertise lies in crafting exceptional web experiences using cutting-edge technologies.
+        </p>
+        <p>
+          💻 My tech stack includes:
+          <ul class='list-disc list-inside ml-4 mt-2 space-y-1'>
+            <li>Node.js for robust back-end development</li>
+            <li>JavaScript and TypeScript for versatile programming</li>
+            <li>React and Next.js for building dynamic front-end applications</li>
+            <li>Tailwind CSS for creating sleek, responsive designs</li>
+          </ul>
+        </p>
+        <p>
+          🚀 As a developer, I thrive on transforming innovative ideas into functional, user-centric solutions. My
+          portfolio showcases a diverse range of projects that demonstrate my technical prowess and creative
+          problem-solving skills.
+        </p>
+        <p>Ready to bring your vision to life? Let's collaborate and create something extraordinary together!</p>
       </div>
-    </section>
 
-    <section class='w-full text-white mt-4'>
-      <h1 class='underline underline-offset-4 decoration-2 decoration-slate-600 font-medium text-lg'>I ❤️</h1>
-      <p class='text-justify leading-relaxed mt-2'>Games and coding</p>
+      <section class='w-full text-white mt-4'>
+        <h1 class='underline underline-offset-4 decoration-2 decoration-slate-600 font-medium text-lg'>Life journey</h1>
+        <div class='flex flex-col font-light mt-2 space-y-1'>
+          {
+            biography.map((entry) => (
+              <div class='flex items-start'>
+                <div class='w-24'>{entry.date}</div>
+                <div class='flex flex-1 text-pretty'>{entry.description}</div>
+              </div>
+            ))
+          }
+        </div>
+      </section>
     </section>
   </Default>
 </html>
