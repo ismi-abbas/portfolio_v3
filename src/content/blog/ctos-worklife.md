@@ -1,7 +1,6 @@
 ---
 title: 'Behind the Code: Meet Nazreen, CTOS's Backend Maestro'
-description: 'Professional and Straightforward:
-"A look into the life of a passionate backend developer who's revolutionizing credit management systems at CTOS while bringing his unique flavor to the workplace."'
+description: 'Professional and Straightforward: A look into the life of a passionate backend developer who's revolutionizing credit management systems at CTOS while bringing his unique flavor to the workplace.'
 pubDate: 'Nov 28 2024'
 ---
 
