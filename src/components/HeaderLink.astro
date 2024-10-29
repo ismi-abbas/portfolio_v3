@@ -10,6 +10,8 @@ const isActive =
   href === pathname || href === pathname.replace(/\/$/, '') || href === '/'.concat(pathname.split('/')[1]);
 ---
 
-<a href={href} class:list={[className, { 'bg-sky-600 px-4': isActive }]} {...props}>
-  <slot />
-</a>
+<li class='list-none'>
+  <a href={href} class:list={[className, { 'bg-sky-600 px-4': isActive }]} {...props}>
+    <slot />
+  </a>
+</li>

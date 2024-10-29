@@ -1,17 +1,18 @@
 ---
-import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
-import Default from '../../components/Default.astro';
 import { motion } from 'framer-motion';
+import Default from '../../components/Default.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { getPosts } from '../../content/utils';
+import { urlFor } from './[...slug].astro';
 
-const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const posts = await getPosts();
 ---
 
 <Default title='ismi-abbas.com' description="ismi-abbas's portfolio site">
   <section class='w-full text-slate-300'>
     <ul class='grid grid-cols-1 md:grid-cols-2 gap-2'>
       {
-        posts.map((post) => (
+        posts.map((post: any) => (
           <motion.div
             className='mt-2 h-auto hover:cursor-pointer hover:ring-1 hover:ring-sky-700 p-4 border border-slate-600/80'
             initial={{ opacity: 0, y: 50 }}
@@ -19,11 +20,11 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueO
             transition={{ duration: 2, type: 'spring', stiffness: 100 }}
             whileHover={{ scale: 1.03 }}
             client:load>
-            <a href={`/blog/${post.slug}/`}>
-              <img src={post.data.heroImage} alt='' class='object-cover' loading='lazy' />
+            <a href={`/blog/${post.slug.current}/`}>
+              <img src={urlFor(post.mainImage).url()} alt='' class='object-cover' loading='lazy' />
               <div class='p-4'>
-                <h4 class='text-white font-base h-20 overflow-ellipsis block text-start '>{post.data.title}</h4>
-                <FormattedDate date={post.data.pubDate} />
+                <h4 class='text-white font-base h-20 overflow-ellipsis block text-start '>{post.title}</h4>
+                <FormattedDate date={new Date(post._updatedAt)} />
               </div>
             </a>
           </motion.div>

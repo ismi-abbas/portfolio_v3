@@ -1,23 +1,30 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
+import imageUrlBuilder from '@sanity/image-url';
+import type { InferGetStaticParamsType } from 'astro';
+import { sanityClient } from 'sanity:client';
+import { getPosts } from '../../content/utils';
 import BlogPost from '../../layouts/BlogPost.astro';
 
+export function urlFor(source: any) {
+  return imageUrlBuilder(sanityClient).image(source);
+}
+
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getPosts();
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.slug.current },
     props: post,
   }));
 }
-type Props = CollectionEntry<'blog'>;
 
-const post = Astro.props;
-const { Content } = await post.render();
+type Props = InferGetStaticParamsType<typeof getStaticPaths>;
+
+const posts = Astro.props;
 ---
 
-<BlogPost {...post.data}>
-  <article
+<BlogPost {...posts}>
+  <!-- <article
     class='text-start items-start flex flex-col text-white px-8 prose-headings:text-lg prose-headings:font-semibold prose-h1:font-medium py-4'>
-    <Content />
-  </article>
+  </article> -->
+  <slot />
 </BlogPost>

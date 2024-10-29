@@ -1,30 +1,30 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import FormattedDate from '../components/FormattedDate.astro';
+import { PortableText } from 'astro-portabletext';
 import Default from '../components/Default.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import { urlFor } from '../pages/blog/[...slug].astro';
 
-type Props = CollectionEntry<'blog'>['data'];
-
-const { title, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, _updatedAt, mainImage, body } = Astro.props;
 ---
 
 <Default title='Blog' description='Personnal blog'>
-  <article class='flex flex-col justify-start items-center'>
-    {heroImage && <img width={520} height={360} src={heroImage} alt='' class='rounded-md' />}
+  <div class='flex flex-col justify-start items-center'>
+    {mainImage && <img width={520} height={360} src={urlFor(mainImage).url()} alt='' class='rounded-md' />}
     <h1 class='text-xl mt-4 text-sky-200'>{title}</h1>
-    {
-      updatedDate && (
-        <div class='text-gray-600 dark:text-gray-400 mt-2'>
-          Last updated on <FormattedDate date={updatedDate} />
-        </div>
-      )
-    }
-    <div
-      class='prose prose-base max-w-none prose-headings:text-sky-200 prose-p:text-sky-50 prose-p:text-justify prose-a:text-red-200 prose-strong:text-red-200'>
-      <slot />
+    <article
+      class='mt-5 prose prose-base max-w-none prose-headings:text-sky-200 prose-p:text-sky-50 prose-p:text-justify prose-a:text-red-200 prose-strong:text-red-200'>
+      <PortableText value={body} />
+    </article>
+    <div class='text-gray-600 dark:text-gray-400 mt-4 flex gap-2 items-center justify-center'>
+      <div>
+        {
+          _updatedAt && (
+            <>
+              Last updated on <FormattedDate date={new Date(_updatedAt)} />
+            </>
+          )
+        }
+      </div>
     </div>
-    <div class='text-gray-600 dark:text-gray-400 mt-4'>
-      Published on <FormattedDate date={pubDate} />
-    </div>
-  </article>
+  </div>
 </Default>
