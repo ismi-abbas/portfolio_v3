@@ -1,33 +1,64 @@
 ---
+import { Image } from 'astro:assets';
+import { clsx, type ClassValue } from 'clsx';
 import { motion } from 'framer-motion';
-import Default from '../../components/Default.astro';
-import FormattedDate from '../../components/FormattedDate.astro';
+import { twMerge } from 'tailwind-merge';
 import { getPosts } from '../../content/utils';
+import Default from '../../components/Default.astro';
 import { urlFor } from './[...slug].astro';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
 
 const posts = await getPosts();
 ---
 
-<Default title='ismi-abbas.com' description="ismi-abbas's portfolio site">
-  <section class='w-full text-slate-300'>
-    <ul class='grid grid-cols-1 md:grid-cols-2 gap-2'>
+<Default title='Blog' description='My thoughts and writings about technology and development'>
+  <h1 class='text-white text-3xl mb-2'>Blog</h1>
+  <p class='text-neutral-400 mb-8'>Sharing my thoughts and experiences in tech</p>
+
+  <section class='w-full scroll-smooth'>
+    <ul class='grid grid-cols-1 gap-4 md:grid-cols-2'>
       {
-        posts.map((post: any) => (
-          <motion.div
-            className='mt-2 h-auto hover:cursor-pointer hover:ring-1 hover:ring-sky-700 p-4 border border-slate-600/80'
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 2, type: 'spring', stiffness: 100 }}
-            whileHover={{ scale: 1.03 }}
-            client:load>
-            <a href={`/blog/${post.slug.current}/`}>
-              <img src={urlFor(post.mainImage).url()} alt='' class='object-cover' loading='lazy' />
-              <div class='p-4'>
-                <h4 class='text-white font-base h-20 overflow-ellipsis block text-start '>{post.title}</h4>
-                <FormattedDate date={new Date(post._updatedAt)} />
+        posts.map((post, index) => (
+          <div class='group rounded-md bg-neutral-900/40 backdrop-blur-sm transition-all duration-300'>
+            <a href={`/blog/${post.slug.current}/`} class='flex-1 flex flex-col justify-between p-3 h-full'>
+              <Image
+                src={urlFor(post.mainImage).url() ?? '/no-image.png'}
+                alt=''
+                loading='eager'
+                width={400}
+                height={200}
+                class={cn(
+                  'object-cover rounded-sm h-48 w-full',
+                  !post.mainImage && 'border border-neutral-700 border-dashed'
+                )}
+              />
+              <div class='flex-col mt-6 justify-between flex min-h-44 flex-1 px-2'>
+                <div class='flex flex-col'>
+                  <h1 class='text-white text-xl font-medium mb-2'>{post.title}</h1>
+                  <h3 class='text-neutral-300 text-sm leading-relaxed'>{post.title}</h3>
+                  {/* <div class='flex flex-wrap gap-2 mt-4'>
+                    {post.tags?.map((tag) => (
+                      <span class='text-xs px-2 py-1 rounded-full bg-neutral-800 text-neutral-300'>{tag}</span>
+                    ))}
+                  </div> */}
+                </div>
+
+                <div class='flex w-full justify-between items-center mt-6'>
+                  <span class='text-neutral-400 text-sm'>
+                    {new Date(post._createdAt).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    })}
+                  </span>
+                  <span class='text-sky-500 text-sm'>Read more →</span>
+                </div>
               </div>
             </a>
-          </motion.div>
+          </div>
         ))
       }
     </ul>

@@ -21,6 +21,18 @@ export interface Projects {
 
 const projects: Projects[] = [
   {
+    title: 'IKSN',
+    description: 'Management App',
+    techStacks: ['React', 'Vite', 'AWS CDK'],
+    status: 'development',
+  },
+  {
+    title: 'WildVine',
+    description: 'Data visualization tool for forest management',
+    techStacks: ['NextJS', 'TailwindCSS', 'AWS'],
+    status: 'development',
+  },
+  {
     title: 'Walimah.co',
     description: 'Digital wedding invitation platform',
     techStacks: ['NextJS', 'TailwindCSS', 'Neon Postgres', 'Vercel'],
@@ -106,47 +118,41 @@ const projects: Projects[] = [
 ---
 
 <Default title='Project' description='My open-source and company projects list'>
-  <h1 class='text-white text-xl'>My real and pet projects here</h1>
-  <section class='w-full mt-4 scroll-smooth'>
-    <ul class='grid grid-cols-1 gap-2 md:grid-cols-2'>
+  <h1 class='text-white text-3xl mb-2'>Projects</h1>
+  <p class='text-neutral-400 mb-8'>A collection of my work and side projects</p>
+  <section class='w-full scroll-smooth'>
+    <ul class='grid grid-cols-1 gap-4 md:grid-cols-2'>
       {
-        projects.map(({ title, description, image, techStacks, githubLink, appLink, status }) => (
-          <motion.div
-            className='p-2 border border-slate-600/80'
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 2, type: 'spring', stiffness: 100 }}
-            client:load>
-            <div class='flex-1 flex flex-col justify-between p-2 h-full'>
+        projects.map(({ title, description, image, techStacks, githubLink, appLink, status }, index) => (
+          <div class='group rounded-md bg-neutral-900/40 backdrop-blur-sm transition-all duration-300'>
+            <div class='flex-1 flex flex-col justify-between p-3 h-full'>
               <Image
                 src={image ?? '/no-image.png'}
                 alt='logo'
                 loading='eager'
                 width={400}
                 height={200}
-                class={cn('object-cover', !image && 'border border-slate-600/80')}
+                class={cn('object-cover rounded-sm h-48 w-full', !image && 'border border-neutral-700 border-dashed')}
               />
-              <div class='flex-col mt-4 justify-between flex min-h-44 flex-1'>
+              <div class='flex-col mt-6 justify-between flex min-h-44 flex-1 px-2'>
                 <div class='flex flex-col'>
-                  <h1 class='text-white'>{title}</h1>
-                  <h3 class='text-white text-sm leading-tight'>{description}</h3>
-                  <ul class='mt-2'>
-                    {techStacks ? (
-                      techStacks.map((item) => <li class='text-white text-sm list-disc list-inside'>{item}</li>)
-                    ) : (
-                      <div />
-                    )}
-                  </ul>
+                  <h1 class='text-white text-xl font-medium mb-2'>{title}</h1>
+                  <h3 class='text-neutral-300 text-sm leading-relaxed'>{description}</h3>
+                  <div class='flex flex-wrap gap-2 mt-4'>
+                    {techStacks?.map((item) => (
+                      <span class='text-xs px-2 py-1 rounded-full bg-neutral-800 text-neutral-300'>{item}</span>
+                    ))}
+                  </div>
                 </div>
 
-                <div class='flex w-full justify-between items-center mt-2'>
-                  <div class='flex gap-1'>
+                <div class='flex w-full justify-between items-center mt-6'>
+                  <div class='flex gap-3'>
                     {appLink && (
                       <a
                         aria-label='App Link'
                         href={appLink}
                         target='_blank'
-                        class='underline underline-offset-2 text-sky-500 text-sm size-4 md:size-6'>
+                        class='text-neutral-400 hover:text-sky-500 transition-colors duration-200 size-5'>
                         <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
                           <path
                             fill='currentColor'
@@ -160,7 +166,7 @@ const projects: Projects[] = [
                         aria-label='Github Link'
                         href={githubLink}
                         target='_blank'
-                        class='underline underline-offset-2 text-sky-500 text-sm hover:text-sky-600 size-4 md:size-6'>
+                        class='text-neutral-400 hover:text-sky-500 transition-colors duration-200 size-5'>
                         <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
                           <path
                             fill='currentColor'
@@ -174,12 +180,12 @@ const projects: Projects[] = [
                   <div>
                     <div
                       class={cn(
-                        'text-sm text-center capitalize border-[1px] px-2 rounded-lg',
-                        status === 'live' && 'text-green-500 border-green-500',
-                        status === 'discontinued' && 'text-red-500 border-red-500',
-                        status === 'finished' && 'text-blue-500 border-blue-500',
-                        status === 'development' && 'text-yellow-500 border-yellow-500',
-                        status === 'active' && 'text-gray-500 border-gray-500'
+                        'text-xs px-3 py-1 rounded-full font-medium capitalize',
+                        status === 'live' && 'bg-green-950/50 text-green-500',
+                        status === 'discontinued' && 'bg-red-950/50 text-red-500',
+                        status === 'finished' && 'bg-blue-950/50 text-blue-500',
+                        status === 'development' && 'bg-yellow-950/50 text-yellow-500',
+                        status === 'active' && 'bg-neutral-800 text-neutral-400'
                       )}>
                       {status}
                     </div>
@@ -187,17 +193,21 @@ const projects: Projects[] = [
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         ))
       }
     </ul>
   </section>
 
-  <div class='flex justify-center mt-4'>
+  <div class='flex justify-center mt-12'>
     <a
       href='/hire-me'
-      class='text-xl inline-flex bg-orange-500 text-white px-3 py-1 rounded-lg text-center font-medium hover:bg-orange-600'>
-      Hire Me!
+      class='group relative px-6 py-3 font-medium text-white transition-colors duration-300 hover:text-black'>
+      <span class='absolute inset-0 w-full h-full bg-gradient-to-br from-orange-500 to-pink-500 rounded-lg'></span>
+      <span
+        class='absolute inset-0 w-full h-full transition-transform duration-300 transform translate-x-1 translate-y-1 bg-black rounded-lg group-hover:translate-y-0 group-hover:translate-x-0'
+      ></span>
+      <span class='relative group-hover:text-white'>Hire Me!</span>
     </a>
   </div>
 </Default>

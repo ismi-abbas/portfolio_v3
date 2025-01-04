@@ -7,6 +7,7 @@ import tailwind from '@astrojs/tailwind';
 import sanity from '@sanity/astro';
 import { defineConfig } from 'astro/config';
 import { loadEnv } from 'vite';
+import node from '@astrojs/node';
 
 const {
   PUBLIC_SANITY_STUDIO_PROJECT_ID,
@@ -21,6 +22,10 @@ const dataset = PUBLIC_SANITY_STUDIO_DATASET || PUBLIC_SANITY_DATASET;
 // https://astro.build/config
 export default defineConfig({
   site: 'https://ismiabbas.site/',
+  adapter: node({
+    mode: 'standalone',
+  }),
+  output: 'static',
   integrations: [
     mdx(),
     sitemap(),

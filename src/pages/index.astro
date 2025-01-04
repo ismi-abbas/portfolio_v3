@@ -1,6 +1,6 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { SITE_DESCRIPTION } from '../consts';
 import Default from '../components/Default.astro';
 import ImageSlider from '../components/motions/ImageSlider';
 
@@ -8,39 +8,32 @@ const imageUrls = '/jom_launch.jpeg';
 
 const biography = [
   {
-    date: 'July, 1998',
-    description: 'Born in the picturesque town of Gerik.',
+    date: '2024 - Present',
+    role: 'Web Developer',
+    company: 'CTOS Credit System',
+    description: 'Building and maintaining web applications for credit reporting systems.',
   },
   {
-    date: 'April, 2021',
-    description: "Successfully completed my Bachelor's in Islamic Studies.",
+    date: '2023',
+    role: 'Software Engineer',
+    company: 'Petronas Digital (FPT Software)',
+    description: 'Developed enterprise solutions for digital transformation initiatives.',
   },
   {
-    date: 'May, 2021',
-    description: 'Self learning software development journey begins.',
-  },
-  {
-    date: 'Jan, 2022',
-    description: 'Embarked on my journey in the IT industry with Maybank.',
-  },
-  {
-    date: 'April, 2023',
-    description:
-      'Embraced a new opportunity at Petronas Digital, collaborating with FPT Software Malaysia as the vendor.',
-  },
-  {
-    date: 'Jan, 2024',
-    description: 'Transitioned into the dynamic world of frontend development at CTOS Credit System.',
+    date: '2022',
+    role: 'Software Developer',
+    company: 'Maybank',
+    description: 'Started professional journey in banking technology sector.',
   },
 ];
 ---
 
 <html lang='en'>
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <BaseHead title='Abbas Puzi' description={SITE_DESCRIPTION} />
   </head>
   <Default>
-    <div class='w-full px-10 flex gap-2'>
+    <div class='w-full px-10 flex gap-2 p-4 hover:scale-105 transition-transform duration-300'>
       <ImageSlider client:load url={imageUrls} alt='website-picture' />
     </div>
 
@@ -53,7 +46,7 @@ const biography = [
 
     <div class='mt-8 w-full text-white'>
       <h1 class='text-4xl font-semibold'>Abbas Puzi</h1>
-      <h3 class='text-lg'>Digital <span class='bg-sky-800 px-1'>Craftman</span></h3>
+      <h3 class='text-lg'>Software <span class='bg-sky-800 px-1'>Craftsman</span></h3>
     </div>
 
     <section class='w-full text-white mt-4'>
@@ -81,13 +74,33 @@ const biography = [
       </div>
 
       <section class='w-full text-white mt-4'>
-        <h1 class='underline underline-offset-4 decoration-2 decoration-slate-600 font-medium text-lg'>Life journey</h1>
-        <div class='flex flex-col font-light mt-2 space-y-1'>
+        <div class='flex items-center justify-between'>
+          <h1 class='underline underline-offset-4 decoration-2 decoration-slate-600 font-medium text-lg'>Career</h1>
+          <a
+            href='/resume.pdf'
+            target='_blank'
+            class='inline-flex items-center gap-1 text-sm text-neutral-400 hover:text-sky-500 transition-colors'>
+            <span>View Resume</span>
+            <svg xmlns='http://www.w3.org/2000/svg' class='size-4' viewBox='0 0 24 24'>
+              <path
+                fill='currentColor'
+                d='M13 19h-2v-8.25L8.75 13l-1.5-1.5L12 6.75l4.75 4.75l-1.5 1.5L13 10.75zm7 3H4v-9h2v7h12v-7h2z'></path>
+            </svg>
+          </a>
+        </div>
+        <div class='flex flex-col font-light mt-4 space-y-4'>
           {
-            biography.map((entry) => (
-              <div class='flex items-start'>
-                <div class='w-24'>{entry.date}</div>
-                <div class='flex flex-1 text-pretty'>{entry.description}</div>
+            biography.map(({ date, role, company, description }) => (
+              <div class='flex flex-col space-y-1'>
+                <div class='flex items-center gap-2'>
+                  <span class='text-neutral-400 text-sm'>{date}</span>
+                  <span class='h-[1px] w-4 bg-neutral-700' />
+                  <span class='text-sky-500 font-medium'>{role}</span>
+                </div>
+                <div class='flex flex-col pl-6'>
+                  <span class='text-neutral-300'>{company}</span>
+                  <p class='text-sm text-neutral-400'>{description}</p>
+                </div>
               </div>
             ))
           }
