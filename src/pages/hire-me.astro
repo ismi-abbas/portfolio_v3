@@ -7,31 +7,6 @@ const services = [
   'Application Debugging & Optimization',
   '1 to 1 Consultation',
 ];
-
-if (Astro.request.method === 'POST') {
-  try {
-    const data = await Astro.request.formData();
-    const name = data.get('name');
-    const email = data.get('email');
-    const projectDetails = data.get('projectDetails');
-
-    fetch('https://hire-me.ismiabbas.xyz/book', {
-      method: 'POST',
-      body: JSON.stringify({ name, email, projectDetails }),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message);
-    }
-  }
-}
 ---
 
 <Default title='Hire Me' description='Get in touch for your next project'>
@@ -56,7 +31,7 @@ if (Astro.request.method === 'POST') {
         </ul>
       </div>
 
-      <form class='space-y-6' method='POST'>
+      <form class='space-y-6'>
         <div class='space-y-4'>
           <div class='space-y-2'>
             <label class='text-white text-sm'>Your Name</label>
@@ -105,4 +80,26 @@ if (Astro.request.method === 'POST') {
       </a>
     </p>
   </div>
+
+  <script>
+    const form = document.querySelector('form') as HTMLFormElement;
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const name = formData.get('name') as string;
+      const email = formData.get('email') as string;
+      const projectDetails = formData.get('projectDetails') as string;
+      fetch('https://hire-me.ismiabbas.xyz/book', {
+        method: 'POST',
+        body: JSON.stringify({ name, email, projectDetails }),
+      })
+        .then(() => {
+          form.reset();
+          alert('Message sent successfully!');
+        })
+        .catch((error) => {
+          console.error('Error sending message:', error);
+        });
+    });
+  </script>
 </Default>
