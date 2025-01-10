@@ -21,6 +21,7 @@ const dataset = PUBLIC_SANITY_STUDIO_DATASET || PUBLIC_SANITY_DATASET;
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.ismiabbas.xyz/',
+  output: 'server',
   integrations: [
     mdx(),
     sitemap(),

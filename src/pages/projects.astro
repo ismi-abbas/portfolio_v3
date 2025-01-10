@@ -22,19 +22,21 @@ export interface Projects {
 const projects: Projects[] = [
   {
     title: 'IKSN',
-    description: 'Management App',
-    techStacks: ['React', 'Vite', 'AWS CDK'],
+    description:
+      'Agency management platform with real-time push notifications and client tracking. Built with serverless architecture for scalability.',
+    techStacks: ['React', 'Vite', 'AWS CDK', 'ExpressJS', 'Ant Design', 'DynamoDB', 'Lambda', 'AWS SES'],
     status: 'development',
   },
   {
     title: 'WildVine',
-    description: 'Data visualization tool for forest management',
+    description:
+      'Interactive forest management dashboard with real-time data visualization and environmental monitoring tools',
     techStacks: ['NextJS', 'TailwindCSS', 'AWS'],
     status: 'development',
   },
   {
     title: 'Walimah.co',
-    description: 'Digital wedding invitation platform',
+    description: 'Modern digital wedding invitation platform with customizable themes and real-time guest management',
     techStacks: ['NextJS', 'TailwindCSS', 'Neon Postgres', 'Vercel'],
     status: 'development',
     githubLink: 'https://github.com/cc0-lib/wtf-tech',
@@ -42,13 +44,15 @@ const projects: Projects[] = [
   },
   {
     title: 'Ezdurian Lalamove Integration',
-    description: 'Integrate Lalamove API for Ezydurian Putrajaya to ease delivery process',
+    description:
+      'Custom API integration enabling seamless delivery management and real-time tracking for Ezydurian Putrajaya',
     techStacks: ['HonoJS', 'Bun', 'Turso SQlite', 'Lalamove API', 'Drizzle ORM'],
     status: 'live',
   },
   {
     title: 'Karbon Kore Online Store',
-    description: 'An online store for https://karbonko.re',
+    description:
+      'Modern headless e-commerce platform for Karbon Kore with seamless shopping experience and dynamic product management',
     image: '/storefront.k1.karbonko.re_.png',
     techStacks: ['NextJS', 'TailwindCSS', 'Shopify Headless'],
     appLink: 'https://storefront.k1.karbonko.re/',
@@ -56,7 +60,8 @@ const projects: Projects[] = [
   },
   {
     title: 'WTF Tech By Karbon Kore',
-    description: 'Landing page for WTF Tech by Karbon Kore. A community hackathon event',
+    description:
+      'Dynamic landing page showcasing community hackathon events with interactive registration and event details',
     image: '/wtf-tech.png',
     techStacks: ['NextJs', 'TailwindCSS', 'Vercel'],
     githubLink: 'https://github.com/cc0-lib/wtf-tech',
@@ -65,7 +70,7 @@ const projects: Projects[] = [
   },
   {
     title: 'CC0-LIB Community Vote Site',
-    description: 'Voting site for CC0-LIB art contest',
+    description: 'Secure voting platform for art contests with real-time results and authenticated user participation',
     image: '/cc0-vote.png',
     techStacks: ['NextJS', 'TailwindCSS', 'Supabase', 'Dynamic Auth'],
     githubLink: 'https://github.com/cc0-lib/cc0-lib-vote',
@@ -74,7 +79,7 @@ const projects: Projects[] = [
   },
   {
     title: 'Resepi Bangman',
-    description: 'Simple Recipe Display Apps',
+    description: 'Fast and responsive recipe showcase application with intuitive search and categorization',
     image: '/resepi-bangman.webp',
     techStacks: ['Astro'],
     githubLink: 'https://github.com/ismi-abbas/resepi-bangman',
@@ -83,7 +88,7 @@ const projects: Projects[] = [
   },
   {
     title: 'Baca Hadith',
-    description: 'Aplikasi ringkas untuk mencari hadith - discontinued',
+    description: 'Digital hadith reference application with search functionality and categorized collections',
     image: '/baca-hadith.webp',
     techStacks: ['NextJS'],
     githubLink: 'https://github.com/ismi-abbas/jami-kutub-sittah',
@@ -92,7 +97,7 @@ const projects: Projects[] = [
   },
   {
     title: 'Expense Split',
-    description: 'Simple app to do splitting(mock)',
+    description: 'Mobile app for easy expense tracking and fair bill splitting between groups',
     techStacks: ['React Native', 'Supabase'],
     githubLink: 'https://github.com/ismi-abbas/jami-kutub-sittah',
     appLink: 'projects',
@@ -100,7 +105,7 @@ const projects: Projects[] = [
   },
   {
     title: 'Barbershop System(mock)',
-    description: 'Barbershop management system - mockup',
+    description: 'Digital solution for barbershop appointment scheduling and customer management',
     techStacks: ['React Native', 'Supabase'],
     githubLink: 'https://github.com/ismi-abbas/barber-shop-system',
     appLink: '/projects',
@@ -108,7 +113,8 @@ const projects: Projects[] = [
   },
   {
     title: 'Discharge App',
-    description: 'A prove of concept app for petrol pump oil records. Built using React Native with Expo',
+    description:
+      'Mobile solution for tracking and managing petrol pump oil discharge records with offline capabilities',
     techStacks: ['React Native', 'Expo'],
     githubLink: 'https://github.com/ismi-abbas/discharge',
     appLink: '/projects',
@@ -119,7 +125,10 @@ const projects: Projects[] = [
 
 <Default title='Project' description='My open-source and company projects list'>
   <h1 class='text-white text-3xl mb-2'>Projects</h1>
-  <p class='text-neutral-400 mb-8'>A collection of my work and side projects</p>
+  <p class='text-neutral-400'>A collection of my work and side projects</p>
+  <p class='text-xs text-neutral-400 hover:text-orange-500 transition-colors duration-300 cursor-pointer mb-8'>
+    <a href='/hire-me'>You can hire me as your developer →</a>
+  </p>
   <section class='w-full scroll-smooth'>
     <ul class='grid grid-cols-1 gap-4 md:grid-cols-2'>
       {
@@ -137,7 +146,7 @@ const projects: Projects[] = [
               <div class='flex-col mt-6 justify-between flex min-h-44 flex-1 px-2'>
                 <div class='flex flex-col'>
                   <h1 class='text-white text-xl font-medium mb-2'>{title}</h1>
-                  <h3 class='text-neutral-300 text-sm leading-relaxed'>{description}</h3>
+                  <p class='text-neutral-300 text-sm leading-tight text-pretty'>{description}</p>
                   <div class='flex flex-wrap gap-2 mt-4'>
                     {techStacks?.map((item) => (
                       <span class='text-xs px-2 py-1 rounded-full bg-neutral-800 text-neutral-300'>{item}</span>
@@ -199,7 +208,7 @@ const projects: Projects[] = [
     </ul>
   </section>
 
-  <div class='flex justify-center mt-12'>
+  <div class='flex justify-center mt-12' id='hire-me-button'>
     <a
       href='/hire-me'
       class='group relative px-6 py-3 font-medium text-white transition-colors duration-300 hover:text-black'>

@@ -10,9 +10,9 @@ const { title, description, image } = Astro.props;
   <head>
     <BaseHead title={title} description={description} image={image} />
   </head>
-  <body class='bg-gray-800'>
+  <body class='bg-slate-800 w-full flex flex-col items-center justify-center'>
     <Header />
-    <main class='w-full flex flex-col items-center min-h-dvh max-w-screen-sm mx-auto'>
+    <main class='w-full flex flex-col items-center min-h-dvh mt-4 max-w-screen-sm px-5 md:px-0'>
       <slot />
     </main>
     <Footer />
