@@ -1,15 +1,15 @@
-import { Bar } from 'react-chartjs-2';
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
   BarElement,
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
   Title,
   Tooltip,
-  Legend,
-  ChartOptions,
-  ChartData,
+  type ChartData,
+  type ChartOptions,
 } from 'chart.js';
+import { Bar } from 'react-chartjs-2';
 import codeStatData from '../../../code_stats.json';
 
 type CodeStatData = {
@@ -118,7 +118,7 @@ const datasets = Object.keys(
   myData.reduce((result: any, item) => {
     result[item.language] = true;
     return result;
-  }, {})
+  }, {}),
 ).map((language) => {
   return {
     label: language,

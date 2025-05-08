@@ -1,4 +1,4 @@
-import image from '@astrojs/image';
+import cloudflare from '@astrojs/cloudflare';
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import react from '@astrojs/react';
@@ -21,12 +21,15 @@ const dataset = PUBLIC_SANITY_STUDIO_DATASET || PUBLIC_SANITY_DATASET;
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.ismiabbas.xyz/',
+  output: 'server',
+  adapter: cloudflare({
+    imageService: 'cloudflare',
+  }),
   integrations: [
     mdx(),
     sitemap(),
     tailwind(),
     react(),
-    image(),
     partytown(),
     sanity({
       projectId,

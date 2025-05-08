@@ -1,10 +1,9 @@
 ---
 import { Image } from 'astro:assets';
 import { clsx, type ClassValue } from 'clsx';
-import { motion } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
-import { getPosts } from '../../content/utils';
 import Default from '../../components/Default.astro';
+import { getPosts } from '../../content/utils';
 import { urlFor } from './[...slug].astro';
 
 export function cn(...inputs: ClassValue[]) {
@@ -21,7 +20,7 @@ const posts = await getPosts();
   <section class='w-full scroll-smooth'>
     <ul class='grid grid-cols-1 gap-4 md:grid-cols-2'>
       {
-        posts.map((post, index) => (
+        posts.map((post) => (
           <div class='group rounded-md bg-neutral-900/40 backdrop-blur-sm transition-all duration-300'>
             <a href={`/blog/${post.slug.current}/`} class='flex-1 flex flex-col justify-between p-3 h-full'>
               <Image
