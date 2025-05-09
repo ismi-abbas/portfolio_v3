@@ -19,6 +19,11 @@ export default defineConfig({
   adapter: cloudflare({
     imageService: 'cloudflare',
   }),
+  markdown: {
+    shikiConfig: {
+      theme: 'catppuccin-mocha',
+    },
+  },
   integrations: [
     sitemap(),
     tailwind(),

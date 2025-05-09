@@ -1,5 +1,6 @@
 ---
-import { createHighlighter } from 'shiki';
+import { Code } from 'astro/components';
+import { type BundledLanguage } from 'shiki';
 
 interface Props {
   node: {
@@ -10,35 +11,7 @@ interface Props {
 }
 
 const { node } = Astro.props;
-const { code, language = 'plaintext', filename = 'code.txt' } = node;
-
-const highlighter = await createHighlighter({
-  themes: ['catppuccin-mocha', 'github-dark'],
-  langs: [
-    'plaintext',
-    'typescript',
-    'javascript',
-    'html',
-    'css',
-    'jsx',
-    'tsx',
-    'json',
-    'yaml',
-    'markdown',
-    'astro',
-    'go',
-    'console',
-    'sql',
-  ],
-});
-
-const supportedLanguage = highlighter.getLoadedLanguages().includes(language) ? language : 'plaintext';
-
-// Highlight the code
-const highlightedCode = highlighter.codeToHtml(code, {
-  lang: supportedLanguage,
-  theme: 'catppuccin-mocha',
-});
+const { code, language, filename = 'code.txt' } = node;
 ---
 
 <div class='relative group'>
@@ -50,7 +23,7 @@ const highlightedCode = highlighter.codeToHtml(code, {
       Copy
     </button>
   </div>
-  <div class='mt-8' set:html={highlightedCode} />
+  <Code code={code} lang={language as BundledLanguage} theme={'catppuccin-mocha'} />
 </div>
 
 <script>
