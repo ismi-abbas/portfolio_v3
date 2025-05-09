@@ -25,4 +25,5 @@ export interface Post {
   body: BlockSchemaType[];
   publishedAt: string;
   updatedAt: string;
+  _updatedAt: string;
 }

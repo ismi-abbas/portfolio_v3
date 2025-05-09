@@ -1,0 +1,91 @@
+---
+import { createHighlighter } from 'shiki';
+
+interface Props {
+  node: {
+    code: string;
+    language?: string;
+    filename?: string;
+  };
+}
+
+const { node } = Astro.props;
+const { code, language = 'plaintext', filename = 'code.txt' } = node;
+
+const highlighter = await createHighlighter({
+  themes: ['catppuccin-mocha', 'github-dark'],
+  langs: [
+    'plaintext',
+    'typescript',
+    'javascript',
+    'html',
+    'css',
+    'jsx',
+    'tsx',
+    'json',
+    'yaml',
+    'markdown',
+    'astro',
+    'go',
+    'console',
+    'sql',
+  ],
+});
+
+const supportedLanguage = highlighter.getLoadedLanguages().includes(language) ? language : 'plaintext';
+
+// Highlight the code
+const highlightedCode = highlighter.codeToHtml(code, {
+  lang: supportedLanguage,
+  theme: 'catppuccin-mocha',
+});
+---
+
+<div class='relative group'>
+  <div class='absolute right-0 top-0 flex gap-2'>
+    {filename && <div class='bg-neutral-800 text-rose-500 text-xs px-4 py-1 rounded-bl'>{filename}</div>}
+    <button
+      class='copy-button bg-neutral-800 text-rose-500 hover:bg-neutral-700 text-xs px-4 py-1 rounded-bl transition-colors duration-200'
+      data-code={code}>
+      Copy
+    </button>
+  </div>
+  <div class='mt-8' set:html={highlightedCode} />
+</div>
+
+<script>
+  const copyButtons = document.querySelectorAll('.copy-button');
+
+  copyButtons.forEach((button) => {
+    button.addEventListener('click', async () => {
+      const code = button.getAttribute('data-code');
+      if (!code) return;
+
+      try {
+        await navigator.clipboard.writeText(code);
+        button.textContent = 'Copied!';
+        button.classList.add('bg-green-800', 'text-green-200');
+        button.classList.remove('bg-neutral-800', 'text-rose-500');
+
+        // Reset button after 2 seconds
+        setTimeout(() => {
+          button.textContent = 'Copy';
+          button.classList.remove('bg-green-800', 'text-green-200');
+          button.classList.add('bg-neutral-800', 'text-rose-500');
+        }, 2000);
+      } catch (err) {
+        console.error('Failed to copy:', err);
+        button.textContent = 'Failed!';
+        button.classList.add('bg-red-800', 'text-red-200');
+        button.classList.remove('bg-neutral-800', 'text-rose-500');
+
+        // Reset button after 2 seconds
+        setTimeout(() => {
+          button.textContent = 'Copy';
+          button.classList.remove('bg-red-800', 'text-red-200');
+          button.classList.add('bg-neutral-800', 'text-rose-500');
+        }, 2000);
+      }
+    });
+  });
+</script>
