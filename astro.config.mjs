@@ -6,6 +6,7 @@ import tailwind from '@astrojs/tailwind';
 import sanity from '@sanity/astro';
 import { defineConfig } from 'astro/config';
 import { loadEnv } from 'vite';
+import mdx from '@astrojs/mdx';
 
 const { PUBLIC_SANITY_PROJECT_ID, PUBLIC_SANITY_DATASET } = loadEnv(import.meta.env.MODE, process.cwd(), '');
 
@@ -25,6 +26,7 @@ export default defineConfig({
     },
   },
   integrations: [
+    mdx(),
     sitemap(),
     tailwind(),
     react(),

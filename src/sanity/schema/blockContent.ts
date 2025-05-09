@@ -29,6 +29,8 @@ export const blockContentType = defineType({
         { title: 'H2', value: 'h2' },
         { title: 'H3', value: 'h3' },
         { title: 'H4', value: 'h4' },
+        { title: 'H5', value: 'h5' },
+        { title: 'H6', value: 'h6' },
         { title: 'Quote', value: 'blockquote' },
       ],
       lists: [{ title: 'Bullet', value: 'bullet' }],
@@ -36,25 +38,7 @@ export const blockContentType = defineType({
       marks: {
         // Decorators usually describe a single property – e.g. a typographic
         // preference or highlighting
-        decorators: [
-          { title: 'Strong', value: 'strong' },
-          { title: 'Emphasis', value: 'em' },
-        ],
         // Annotations can be any object structure – e.g. a link or a footnote.
-        annotations: [
-          {
-            title: 'URL',
-            name: 'link',
-            type: 'object',
-            fields: [
-              {
-                title: 'URL',
-                name: 'href',
-                type: 'url',
-              },
-            ],
-          },
-        ],
       },
     }),
     // You can add additional types here. Note that you can't use
@@ -80,7 +64,17 @@ export const blockContentType = defineType({
           { title: 'Javascript', value: 'javascript' },
           { title: 'HTML', value: 'html' },
           { title: 'CSS', value: 'css' },
+          { title: 'Bash', value: 'sh' },
+          { title: 'SQL', value: 'sql' },
           { title: 'TypeScript', value: 'typescript' },
+          { title: 'Python', value: 'python' },
+          { title: 'Java', value: 'java' },
+          { title: 'Go', value: 'go' },
+          { title: 'Rust', value: 'rust' },
+          { title: 'C', value: 'c' },
+          { title: 'C++', value: 'c++' },
+          { title: 'C#', value: 'c#' },
+          { title: 'C', value: 'c' },
         ],
         withFilename: true,
       },
