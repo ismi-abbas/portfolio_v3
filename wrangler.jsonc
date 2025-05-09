@@ -1,12 +1,14 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "portfolio-v3",
-  "compatibility_date": "2025-03-25",
-  "main": "./dist/_worker.js",
+  "main": "./dist/_worker.js/index.js",
+  "compatibility_date": "2025-05-09",
+  "compatibility_flags": ["nodejs_compat"],
   "assets": {
+    "binding": "ASSETS",
     "directory": "./dist",
   },
-  "site": {
-    "bucket": "./dist/client",
+  "observability": {
+    "enabled": true,
   },
 }

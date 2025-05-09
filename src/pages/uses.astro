@@ -13,44 +13,32 @@ const equipments = [
     title: 'Macbook Pro M2 2023',
     description:
       'My main machine for coding. The only Apple I have. Bought it because of the battery life and developer support. Still paying the EPP, lol.',
-    specs: [],
     image: '/macbook.webp',
-    category: 'Machine',
   },
   {
     title: 'Personal Computer',
     description: 'This is my PC setup mainly for gaming. Sometimes I do coding on it.',
-    specs: ['Windows 11 & Linux Mint(dual boot)', 'Intel i5 12th Gen', '16GB ram', 'Geforce RTX 3060'],
     image: '/my_pc.webp',
-    category: 'Machine',
   },
   {
     title: 'Gigabyte G24 Gaming Monitor',
     description: 'Monitor for gaming, and extend macbook screen',
-    specs: [],
     image: '/monitor.webp',
-    category: 'Peripherals',
   },
   {
     title: 'SteelSeries Arctis 7 2019 Edition Wireless',
     description: 'My headset for gaming and attend meet!. Wireless with no bluetooth connection.',
-    specs: [],
     image: '/headphone.webp',
-    category: 'Audio',
   },
   {
     title: 'AKKO 5075B Plus Tri Mode',
     description: 'Keybaord for the PC. No extra keyboard for my mac',
-    specs: ['Feker Panda Tactile Switch', 'Stock Keycaps', 'No Mods'],
     image: '/keyboard.jpeg',
-    category: 'Peripherals',
   },
   {
     title: 'Glorious Model O Minus',
     description: 'Wireless mouse for gaming and basic stuffs.',
-    specs: [],
     image: '/mouse.webp',
-    category: 'Peripherals',
   },
 ];
 ---
@@ -62,7 +50,7 @@ const equipments = [
   <section class='w-full scroll-smooth'>
     <ul class='grid grid-cols-1 gap-4 md:grid-cols-2'>
       {
-        equipments.map(({ title, description, specs, image, category }) => (
+        equipments.map(({ title, description, image }) => (
           <div class='group rounded-md bg-neutral-900/40 backdrop-blur-sm transition-all duration-300'>
             <div class='flex-1 flex flex-col justify-between p-3 h-full'>
               <Image
@@ -77,16 +65,8 @@ const equipments = [
                 <div class='flex flex-col'>
                   <div class='flex justify-between items-center mb-2'>
                     <h1 class='text-white text-xl font-medium'>{title}</h1>
-                    <span class='text-xs px-2 py-1 rounded-full bg-neutral-800 text-neutral-300'>{category}</span>
                   </div>
                   <h3 class='text-neutral-300 text-sm leading-relaxed'>{description}</h3>
-                  {specs.length > 0 && (
-                    <div class='flex flex-wrap gap-2 mt-4'>
-                      {specs.map((spec) => (
-                        <span class='text-xs px-2 py-1 rounded-full bg-neutral-800/50 text-neutral-400'>{spec}</span>
-                      ))}
-                    </div>
-                  )}
                 </div>
               </div>
             </div>

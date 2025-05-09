@@ -1,17 +1,12 @@
 import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
-import post from './schema/post';
-
-const projectId = import.meta.env.PUBLIC_SANITY_STUDIO_PROJECT_ID! || import.meta.env.PUBLIC_SANITY_PROJECT_ID!;
-const dataset = import.meta.env.PUBLIC_SANITY_STUDIO_DATASET! || import.meta.env.PUBLIC_SANITY_DATASET!;
+import { schema } from './src/sanity/schema';
 
 export default defineConfig({
-  name: 'ismi-abbas-site-blog',
-  title: 'Ismi Abbas Site Blog',
-  projectId,
-  dataset,
+  name: 'ismi-abbas-blog',
+  title: 'ismi-abbas Blog',
+  projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID!,
+  dataset: import.meta.env.PUBLIC_SANITY_DATASET!,
   plugins: [structureTool()],
-  schema: {
-    types: [post],
-  },
+  schema,
 });
