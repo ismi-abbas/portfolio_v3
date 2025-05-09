@@ -1,4 +1,4 @@
-import image from '@astrojs/image';
+import cloudflare from '@astrojs/cloudflare';
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import react from '@astrojs/react';
@@ -8,31 +8,42 @@ import sanity from '@sanity/astro';
 import { defineConfig } from 'astro/config';
 import { loadEnv } from 'vite';
 
-const {
-  PUBLIC_SANITY_STUDIO_PROJECT_ID,
-  PUBLIC_SANITY_STUDIO_DATASET,
-  PUBLIC_SANITY_PROJECT_ID,
-  PUBLIC_SANITY_DATASET,
-} = loadEnv(import.meta.env.MODE, process.cwd(), '');
+const { PUBLIC_SANITY_PROJECT_ID, PUBLIC_SANITY_DATASET } = loadEnv(import.meta.env.MODE, process.cwd(), '');
 
-const projectId = PUBLIC_SANITY_STUDIO_PROJECT_ID || PUBLIC_SANITY_PROJECT_ID;
-const dataset = PUBLIC_SANITY_STUDIO_DATASET || PUBLIC_SANITY_DATASET;
+const projectId = PUBLIC_SANITY_PROJECT_ID;
+const dataset = PUBLIC_SANITY_DATASET;
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.ismiabbas.xyz/',
+  output: 'server',
+  adapter: cloudflare({
+    imageService: 'cloudflare',
+  }),
   integrations: [
     mdx(),
     sitemap(),
     tailwind(),
     react(),
-    image(),
     partytown(),
     sanity({
       projectId,
       dataset,
-      useCdn: false,
+      useCdn: true,
       studioBasePath: '/studio',
+      apiVersion: '2025-05-09',
     }),
   ],
+  vite: {
+    build: {
+      minify: false,
+    },
+    resolve: {
+      // Use react-dom/server.edge instead of react-dom/server.browser for React 19.
+      // Without this, MessageChannel from node:worker_threads needs to be polyfilled.
+      alias: import.meta.env.PROD && {
+        'react-dom/server': 'react-dom/server.edge',
+      },
+    },
+  },
 });

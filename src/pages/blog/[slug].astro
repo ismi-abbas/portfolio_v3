@@ -1,0 +1,18 @@
+---
+import { getPost, getPosts } from '../../sanity/utils';
+import BlogPost from '../../components/BlogPost.astro';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post: any) => ({
+    params: { slug: post.slug.current },
+  }));
+}
+
+const { slug } = Astro.params;
+const post = await getPost(slug!);
+---
+
+<BlogPost {...post}>
+  <slot />
+</BlogPost>
