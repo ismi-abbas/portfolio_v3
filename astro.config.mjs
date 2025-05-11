@@ -1,4 +1,4 @@
-import cloudflare from '@astrojs/cloudflare';
+import node from '@astrojs/node';
 import partytown from '@astrojs/partytown';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
@@ -6,7 +6,6 @@ import tailwind from '@astrojs/tailwind';
 import sanity from '@sanity/astro';
 import { defineConfig } from 'astro/config';
 import { loadEnv } from 'vite';
-import mdx from '@astrojs/mdx';
 
 const { PUBLIC_SANITY_PROJECT_ID, PUBLIC_SANITY_DATASET } = loadEnv(import.meta.env.MODE, process.cwd(), '');
 
@@ -16,17 +15,12 @@ const dataset = PUBLIC_SANITY_DATASET;
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.ismiabbas.xyz/',
-  output: 'server',
-  adapter: cloudflare({
-    imageService: 'cloudflare',
-  }),
   markdown: {
     shikiConfig: {
       theme: 'catppuccin-mocha',
     },
   },
   integrations: [
-    mdx(),
     sitemap(),
     tailwind(),
     react(),
@@ -51,4 +45,7 @@ export default defineConfig({
       },
     },
   },
+  adapter: node({
+    mode: 'standalone',
+  }),
 });

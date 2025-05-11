@@ -11,15 +11,12 @@ importers:
       '@astrojs/check':
         specifier: ^0.9.4
         version: 0.9.4(prettier@3.4.2)(typescript@5.8.3)
-      '@astrojs/cloudflare':
-        specifier: ^12.5.2
-        version: 12.5.2(@types/node@22.8.1)(astro@5.7.11(@types/node@22.8.1)(jiti@1.21.6)(rollup@4.40.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.7.0))(jiti@1.21.6)(terser@5.37.0)(tsx@4.19.2)(yaml@2.7.0)
       '@astrojs/mdx':
         specifier: ^4.2.6
         version: 4.2.6(astro@5.7.11(@types/node@22.8.1)(jiti@1.21.6)(rollup@4.40.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.7.0))
       '@astrojs/node':
-        specifier: ^9.0.0
-        version: 9.0.0(astro@5.7.11(@types/node@22.8.1)(jiti@1.21.6)(rollup@4.40.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.7.0))
+        specifier: ^9.2.1
+        version: 9.2.1(astro@5.7.11(@types/node@22.8.1)(jiti@1.21.6)(rollup@4.40.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.7.0))
       '@astrojs/partytown':
         specifier: ^2.1.2
         version: 2.1.3
@@ -123,6 +120,9 @@ importers:
         specifier: ^5.8.3
         version: 5.8.3
     devDependencies:
+      '@flydotio/dockerfile':
+        specifier: ^0.7.10
+        version: 0.7.10(@types/node@22.8.1)
       '@portabletext/types':
         specifier: ^2.0.13
         version: 2.0.13
@@ -132,9 +132,6 @@ importers:
       '@types/faker':
         specifier: ^6.6.11
         version: 6.6.11
-      shiki:
-        specifier: ^3.4.0
-        version: 3.4.0
       tsx:
         specifier: ^4.19.2
         version: 4.19.2
@@ -179,11 +176,6 @@ packages:
     peerDependencies:
       typescript: ^5.0.0
 
-  '@astrojs/cloudflare@12.5.2':
-    resolution: {integrity: sha512-zhqBJmy0zXqpniWuAbpWY6CCNdkq3Olm2LMHv0lryvY6CUFcZbDzTK225zgz//r5zPj8ty1qbvWRnXgCaiaaYQ==}
-    peerDependencies:
-      astro: ^5.0.0
-
   '@astrojs/compiler@2.12.0':
     resolution: {integrity: sha512-7bCjW6tVDpUurQLeKBUN9tZ5kSv5qYrGmcn0sG0IwacL7isR2ZbyyA3AdZ4uxsuUFOS2SlgReTH7wkxO6zpqWA==}
 
@@ -211,10 +203,10 @@ packages:
     peerDependencies:
       astro: ^5.0.0
 
-  '@astrojs/node@9.0.0':
-    resolution: {integrity: sha512-3h/5kFZvpuo+chYAjj75YhtRUxfquxEJrpZRRC7TdiMGp2WhLp2us4VXm2mjezJp/zHKotW2L3qgp0P2ujQ0xw==}
+  '@astrojs/node@9.2.1':
+    resolution: {integrity: sha512-kEHLB37ooW91p7FLGalqa3jVQRIafntfKiZgCnjN1lEYw+j8NP6VJHQbLHmzzbtKUI0J+srGiTnGZmaHErHE5w==}
     peerDependencies:
-      astro: ^5.0.0
+      astro: ^5.3.0
 
   '@astrojs/partytown@2.1.3':
     resolution: {integrity: sha512-pkGsV6/GUTph4oLgvrpbrGnu4+9JuG8fOCzBCI2dQKtpBYQ6XAZKHrPA3evQoB5vDbfUZGVCoWe95MnSoPbVtQ==}
@@ -247,9 +239,6 @@ packages:
   '@astrojs/telemetry@3.2.1':
     resolution: {integrity: sha512-SSVM820Jqc6wjsn7qYfV9qfeQvePtVc1nSofhyap7l0/iakUKywj3hfy3UJAOV4sGV4Q/u450RD4AaCaFvNPlg==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0}
-
-  '@astrojs/underscore-redirects@0.6.1':
-    resolution: {integrity: sha512-4bMLrs2KW+8/vHEE5Ffv2HbxCbbgXO+2N6MpoCsMXUlUoi7pgEEx8kbkzMXJ2dZtWF3gvwm9lvgjnFeanC2LGg==}
 
   '@astrojs/yaml2ts@0.2.2':
     resolution: {integrity: sha512-GOfvSr5Nqy2z5XiwqTouBBpy5FyI6DEe+/g/Mk5am9SjILN1S5fOEvYK0GuWHg98yS/dobP4m8qyqw/URW35fQ==}
@@ -1486,6 +1475,11 @@ packages:
 
   '@floating-ui/utils@0.2.8':
     resolution: {integrity: sha512-kym7SodPp8/wloecOpcmSnWJsK7M0E5Wg8UcFA+uO4B9s5d0ywXOEro/8HM9x0rW+TljRzul/14UYz3TleT3ig==}
+
+  '@flydotio/dockerfile@0.7.10':
+    resolution: {integrity: sha512-dTXqBjCl7nFmnhlyeDjjPtX+sdfYBWFH9PUKNqAYttvBiczKcYXxr7/0A0wZ+g1FB1tmMzsOzedgr6xap/AB9g==}
+    engines: {node: '>=16.0.0'}
+    hasBin: true
 
   '@fontsource-variable/space-grotesk@5.1.0':
     resolution: {integrity: sha512-K2mwQYNyLook6EbtMB+Ix8srQsYZRigfxayoSGl1QsgVAk/J21s0FMZu0FWzTvONyQkYAR704rLfYSstVMi6jQ==}
@@ -3425,15 +3419,6 @@ packages:
       supports-color:
         optional: true
 
-  debug@4.3.7:
-    resolution: {integrity: sha512-Er2nc/H7RrMXZBFCEim6TCmMk02Z8vLC2Rbi1KEBggpo0fS6l0S1nnapwmIi3yW/+GOJap1Krg4w0Hg80oCqgQ==}
-    engines: {node: '>=6.0'}
-    peerDependencies:
-      supports-color: '*'
-    peerDependenciesMeta:
-      supports-color:
-        optional: true
-
   debug@4.4.0:
     resolution: {integrity: sha512-6WTZ/IxCY/T6BALoZHaE4ctp9xm+Z5kY/pzYaCHRFeyVhojxlrm+46y68HA6hr0TcwEssoxNiDEUJQjfPZ/RYA==}
     engines: {node: '>=6.0'}
@@ -3538,6 +3523,10 @@ packages:
 
   diff@5.2.0:
     resolution: {integrity: sha512-uIFDxqpRZGZ6ThOk84hEfqWoHx2devRFvpTZcTHur85vImfaxUbTW9Ryh4CpCuDnToOP1CEtXKIgytHBPVff5A==}
+    engines: {node: '>=0.3.1'}
+
+  diff@7.0.0:
+    resolution: {integrity: sha512-PJWHUb1RFevKCwaFA9RlG5tCd+FO5iRh9A8HEtkmBH2Li03iJriB6m6JIN4rGz3K3JLawI7/veA1xzRKP6ISBw==}
     engines: {node: '>=0.3.1'}
 
   dir-glob@3.0.1:
@@ -5776,6 +5765,10 @@ packages:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
 
+  shell-quote@1.8.2:
+    resolution: {integrity: sha512-AzqKpGKjrj7EM6rKVQEPpB288oCfnrEIuyoT9cyF4nmGa7V8Zk6f7RRqYisX8X9m+Q7bd632aZW4ky7EhbQztA==}
+    engines: {node: '>= 0.4'}
+
   shiki@3.4.0:
     resolution: {integrity: sha512-Ni80XHcqhOEXv5mmDAvf5p6PAJqbUc/RzFeaOqk+zP5DLvTPS3j0ckvA+MI87qoxTQ5RGJDVTbdl/ENLSyyAnQ==}
 
@@ -6958,30 +6951,6 @@ snapshots:
       - prettier
       - prettier-plugin-astro
 
-  '@astrojs/cloudflare@12.5.2(@types/node@22.8.1)(astro@5.7.11(@types/node@22.8.1)(jiti@1.21.6)(rollup@4.40.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.7.0))(jiti@1.21.6)(terser@5.37.0)(tsx@4.19.2)(yaml@2.7.0)':
-    dependencies:
-      '@astrojs/internal-helpers': 0.6.1
-      '@astrojs/underscore-redirects': 0.6.1
-      '@cloudflare/workers-types': 4.20250507.0
-      astro: 5.7.11(@types/node@22.8.1)(jiti@1.21.6)(rollup@4.40.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.7.0)
-      tinyglobby: 0.2.13
-      vite: 6.3.5(@types/node@22.8.1)(jiti@1.21.6)(terser@5.37.0)(tsx@4.19.2)(yaml@2.7.0)
-      wrangler: 4.14.4(@cloudflare/workers-types@4.20250507.0)
-    transitivePeerDependencies:
-      - '@types/node'
-      - bufferutil
-      - jiti
-      - less
-      - lightningcss
-      - sass
-      - sass-embedded
-      - stylus
-      - sugarss
-      - terser
-      - tsx
-      - utf-8-validate
-      - yaml
-
   '@astrojs/compiler@2.12.0': {}
 
   '@astrojs/internal-helpers@0.6.1': {}
@@ -7056,8 +7025,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/node@9.0.0(astro@5.7.11(@types/node@22.8.1)(jiti@1.21.6)(rollup@4.40.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.7.0))':
+  '@astrojs/node@9.2.1(astro@5.7.11(@types/node@22.8.1)(jiti@1.21.6)(rollup@4.40.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.7.0))':
     dependencies:
+      '@astrojs/internal-helpers': 0.6.1
       astro: 5.7.11(@types/node@22.8.1)(jiti@1.21.6)(rollup@4.40.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.7.0)
       send: 1.1.0
       server-destroy: 1.0.1
@@ -7128,8 +7098,6 @@ snapshots:
       which-pm-runs: 1.1.0
     transitivePeerDependencies:
       - supports-color
-
-  '@astrojs/underscore-redirects@0.6.1': {}
 
   '@astrojs/yaml2ts@0.2.2':
     dependencies:
@@ -8012,7 +7980,8 @@ snapshots:
   '@cloudflare/workerd-windows-64@1.20250507.0':
     optional: true
 
-  '@cloudflare/workers-types@4.20250507.0': {}
+  '@cloudflare/workers-types@4.20250507.0':
+    optional: true
 
   '@codemirror/autocomplete@6.18.6':
     dependencies:
@@ -8451,6 +8420,17 @@ snapshots:
       react-dom: 19.1.0(react@19.1.0)
 
   '@floating-ui/utils@0.2.8': {}
+
+  '@flydotio/dockerfile@0.7.10(@types/node@22.8.1)':
+    dependencies:
+      chalk: 5.4.1
+      diff: 7.0.0
+      ejs: 3.1.10
+      inquirer: 12.6.0(@types/node@22.8.1)
+      shell-quote: 1.8.2
+      yargs: 17.7.2
+    transitivePeerDependencies:
+      - '@types/node'
 
   '@fontsource-variable/space-grotesk@5.1.0': {}
 
@@ -10892,10 +10872,6 @@ snapshots:
     dependencies:
       ms: 2.0.0
 
-  debug@4.3.7:
-    dependencies:
-      ms: 2.1.3
-
   debug@4.4.0(supports-color@8.1.1):
     dependencies:
       ms: 2.1.3
@@ -10997,6 +10973,8 @@ snapshots:
   didyoumean@1.2.2: {}
 
   diff@5.2.0: {}
+
+  diff@7.0.0: {}
 
   dir-glob@3.0.1:
     dependencies:
@@ -13858,7 +13836,7 @@ snapshots:
 
   send@1.1.0:
     dependencies:
-      debug: 4.3.7
+      debug: 4.4.0(supports-color@8.1.1)
       destroy: 1.2.0
       encodeurl: 2.0.0
       escape-html: 1.0.3
@@ -13917,6 +13895,8 @@ snapshots:
       shebang-regex: 3.0.0
 
   shebang-regex@3.0.0: {}
+
+  shell-quote@1.8.2: {}
 
   shiki@3.4.0:
     dependencies:

@@ -1,6 +1,5 @@
 ---
 import { Code } from 'astro/components';
-import { type BundledLanguage } from 'shiki';
 
 interface Props {
   node: {
@@ -23,7 +22,7 @@ const { code, language, filename } = node;
       Copy
     </button>
   </div>
-  <Code code={code} lang={language as BundledLanguage} theme={'catppuccin-mocha'} />
+  <Code code={code} lang={language as any} theme={'catppuccin-mocha'} />
 </div>
 
 <script>
