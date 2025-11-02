@@ -2,12 +2,21 @@ import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
 import { schema } from './src/sanity/schema';
 import { codeInput } from '@sanity/code-input';
+import { presentationTool } from 'sanity/presentation';
+import { resolve } from './src/sanity/lib/resolve';
 
 export default defineConfig({
   name: 'ismi-abbas-blog',
   title: 'ismi-abbas Blog',
   projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID!,
   dataset: import.meta.env.PUBLIC_SANITY_DATASET!,
-  plugins: [structureTool(), codeInput()],
+  plugins: [
+    structureTool(),
+    codeInput(),
+    presentationTool({
+      resolve,
+      previewUrl: location.origin,
+    }),
+  ],
   schema,
 });

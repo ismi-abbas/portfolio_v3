@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "Bash(pnpm update:*)",
+      "Bash(pnpm add:*)",
+      "WebFetch(domain:www.sanity.io)",
+      "WebSearch",
+      "Bash(pnpm build:*)",
+      "Bash(pnpm remove:*)",
+      "Bash(git add:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

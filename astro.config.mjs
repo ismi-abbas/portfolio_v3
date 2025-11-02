@@ -1,4 +1,5 @@
-import node from '@astrojs/node';
+import cloudflare from '@astrojs/cloudflare';
+import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
@@ -21,6 +22,38 @@ export default defineConfig({
     },
   },
   integrations: [
+    mdx({
+      shikiConfig: {
+        // Choose your preferred theme
+        theme: 'github-dark',
+        // Languages that should be available for highlighting
+        langs: [
+          'js',
+          'ts',
+          'jsx',
+          'tsx',
+          'html',
+          'css',
+          'json',
+          'md',
+          'yaml',
+          'bash',
+          'astro',
+          'python',
+          'java',
+          'c',
+          'cpp',
+        ],
+        // You can add custom language parsers if needed
+        // customLanguages: {},
+        // Wrap the code blocks in a div with a specific class
+        wrap: true,
+      },
+      // This setting ensures all code blocks get processed,
+      // including those from external sources like Sanity
+      remarkPlugins: [],
+      rehypePlugins: [],
+    }),
     sitemap(),
     tailwind(),
     react(),
@@ -31,21 +64,15 @@ export default defineConfig({
       useCdn: true,
       studioBasePath: '/studio',
       apiVersion: '2025-05-09',
+      stega: {
+        studioUrl: '/studio',
+      },
     }),
   ],
   vite: {
     build: {
       minify: false,
     },
-    resolve: {
-      // Use react-dom/server.edge instead of react-dom/server.browser for React 19.
-      // Without this, MessageChannel from node:worker_threads needs to be polyfilled.
-      alias: import.meta.env.PROD && {
-        'react-dom/server': 'react-dom/server.edge',
-      },
-    },
   },
-  adapter: node({
-    mode: 'standalone',
-  }),
+  adapter: cloudflare(),
 });

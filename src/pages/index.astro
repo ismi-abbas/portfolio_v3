@@ -5,8 +5,14 @@ import Default from '../components/Default.astro';
 import { SITE_DESCRIPTION } from '../consts';
 
 const biography = [
+{
+    date: '2025 - Present',
+    role: 'Senior Software Engineer',
+    company: 'Bloomthis Flora',
+    description: 'Building and maintaining internal ERP system for Bloomthis Flora.',
+  },
   {
-    date: '2024 - Present',
+    date: '2024',
     role: 'Web Developer',
     company: 'CTOS Credit System',
     description: 'Building and maintaining web applications for credit reporting systems.',
@@ -33,11 +39,11 @@ const biography = [
   <Default>
     <div class='w-full flex gap-2 p-4 hover:scale-105 transition-transform duration-300 justify-center'>
       <Image
-        src='/jom_launch.jpeg'
+        src='/landing-page.webp'
         alt='jom_launch'
         width={500}
         height={500}
-        class='object-cover object-top h-72 rounded-lg'
+        class='object-cover object-left-top rounded-lg'
       />
     </div>
 

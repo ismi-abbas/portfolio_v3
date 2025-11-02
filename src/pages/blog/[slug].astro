@@ -1,19 +1,43 @@
 ---
-import { getPost, getPosts } from '../../sanity/utils';
 import Default from '../../components/Default.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import { urlForImage } from '../../sanity/lib/url-for-image';
 import PortableText from '../../components/PortableText.astro';
+import { loadQuery } from '../../sanity/lib/load-query';
+import type { SanityDocument, Image } from '@sanity/types';
 
-export async function getStaticPaths() {
-  const posts = await getPosts();
-  return posts.map((post: any) => ({
-    params: { slug: post.slug.current },
-  }));
+interface Post extends SanityDocument {
+  title: string;
+  mainImage?: Image;
+  slug: {
+    current: string;
+  };
+  body: any;
+  _updatedAt: string;
 }
 
-const { slug } = Astro.params;
-const post = await getPost(slug!);
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const { data: posts } = await loadQuery<Post[]>({
+    query: `*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`,
+  });
+
+  return posts.map(({ slug }) => {
+    return {
+      params: {
+        slug: slug.current,
+      },
+    };
+  });
+}
+
+const { params } = Astro;
+
+const { data: post } = await loadQuery<Post>({
+  query: `*[_type == "post" && slug.current == $slug][0]`,
+  params: { slug: params.slug },
+});
 ---
 
 <Default>
