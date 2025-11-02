@@ -1,22 +1,32 @@
+import { codeInput } from '@sanity/code-input';
+import { visionTool } from '@sanity/vision';
 import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
-import { schema } from './src/sanity/schema';
-import { codeInput } from '@sanity/code-input';
-import { presentationTool } from 'sanity/presentation';
-import { resolve } from './src/sanity/lib/resolve';
+import { schemaTypes } from './src/sanity/schemas';
 
 export default defineConfig({
-  name: 'ismi-abbas-blog',
-  title: 'ismi-abbas Blog',
-  projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID!,
-  dataset: import.meta.env.PUBLIC_SANITY_DATASET!,
+  projectId: 'twb7fz1z',
+  dataset: 'site-blog',
+  title: 'Ismi Abbas Blog',
+  basePath: '/studio',
   plugins: [
-    structureTool(),
-    codeInput(),
-    presentationTool({
-      resolve,
-      previewUrl: location.origin,
+    structureTool({
+      structure: (S) =>
+        S.list()
+          .title('Content')
+          .items([
+            S.listItem().title('Blog Posts').schemaType('post').child(S.documentTypeList('post').title('Blog Posts')),
+            S.listItem().title('Authors').schemaType('author').child(S.documentTypeList('author').title('Authors')),
+            S.listItem()
+              .title('Categories')
+              .schemaType('category')
+              .child(S.documentTypeList('category').title('Categories')),
+          ]),
     }),
+    codeInput(),
+    visionTool(),
   ],
-  schema,
+  schema: {
+    types: schemaTypes,
+  },
 });

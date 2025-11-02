@@ -1,24 +1,29 @@
-// ./src/sanity/schemaTypes/author.ts
-import { defineField, defineType } from 'sanity';
+import { defineType, defineField } from 'sanity'
 
-export const authorType = defineType({
+export default defineType({
   name: 'author',
+  title: 'Author',
   type: 'document',
   fields: [
     defineField({
       name: 'name',
+      title: 'Name',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'slug',
+      title: 'Slug',
       type: 'slug',
       options: {
         source: 'name',
         maxLength: 96,
       },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'image',
+      title: 'Image',
       type: 'image',
       options: {
         hotspot: true,
@@ -27,18 +32,19 @@ export const authorType = defineType({
         {
           name: 'alt',
           type: 'string',
-          title: 'Alternative Text',
+          title: 'Alternative text',
         },
       ],
     }),
     defineField({
       name: 'bio',
+      title: 'Bio',
       type: 'array',
       of: [
         {
           type: 'block',
           styles: [{ title: 'Normal', value: 'normal' }],
-          lists: [],
+          lists: [{ title: 'Bullet', value: 'bullet' }],
         },
       ],
     }),
@@ -49,4 +55,4 @@ export const authorType = defineType({
       media: 'image',
     },
   },
-});
+})

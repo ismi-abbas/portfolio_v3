@@ -10,8 +10,8 @@ import { loadEnv } from 'vite';
 
 const { PUBLIC_SANITY_PROJECT_ID, PUBLIC_SANITY_DATASET } = loadEnv(import.meta.env.MODE, process.cwd(), '');
 
-const projectId = PUBLIC_SANITY_PROJECT_ID;
-const dataset = PUBLIC_SANITY_DATASET;
+const projectId = PUBLIC_SANITY_PROJECT_ID || 'twb7fz1z';
+const dataset = PUBLIC_SANITY_DATASET || 'site-blog';
 
 // https://astro.build/config
 export default defineConfig({
@@ -59,20 +59,12 @@ export default defineConfig({
     react(),
     partytown(),
     sanity({
-      projectId,
-      dataset,
-      useCdn: true,
+      projectId: 'twb7fz1z',
+      dataset: 'site-blog',
+      useCdn: false,
       studioBasePath: '/studio',
-      apiVersion: '2025-05-09',
-      stega: {
-        studioUrl: '/studio',
-      },
+      apiVersion: '2025-01-01',
     }),
   ],
-  vite: {
-    build: {
-      minify: false,
-    },
-  },
   adapter: cloudflare(),
 });

@@ -1,10 +1,10 @@
 ---
+import type { Image, SanityDocument } from '@sanity/types';
 import Default from '../../components/Default.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
-import { urlForImage } from '../../sanity/lib/url-for-image';
 import PortableText from '../../components/PortableText.astro';
 import { loadQuery } from '../../sanity/lib/load-query';
-import type { SanityDocument, Image } from '@sanity/types';
+import { urlFor } from '../../sanity/lib/urlFor';
 
 interface Post extends SanityDocument {
   title: string;
@@ -23,7 +23,7 @@ export async function getStaticPaths() {
     query: `*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`,
   });
 
-  return posts.map(({ slug }) => {
+  return posts?.map(({ slug }) => {
     return {
       params: {
         slug: slug.current,
@@ -68,7 +68,7 @@ const { data: post } = await loadQuery<Post>({
         <img
           width={920}
           height={300}
-          src={urlForImage(post.mainImage).url()}
+          src={urlFor(post.mainImage).url()}
           alt={post.title}
           class='rounded-lg w-full object-cover h-[300px] bg-neutral-900'
         />

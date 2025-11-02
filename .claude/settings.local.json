@@ -8,7 +8,12 @@
       "WebSearch",
       "Bash(pnpm build:*)",
       "Bash(pnpm remove:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(pnpm dev:*)",
+      "Bash(curl:*)",
+      "Bash(node test-sanity:*)",
+      "Bash(pnpm exec node:*)"
     ],
     "deny": [],
     "ask": []

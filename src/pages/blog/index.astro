@@ -4,7 +4,7 @@ import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import Default from '../../components/Default.astro';
 import { getPosts } from '../../sanity/utils';
-import { urlForImage } from '../../sanity/lib/url-for-image';
+import { urlFor } from '../../sanity/lib/urlFor';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -25,7 +25,7 @@ const posts = await getPosts();
             <a href={`/blog/${post.slug.current}`} class='flex-1 flex flex-col justify-between p-3 h-full'>
               {post.mainImage ? (
                 <Image
-                  src={urlForImage(post.mainImage).url() ?? '/no-image.png'}
+                  src={urlFor(post.mainImage).url() ?? '/no-image.png'}
                   alt=''
                   loading='eager'
                   width={400}

@@ -1,29 +1,73 @@
-import type { Slug } from '@sanity/types';
-import { type BlockSchemaType, type ImageAsset } from '@sanity/types';
-import groq from 'groq';
-import { sanityClient } from 'sanity:client';
+import { sanityClient } from './lib/client'
+import type { Post } from './types'
 
 export async function getPosts(): Promise<Post[]> {
-  return await sanityClient.fetch(groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`);
-}
-
-export async function getPost(slug: string): Promise<Post> {
-  const res = await sanityClient.fetch(groq`*[_type == "post" && slug.current == $slug][0]`, {
+  const query = `*[_type == "post" && defined(slug.current)] | order(publishedAt desc) {
+    _id,
+    title,
     slug,
-  });
+    description,
+    mainImage,
+    publishedAt,
+    author->{
+      _id,
+      name,
+      slug
+    },
+    categories[]->{
+      _id,
+      title,
+      slug
+    }
+  }`
 
-  return res;
+  return await sanityClient.fetch(query)
 }
 
-export interface Post {
-  _type: 'post';
-  _createdAt: string;
-  title?: string;
-  slug: Slug;
-  excerpt?: string;
-  mainImage?: ImageAsset;
-  body: BlockSchemaType[];
-  publishedAt: string;
-  updatedAt: string;
-  _updatedAt: string;
+export async function getPost(slug: string): Promise<Post | null> {
+  const query = `*[_type == "post" && slug.current == $slug][0] {
+    _id,
+    title,
+    slug,
+    description,
+    mainImage,
+    publishedAt,
+    body,
+    author->{
+      _id,
+      name,
+      slug,
+      bio
+    },
+    categories[]->{
+      _id,
+      title,
+      slug
+    }
+  }`
+
+  return await sanityClient.fetch(query, { slug })
+}
+
+export async function getAuthors(): Promise<any[]> {
+  const query = `*[_type == "author"] | order(name asc) {
+    _id,
+    name,
+    slug,
+    image,
+    bio
+  }`
+
+  return await sanityClient.fetch(query)
+}
+
+export async function getCategories(): Promise<any[]> {
+  const query = `*[_type == "category"] | order(title asc) {
+    _id,
+    title,
+    slug,
+    description
+  }`
+
+  return await sanityClient.fetch(query)
 }

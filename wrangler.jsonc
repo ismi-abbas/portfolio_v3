@@ -4,4 +4,9 @@
   "assets": {
     "directory": "./dist",
   },
+  "vars": {
+    "PUBLIC_SANITY_PROJECT_ID": "twb7fz1z",
+    "PUBLIC_SANITY_DATASET": "site-blog",
+    "PUBLIC_SANITY_VISUAL_EDITING_ENABLED": "true"
+  }
 }
