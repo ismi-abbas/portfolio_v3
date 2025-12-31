@@ -43,9 +43,9 @@ const { data: post } = await loadQuery<Post>({
 <Default>
   <article class='container mx-auto'>
     <header class='mb-8'>
-      <h1 class='text-xl text-white mb-4'>{post.title}</h1>
+      <h1 class='text-xl text-white mb-4'>{post?.title}</h1>
       {
-        post._updatedAt && (
+        post?._updatedAt && (
           <div class='flex items-center gap-2 text-sm text-neutral-400'>
             <svg xmlns='http://www.w3.org/2000/svg' class='size-4' viewBox='0 0 24 24'>
               <path
@@ -63,7 +63,7 @@ const { data: post } = await loadQuery<Post>({
   </article>
 
   {
-    post.mainImage ? (
+    post?.mainImage ? (
       <div class='mb-8'>
         <img
           width={920}
@@ -89,7 +89,7 @@ const { data: post } = await loadQuery<Post>({
       prose-blockquote:border-l-sky-500 prose-blockquote:text-neutral-400 prose-blockquote:bg-neutral-900/50 prose-blockquote:px-4 prose-blockquote:py-1 prose-blockquote:rounded-r
       prose-hr:border-neutral-800
       prose-img:rounded-lg'>
-    <PortableText portableText={post.body} />
+    <PortableText portableText={post?.body} />
   </div>
 
   <div class='mt-10'>

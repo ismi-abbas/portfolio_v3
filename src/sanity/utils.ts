@@ -1,5 +1,5 @@
-import { sanityClient } from './lib/client'
-import type { Post } from './types'
+import { sanityClient } from './lib/client';
+import type { Post } from './types';
 
 export async function getPosts(): Promise<Post[]> {
   const query = `*[_type == "post" && defined(slug.current)] | order(publishedAt desc) {
@@ -9,6 +9,7 @@ export async function getPosts(): Promise<Post[]> {
     description,
     mainImage,
     publishedAt,
+    _createdAt,
     author->{
       _id,
       name,
@@ -19,9 +20,9 @@ export async function getPosts(): Promise<Post[]> {
       title,
       slug
     }
-  }`
+  }`;
 
-  return await sanityClient.fetch(query)
+  return await sanityClient.fetch(query);
 }
 
 export async function getPost(slug: string): Promise<Post | null> {
@@ -44,9 +45,9 @@ export async function getPost(slug: string): Promise<Post | null> {
       title,
       slug
     }
-  }`
+  }`;
 
-  return await sanityClient.fetch(query, { slug })
+  return await sanityClient.fetch(query, { slug });
 }
 
 export async function getAuthors(): Promise<any[]> {
@@ -56,9 +57,9 @@ export async function getAuthors(): Promise<any[]> {
     slug,
     image,
     bio
-  }`
+  }`;
 
-  return await sanityClient.fetch(query)
+  return await sanityClient.fetch(query);
 }
 
 export async function getCategories(): Promise<any[]> {
@@ -67,7 +68,7 @@ export async function getCategories(): Promise<any[]> {
     title,
     slug,
     description
-  }`
+  }`;
 
-  return await sanityClient.fetch(query)
+  return await sanityClient.fetch(query);
 }
