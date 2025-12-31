@@ -1,5 +1,10 @@
 ---
-const currentYear = new Date().getFullYear();
+const gmt8Time = new Date().toLocaleString('en-US', {
+  timeZone: 'Asia/Singapore',
+});
+
+const currentYear = new Date(gmt8Time).getFullYear();
+
 const links = [
   {
     href: 'https://astro.build/',
@@ -18,7 +23,7 @@ const links = [
 <footer
   class='left-0 right-0 w-full py-4 px-6 bg-gradient-to-t from-background/90 to-transparent backdrop-blur-sm z-50'>
   <div class='max-w-screen-xl mx-auto flex items-center justify-center gap-3 text-sm text-white/80'>
-    <span class='hover:text-white transition-colors duration-300'>&copy; {currentYear} ismi-abbas.com</span>
+    <span class='hover:text-white transition-colors duration-300'>&copy; {currentYear} ismiabbas.xyz</span>
     <span class='text-white/60'>•</span>
     <span>
       Built with <a

@@ -5,29 +5,31 @@ import Default from '../components/Default.astro';
 import { SITE_DESCRIPTION } from '../consts';
 
 const biography = [
-{
+  {
     date: '2025 - Present',
     role: 'Senior Software Engineer',
-    company: 'Bloomthis Flora',
-    description: 'Building and maintaining internal ERP system for Bloomthis Flora.',
+    company: 'Bloomthis Flora 💐',
+    description:
+      'Building and maintaining internal ERP system(OMNI) for Bloomthis Flora. Shaping the engineering culture.',
   },
   {
     date: '2024',
     role: 'Web Developer',
-    company: 'CTOS Credit System',
-    description: 'Building and maintaining web applications for credit reporting systems.',
+    company: 'CTOS Credit System 🏦',
+    description:
+      'Maintaining BAU web applications for credit reporting systems(B2B) and customer facing report purchase portal(B2C).',
   },
   {
     date: '2023',
     role: 'Software Engineer',
-    company: 'Petronas Digital (FPT Software)',
-    description: 'Developed enterprise solutions for digital transformation initiatives.',
+    company: 'Petronas Digital (FPT Software) ⛽',
+    description: 'Basically a vendor for Petronas. Deploy to work in Pipeline Management System. The gas pipeline one.',
   },
   {
     date: '2022',
     role: 'Software Developer',
-    company: 'Maybank',
-    description: 'Started professional journey in banking technology sector.',
+    company: 'Maybank 🏦',
+    description: 'Landed a job in Graduate Programme, NEXT',
   },
 ];
 ---
@@ -37,48 +39,49 @@ const biography = [
     <BaseHead title='Abbas Puzi' description={SITE_DESCRIPTION} />
   </head>
   <Default>
-    <div class='w-full flex gap-2 p-4 hover:scale-105 transition-transform duration-300 justify-center'>
-      <Image
-        src='/landing-page.webp'
-        alt='jom_launch'
-        width={500}
-        height={500}
-        class='object-cover object-left-top rounded-lg'
-      />
-    </div>
+    <div class='flex justify-between w-full items-end'>
+      <div class='w-full flex gap-2 hover:scale-105 transition-transform duration-300 justify-center'>
+        <Image
+          src='/landing-page.webp'
+          alt='jom_launch'
+          width={200}
+          height={200}
+          class='object-cover object-left-top rounded-lg'
+        />
+      </div>
 
-    <div
+      <div class='w-full text-white'>
+        <h1 class='text-4xl font-semibold'>Abbas Puzi</h1>
+        <h3 class='text-lg'>Digital <span class='bg-sky-800 px-1'>Craftsman</span></h3>
+      </div>
+
+      <!-- <div
       class='max-w-lg bg-slate-700 mt-4 text-center p-2 w-full rounded-md text-lg font-medium backdrop-blur-lg backdrop-filter text-slate-200'>
       <h3>Hello, I'm a Fullstack Developer based in Malaysia!</h3>
-    </div>
-
-    <div class='mt-4 w-full text-white'>
-      <h1 class='text-4xl font-semibold'>Abbas Puzi</h1>
-      <h3 class='text-lg'>Digital <span class='bg-sky-800 px-1'>Craftsman</span></h3>
+    </div> -->
     </div>
 
     <section class='w-full text-white mt-4'>
-      <h1 class='underline underline-offset-4 decoration-2 decoration-slate-600 font-medium text-lg'>Bio</h1>
+      <!-- <h1 class='underline underline-offset-4 decoration-2 decoration-slate-600 font-medium text-lg'>Bio</h1> -->
       <div class='leading-relaxed tracking-wide mt-4 space-y-3 font-thin text-pretty'>
         <p>
-          👋 Greetings! I'm Abbas, a passionate software developer hailing from the vibrant tech scene of Malaysia. My
-          expertise lies in crafting exceptional web experiences using cutting-edge technologies.
+          "Hey there! 👋 I’m Abbas, a software dev based here in Selangor, Malaysia. I love building cool web apps and
+          making the internet look good.
         </p>
         <p>
-          💻 My tech stack includes:
+          💻 Here is what I usually work with:
           <ul class='list-disc list-inside ml-4 mt-2 space-y-1'>
-            <li>Node.js for robust back-end development</li>
-            <li>JavaScript and TypeScript for versatile programming</li>
-            <li>React and Next.js for building dynamic front-end applications</li>
-            <li>Tailwind CSS for creating sleek, responsive designs</li>
+            <li><strong>Node.js</strong> - Can&apos;t stay away from JS</li>
+            <li><strong>TypeScript</strong> - Can&apos;t live without the types</li>
+            <li><strong>React & Next.js</strong> - Most comfortable with these</li>
+            <li><strong>Tailwind CSS</strong> - Do people still wring plain CSS?</li>
           </ul>
         </p>
         <p>
-          🚀 As a developer, I thrive on transforming innovative ideas into functional, user-centric solutions. My
-          portfolio showcases a diverse range of projects that demonstrate my technical prowess and creative
-          problem-solving skills.
+          🚀 I’m all about turning fun ideas into real, working products without the headache. I love a good challenge
+          and solving creative problems.
         </p>
-        <p>Ready to bring your vision to life? Let's collaborate and create something extraordinary together!</p>
+        <p>Got a vision you want to bring to life? Let’s team up and build something awesome together!</p>
       </div>
 
       <section class='w-full text-white mt-4'>
