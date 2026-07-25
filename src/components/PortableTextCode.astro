@@ -13,11 +13,12 @@ const { node } = Astro.props;
 const { code, language, filename } = node;
 ---
 
-<div class='relative group'>
-  <div class='absolute right-0 top-0 flex gap-2'>
-    {filename && <div class='bg-neutral-800 text-rose-500 text-xs px-4 py-1 rounded-bl'>{filename}</div>}
+<div class='relative my-8 overflow-hidden border border-line bg-[oklch(0.16_0.012_58)]'>
+  <div class='absolute right-0 top-0 z-10 flex border-b border-l border-[oklch(0.34_0.015_58)] bg-[oklch(0.2_0.012_58)]'>
+    {filename && <div class='border-r border-[oklch(0.34_0.015_58)] px-3 py-2 font-mono text-[0.65rem] text-[oklch(0.74_0.14_43)]'>{filename}</div>}
     <button
-      class='copy-button bg-neutral-800 text-rose-500 hover:bg-neutral-700 text-xs px-4 py-1 rounded-bl transition-colors duration-200'
+      type='button'
+      class='copy-button px-3 py-2 font-mono text-[0.65rem] uppercase tracking-[0.08em] text-[oklch(0.74_0.14_43)] transition-colors hover:bg-[oklch(0.26_0.014_58)]'
       data-code={code}>
       Copy
     </button>
@@ -36,26 +37,14 @@ const { code, language, filename } = node;
       try {
         await navigator.clipboard.writeText(code);
         button.textContent = 'Copied!';
-        button.classList.add('bg-green-800', 'text-green-200');
-        button.classList.remove('bg-neutral-800', 'text-rose-500');
-
-        // Reset button after 2 seconds
         setTimeout(() => {
           button.textContent = 'Copy';
-          button.classList.remove('bg-green-800', 'text-green-200');
-          button.classList.add('bg-neutral-800', 'text-rose-500');
         }, 2000);
       } catch (err) {
         console.error('Failed to copy:', err);
         button.textContent = 'Failed!';
-        button.classList.add('bg-red-800', 'text-red-200');
-        button.classList.remove('bg-neutral-800', 'text-rose-500');
-
-        // Reset button after 2 seconds
         setTimeout(() => {
           button.textContent = 'Copy';
-          button.classList.remove('bg-red-800', 'text-red-200');
-          button.classList.add('bg-neutral-800', 'text-rose-500');
         }, 2000);
       }
     });

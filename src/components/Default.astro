@@ -4,7 +4,7 @@ import Header from './Header.astro';
 import Footer from './Footer.astro';
 import { VisualEditing } from '@sanity/astro/visual-editing';
 
-const { title, description, image } = Astro.props;
+const { title, description, image, layout = 'default' } = Astro.props;
 
 const visualEditingEnabled = import.meta.env.PUBLIC_SANITY_VISUAL_EDITING_ENABLED === 'true';
 ---
@@ -13,9 +13,13 @@ const visualEditingEnabled = import.meta.env.PUBLIC_SANITY_VISUAL_EDITING_ENABLE
   <head>
     <BaseHead title={title} description={description} image={image} />
   </head>
-  <body class='bg-slate-800 w-full flex flex-col items-center justify-center'>
+  <body class='flex w-full flex-col items-center bg-background text-ink'>
     <Header />
-    <main class='w-full flex flex-col items-center min-h-dvh mt-4 max-w-screen-sm px-5 md:px-0'>
+    <main
+      class:list={[
+        'flex min-h-dvh w-full flex-col px-5 md:px-8',
+        layout === 'wide' ? 'max-w-[82rem]' : 'mt-6 max-w-2xl md:px-6',
+      ]}>
       <slot />
       <VisualEditing enabled={visualEditingEnabled} />
     </main>

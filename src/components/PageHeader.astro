@@ -1,0 +1,32 @@
+---
+interface Props {
+  index: string;
+  label: string;
+  title: string;
+  description: string;
+}
+
+const { index, label, title, description } = Astro.props;
+---
+
+<header class='grid border-x border-b border-line lg:grid-cols-12'>
+  <div class='px-5 py-16 sm:px-8 sm:py-24 lg:col-span-9 lg:border-r lg:px-12 xl:px-16'>
+    <p data-reveal class='font-mono text-xs uppercase tracking-[0.16em] text-accent'>{index} / {label}</p>
+    <h1
+      data-reveal
+      style='--reveal-delay: 80ms'
+      class='mt-5 max-w-[12ch] text-[clamp(3.5rem,8vw,7.75rem)] font-semibold leading-[0.86] tracking-[-0.06em] text-ink'>
+      {title}
+    </h1>
+    <p
+      data-reveal
+      style='--reveal-delay: 140ms'
+      class='mt-8 max-w-2xl text-lg leading-relaxed text-ink-muted sm:text-xl'>
+      {description}
+    </p>
+  </div>
+  <div class='relative hidden overflow-hidden p-8 lg:col-span-3 lg:flex lg:flex-col lg:justify-between'>
+    <span class='font-mono text-[0.68rem] uppercase tracking-[0.14em] text-ink-faint'>ismiabbas.xyz<br />Public index</span>
+    <span class='self-end font-mono text-[8rem] font-bold leading-[0.7] tracking-[-0.08em] text-surface-2' aria-hidden='true'>{index}</span>
+  </div>
+</header>

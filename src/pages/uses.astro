@@ -1,78 +1,36 @@
 ---
 import { Image } from 'astro:assets';
-import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
 import Default from '../components/Default.astro';
+import PageHeader from '../components/PageHeader.astro';
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-
-const equipments = [
-  {
-    title: 'Macbook Pro M2 2023',
-    description:
-      'My main machine for coding. The only Apple I have. Bought it because of the battery life and developer support. Still paying the EPP, lol.',
-    image: '/macbook.webp',
-  },
-  {
-    title: 'Personal Computer',
-    description: 'This is my PC setup mainly for gaming. Sometimes I do coding on it.',
-    image: '/my_pc.webp',
-  },
-  {
-    title: 'Gigabyte G24 Gaming Monitor',
-    description: 'Monitor for gaming, and extend macbook screen',
-    image: '/monitor.webp',
-  },
-  {
-    title: 'SteelSeries Arctis 7 2019 Edition Wireless',
-    description: 'My headset for gaming and attend meet!. Wireless with no bluetooth connection.',
-    image: '/headphone.webp',
-  },
-  {
-    title: 'AKKO 5075B Plus Tri Mode',
-    description: 'Keybaord for the PC. No extra keyboard for my mac',
-    image: '/keyboard.jpeg',
-  },
-  {
-    title: 'Glorious Model O Minus',
-    description: 'Wireless mouse for gaming and basic stuffs.',
-    image: '/mouse.webp',
-  },
+const equipment = [
+  { title: 'MacBook Pro M2 · 2023', category: 'Primary machine', description: 'My main development machine, chosen for its battery life and broad developer tooling support.', image: '/macbook.webp' },
+  { title: 'Personal Computer', category: 'Desktop', description: 'A Windows desktop used mainly for gaming, with occasional development work.', image: '/my_pc.webp' },
+  { title: 'Gigabyte G24 Gaming Monitor', category: 'Display', description: 'The shared external display for the desktop and an extended MacBook workspace.', image: '/monitor.webp' },
+  { title: 'SteelSeries Arctis 7 · 2019', category: 'Audio', description: 'A low-latency wireless headset for calls, focused work, and games.', image: '/headphone.webp' },
+  { title: 'AKKO 5075B Plus Tri Mode', category: 'Input', description: 'The dedicated mechanical keyboard for the desktop setup.', image: '/keyboard.jpeg' },
+  { title: 'Glorious Model O Minus', category: 'Input', description: 'A lightweight wireless mouse for both everyday work and gaming.', image: '/mouse.webp' },
 ];
 ---
 
-<Default title='Uses' description='Curated list of my equipments'>
-  <h1 class='text-white text-3xl mb-2'>Equipment</h1>
-  <p class='text-neutral-400 mb-8'>A look at the tools and gear I use daily</p>
+<Default title='Uses — Abbas Puzi' description='The computers, peripherals, and equipment Abbas Puzi uses for development.' layout='wide'>
+  <PageHeader index='03' label='Tools and equipment' title='The objects behind the output.' description='A practical inventory of the machines and peripherals I use to build software, communicate, and occasionally disappear into a game.' />
 
-  <section class='w-full scroll-smooth'>
-    <ul class='grid grid-cols-1 gap-4 md:grid-cols-2'>
-      {
-        equipments.map(({ title, description, image }) => (
-          <div class='group rounded-md bg-neutral-900/40 backdrop-blur-sm transition-all duration-300'>
-            <div class='flex-1 flex flex-col justify-between p-3 h-full'>
-              <Image
-                src={image}
-                alt={title}
-                loading='eager'
-                width={400}
-                height={200}
-                class='object-cover rounded-sm h-48 w-full'
-              />
-              <div class='flex-col mt-6 justify-between flex min-h-44 flex-1 px-2'>
-                <div class='flex flex-col'>
-                  <div class='flex justify-between items-center mb-2'>
-                    <h1 class='text-white text-xl font-medium'>{title}</h1>
-                  </div>
-                  <h3 class='text-neutral-300 text-sm leading-relaxed'>{description}</h3>
-                </div>
-              </div>
-            </div>
+  <section class='grid border-x border-line md:grid-cols-2'>
+    {equipment.map((item, index) => (
+      <article class:list={['group border-b border-line', index % 2 === 0 && 'md:border-r']}>
+        <div class='overflow-hidden border-b border-line bg-surface-2'>
+          <Image src={item.image} alt={item.title} width={720} height={460} class='aspect-[8/5] size-full object-cover grayscale transition duration-700 group-hover:scale-[1.015] group-hover:grayscale-0' />
+        </div>
+        <div class='grid gap-6 p-5 sm:p-8 lg:grid-cols-[2rem_1fr]'>
+          <span class='font-mono text-xs text-ink-faint'>{String(index + 1).padStart(2, '0')}</span>
+          <div>
+            <p class='font-mono text-[0.68rem] uppercase tracking-[0.12em] text-accent'>{item.category}</p>
+            <h2 class='mt-2 text-2xl font-semibold tracking-tight'>{item.title}</h2>
+            <p class='mt-4 max-w-lg leading-relaxed text-ink-muted'>{item.description}</p>
           </div>
-        ))
-      }
-    </ul>
+        </div>
+      </article>
+    ))}
   </section>
 </Default>

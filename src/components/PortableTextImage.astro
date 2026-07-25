@@ -7,7 +7,7 @@ const url = urlFor(asset).url();
 const webpUrl = urlFor(asset).format('webp').url();
 ---
 
-<picture>
+<picture class='my-8 block'>
   <source srcset={webpUrl} type='image/webp' />
-  <img class='responsive__img' src={url} alt={alt} />
+  <img class='w-full border border-line' src={url} alt={alt ?? ''} loading='lazy' />
 </picture>

@@ -10,8 +10,17 @@ const isActive =
   href === pathname || href === pathname.replace(/\/$/, '') || href === '/'.concat(pathname.split('/')[1]);
 ---
 
-<li class='list-none text-center'>
-  <a href={href} class:list={[className, { 'px-4 border-b-2 border-sky-500': isActive }]} {...props}>
+<li class='list-none'>
+  <a
+    href={href}
+    class:list={[
+      'relative block px-2 py-2 transition-colors duration-200',
+      isActive ? 'text-ink' : 'text-ink-faint hover:text-ink',
+      className,
+    ]}
+    aria-current={isActive ? 'page' : undefined}
+    {...props}>
     <slot />
+    {isActive && <span class='absolute inset-x-2 -bottom-[1.05rem] hidden h-px bg-accent sm:block'></span>}
   </a>
 </li>

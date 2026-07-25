@@ -1,25 +1,26 @@
 ---
 import HeaderLink from './HeaderLink.astro';
+import ThemeIcon from './ThemeIcon.astro';
 ---
 
-<header class='flex items-center justify-center py-4 mb-4 sticky top-0 z-10 backdrop-filter backdrop-blur-lg'>
-  <ul
-    class='flex
-    flex-row
-    justify-between
-    items-center
-    lg:text-lg
-    md:text-md
-    text-sm
-    font-base
-    text-white
-    w-full
-    lg:px-32
-    max-w-screen-md'>
-    <HeaderLink href='/' class='px-4 text-center'>Home</HeaderLink>
-    <HeaderLink href='/projects' class='px-4 text-center'>Projects</HeaderLink>
-    <HeaderLink href='/blog' class='px-4 text-center'>Blog</HeaderLink>
-    <HeaderLink href='/code-stats' class='px-4 text-center'>Stats</HeaderLink>
-    <HeaderLink href='/uses' class='px-4 text-center'>Uses</HeaderLink>
-  </ul>
+<header class='sticky top-0 z-20 w-full border-b border-line bg-background'>
+  <div class='mx-auto flex max-w-[82rem] items-center justify-between gap-4 px-5 py-4 md:px-8'>
+    <a
+      href='/'
+      class='flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:text-accent'>
+      <span class='grid size-7 place-items-center bg-ink text-[0.65rem] text-background'>AP</span>
+      <span class='hidden sm:inline'>Abbas Puzi</span>
+    </a>
+    <div class='flex items-center gap-2 sm:gap-4'>
+      <nav aria-label='Primary navigation'>
+        <ul class='flex items-center gap-0.5 font-mono text-[0.68rem] font-medium uppercase tracking-[0.1em] sm:gap-2'>
+        <HeaderLink href='/'>Index</HeaderLink>
+        <HeaderLink href='/projects'>Work</HeaderLink>
+        <HeaderLink href='/blog'>Blog</HeaderLink>
+        <HeaderLink href='/contact'>Contact</HeaderLink>
+        </ul>
+      </nav>
+      <ThemeIcon />
+    </div>
+  </div>
 </header>

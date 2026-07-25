@@ -1,10 +1,36 @@
 ---
 import Default from '../components/Default.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const channels = [
+  { label: 'Email', value: 'abbaspuzi.dev@gmail.com', href: 'mailto:abbaspuzi.dev@gmail.com' },
+  { label: 'GitHub', value: 'github.com/ismi-abbas', href: 'https://github.com/ismi-abbas' },
+  { label: 'Project brief', value: 'Structured inquiry form', href: '/hire-me' },
+];
 ---
 
-<Default title='Contact' description="Let's connect" pubDate={new Date()} updatedDate={new Date()}>
-  <div class='h-full w-full'>
-    <h2>Have something to build?</h2>
-    <p>You can hire me as your developer</p>
-  </div>
+<Default title='Contact — Abbas Puzi' description='Contact Abbas Puzi about product engineering and software projects.' layout='wide'>
+  <PageHeader index='05' label='Contact' title='A direct line, no ceremony.' description='For project work, technical collaborations, or a thoughtful conversation about software. Choose the channel that fits.' />
+
+  <section class='grid border-x border-line lg:grid-cols-12'>
+    <div class='border-b border-line px-5 py-16 sm:px-8 lg:col-span-4 lg:border-b-0 lg:border-r lg:px-12 lg:py-24 xl:px-16'>
+      <p class='font-mono text-xs uppercase tracking-[0.14em] text-accent'>Based in</p>
+      <h2 class='mt-3 text-3xl font-semibold tracking-tight'>Selangor,<br />Malaysia</h2>
+      <p class='mt-6 max-w-xs leading-relaxed text-ink-muted'>Working across web products, operational systems, and service integrations.</p>
+    </div>
+    <div class='px-5 py-8 sm:px-8 lg:col-span-8 lg:px-12 lg:py-16 xl:px-16'>
+      <ol class='border-t border-line'>
+        {channels.map((channel, index) => (
+          <li class='border-b border-line'>
+            <a href={channel.href} target={channel.href.startsWith('http') ? '_blank' : undefined} rel={channel.href.startsWith('http') ? 'noopener noreferrer' : undefined} class='group grid gap-2 py-6 sm:grid-cols-[3rem_8rem_1fr_auto] sm:items-center sm:gap-5'>
+              <span class='font-mono text-xs text-ink-faint'>{String(index + 1).padStart(2, '0')}</span>
+              <span class='font-mono text-[0.68rem] uppercase tracking-[0.12em] text-ink-faint'>{channel.label}</span>
+              <strong class='font-medium text-ink transition-colors group-hover:text-accent'>{channel.value}</strong>
+              <span class='hidden text-xl text-ink-faint transition-transform group-hover:translate-x-1 sm:block'>→</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
 </Default>

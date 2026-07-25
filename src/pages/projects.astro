@@ -1,14 +1,9 @@
 ---
 import { Image } from 'astro:assets';
-import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
 import Default from '../components/Default.astro';
+import PageHeader from '../components/PageHeader.astro';
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-
-export interface Projects {
+interface Project {
   title: string;
   description: string;
   techStacks: string[];
@@ -18,24 +13,22 @@ export interface Projects {
   status?: 'live' | 'discontinued' | 'finished' | 'development' | 'active';
 }
 
-const projects: Projects[] = [
+const projects: Project[] = [
   {
     title: 'IKSN',
-    description:
-      'Agency management platform with real-time push notifications and client tracking. Built with serverless architecture for scalability.',
+    description: 'Agency management platform with real-time push notifications and client tracking. Built with serverless architecture for scalability.',
     techStacks: ['React', 'Vite', 'AWS CDK', 'ExpressJS', 'Ant Design', 'DynamoDB', 'Lambda', 'AWS SES'],
     status: 'development',
   },
   {
     title: 'WildVine',
-    description:
-      'Interactive forest management dashboard with real-time data visualization and environmental monitoring tools',
+    description: 'Interactive forest management dashboard with real-time data visualization and environmental monitoring tools.',
     techStacks: ['NextJS', 'TailwindCSS', 'AWS'],
     status: 'development',
   },
   {
     title: 'Walimah.co',
-    description: 'Modern digital wedding invitation platform with customizable themes and real-time guest management',
+    description: 'Modern digital wedding invitation platform with customizable themes and real-time guest management.',
     techStacks: ['NextJS', 'TailwindCSS', 'Neon Postgres', 'Vercel'],
     status: 'development',
     githubLink: 'https://github.com/cc0-lib/wtf-tech',
@@ -43,15 +36,13 @@ const projects: Projects[] = [
   },
   {
     title: 'Ezdurian Lalamove Integration',
-    description:
-      'Custom API integration enabling seamless delivery management and real-time tracking for Ezydurian Putrajaya',
-    techStacks: ['HonoJS', 'Bun', 'Turso SQlite', 'Lalamove API', 'Drizzle ORM'],
+    description: 'Custom API integration enabling seamless delivery management and real-time tracking for Ezydurian Putrajaya.',
+    techStacks: ['HonoJS', 'Bun', 'Turso SQLite', 'Lalamove API', 'Drizzle ORM'],
     status: 'live',
   },
   {
     title: 'Karbon Kore Online Store',
-    description:
-      'Modern headless e-commerce platform for Karbon Kore with seamless shopping experience and dynamic product management',
+    description: 'Modern headless e-commerce platform for Karbon Kore with seamless shopping and dynamic product management.',
     image: '/storefront.k1.karbonko.re_.png',
     techStacks: ['NextJS', 'TailwindCSS', 'Shopify Headless'],
     appLink: 'https://store.karbonko.re/',
@@ -59,17 +50,16 @@ const projects: Projects[] = [
   },
   {
     title: 'WTF Tech By Karbon Kore',
-    description:
-      'Dynamic landing page showcasing community hackathon events with interactive registration and event details',
+    description: 'Dynamic landing page showcasing community hackathon events with interactive registration and event details.',
     image: '/wtf-tech.png',
-    techStacks: ['NextJs', 'TailwindCSS', 'Vercel'],
+    techStacks: ['NextJS', 'TailwindCSS', 'Vercel'],
     githubLink: 'https://github.com/cc0-lib/wtf-tech',
     appLink: 'https://tech.karbon.wtf/',
     status: 'live',
   },
   {
     title: 'CC0-LIB Community Vote Site',
-    description: 'Secure voting platform for art contests with real-time results and authenticated user participation',
+    description: 'Secure voting platform for art contests with real-time results and authenticated participation.',
     image: '/cc0-vote.png',
     techStacks: ['NextJS', 'TailwindCSS', 'Supabase', 'Dynamic Auth'],
     githubLink: 'https://github.com/cc0-lib/cc0-lib-vote',
@@ -78,7 +68,7 @@ const projects: Projects[] = [
   },
   {
     title: 'Resepi Bangman',
-    description: 'Fast and responsive recipe showcase application with intuitive search and categorization',
+    description: 'Fast and responsive recipe showcase with intuitive search and categorization.',
     image: '/resepi-bangman.webp',
     techStacks: ['Astro'],
     githubLink: 'https://github.com/ismi-abbas/resepi-bangman',
@@ -87,135 +77,85 @@ const projects: Projects[] = [
   },
   {
     title: 'Baca Hadith',
-    description: 'Digital hadith reference application with search functionality and categorized collections',
+    description: 'Digital hadith reference application with search and categorized collections.',
     image: '/baca-hadith.webp',
     techStacks: ['NextJS'],
     githubLink: 'https://github.com/ismi-abbas/jami-kutub-sittah',
-    // appLink: 'https://baca-hadith.vercel.app/',
     status: 'discontinued',
   },
   {
     title: 'Expense Split',
-    description: 'Mobile app for easy expense tracking and fair bill splitting between groups',
+    description: 'Mobile app for easy expense tracking and fair bill splitting between groups.',
     techStacks: ['React Native', 'Supabase'],
     githubLink: 'https://github.com/ismi-abbas/jami-kutub-sittah',
-    appLink: 'projects',
     status: 'finished',
   },
   {
-    title: 'Barbershop System(mock)',
-    description: 'Digital solution for barbershop appointment scheduling and customer management',
+    title: 'Barbershop System (Mock)',
+    description: 'Digital solution for appointment scheduling and customer management.',
     techStacks: ['React Native', 'Supabase'],
     githubLink: 'https://github.com/ismi-abbas/barber-shop-system',
-    appLink: '/projects',
     status: 'finished',
   },
   {
     title: 'Discharge App',
-    description:
-      'Mobile solution for tracking and managing petrol pump oil discharge records with offline capabilities',
+    description: 'Mobile solution for tracking petrol pump oil discharge records with offline capabilities.',
     techStacks: ['React Native', 'Expo'],
     githubLink: 'https://github.com/ismi-abbas/discharge',
-    appLink: '/projects',
     status: 'finished',
   },
 ];
 ---
 
-<Default title='Project' description='My open-source and company projects list'>
-  <h1 class='text-white text-3xl mb-2'>Projects</h1>
-  <p class='text-neutral-400'>A collection of my work and side projects</p>
-  <p class='text-xs text-neutral-400 hover:text-orange-500 transition-colors duration-300 cursor-pointer mb-8'>
-    <a href='/hire-me'>You can hire me as your developer →</a>
-  </p>
-  <section class='w-full scroll-smooth'>
-    <ul class='grid grid-cols-1 gap-4 md:grid-cols-2'>
-      {
-        projects.map(({ title, description, image, techStacks, githubLink, appLink, status }) => (
-          <div class='group rounded-md bg-neutral-900/40 backdrop-blur-sm transition-all duration-300'>
-            <div class='flex-1 flex flex-col justify-between p-3 h-full'>
-              <Image
-                src={image ?? '/no-image.png'}
-                alt='logo'
-                loading='eager'
-                width={400}
-                height={200}
-                class={cn('object-cover rounded-sm h-48 w-full', !image && 'border border-neutral-700 border-dashed')}
-              />
-              <div class='flex-col mt-6 justify-between flex min-h-44 flex-1 px-2'>
-                <div class='flex flex-col'>
-                  <h1 class='text-white text-xl font-medium mb-2'>{title}</h1>
-                  <p class='text-neutral-300 text-sm leading-tight text-pretty'>{description}</p>
-                  <div class='flex flex-wrap gap-2 mt-4'>
-                    {techStacks?.map((item) => (
-                      <span class='text-xs px-2 py-1 rounded-full bg-neutral-800 text-neutral-300'>{item}</span>
-                    ))}
-                  </div>
-                </div>
+<Default title='Work — Abbas Puzi' description='Selected product engineering, web, mobile, and integration work by Abbas Puzi.' layout='wide'>
+  <PageHeader index='01' label='Work index' title='Things made to be used.' description='A working archive of client products, internal tools, integrations, community platforms, and useful experiments.' />
 
-                <div class='flex w-full justify-between items-center mt-6'>
-                  <div class='flex gap-3'>
-                    {appLink && (
-                      <a
-                        aria-label='App Link'
-                        href={appLink}
-                        target='_blank'
-                        class='text-neutral-400 hover:text-sky-500 transition-colors duration-200 size-5'>
-                        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
-                          <path
-                            fill='currentColor'
-                            d='M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h7v2H5v14h14v-7h2v7q0 .825-.587 1.413T19 21zm4.7-5.3l-1.4-1.4L17.6 5H14V3h7v7h-2V6.4z'
-                          />
-                        </svg>
-                      </a>
-                    )}
-                    {githubLink && (
-                      <a
-                        aria-label='Github Link'
-                        href={githubLink}
-                        target='_blank'
-                        class='text-neutral-400 hover:text-sky-500 transition-colors duration-200 size-5'>
-                        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
-                          <path
-                            fill='currentColor'
-                            fill-rule='evenodd'
-                            d='M11.999 1C5.926 1 1 5.925 1 12c0 4.86 3.152 8.983 7.523 10.437c.55.102.75-.238.75-.53c0-.26-.009-.952-.014-1.87c-3.06.664-3.706-1.475-3.706-1.475c-.5-1.27-1.221-1.61-1.221-1.61c-.999-.681.075-.668.075-.668c1.105.078 1.685 1.134 1.685 1.134c.981 1.68 2.575 1.195 3.202.914c.1-.71.384-1.195.698-1.47c-2.442-.278-5.01-1.222-5.01-5.437c0-1.2.428-2.183 1.132-2.952c-.114-.278-.491-1.397.108-2.91c0 0 .923-.297 3.025 1.127A10.5 10.5 0 0 1 12 6.32a10.5 10.5 0 0 1 2.754.37c2.1-1.424 3.022-1.128 3.022-1.128c.6 1.514.223 2.633.11 2.911c.705.769 1.13 1.751 1.13 2.952c0 4.226-2.572 5.156-5.022 5.428c.395.34.747 1.01.747 2.037c0 1.47-.014 2.657-.014 3.017c0 .295.199.637.756.53C19.851 20.979 23 16.859 23 12c0-6.075-4.926-11-11.001-11'
-                          />
-                        </svg>
-                      </a>
-                    )}
-                  </div>
-                  <div>
-                    <div
-                      class={cn(
-                        'text-xs px-3 py-1 rounded-full font-medium capitalize',
-                        status === 'live' && 'bg-green-950/50 text-green-500',
-                        status === 'discontinued' && 'bg-red-950/50 text-red-500',
-                        status === 'finished' && 'bg-blue-950/50 text-blue-500',
-                        status === 'development' && 'bg-yellow-950/50 text-yellow-500',
-                        status === 'active' && 'bg-neutral-800 text-neutral-400'
-                      )}>
-                      {status}
-                    </div>
-                  </div>
-                </div>
-              </div>
+  <section class='border-x border-line px-5 py-16 sm:px-8 sm:py-24 lg:px-12 xl:px-16'>
+    <div class='mb-8 flex flex-col justify-between gap-4 border-b border-line pb-5 sm:flex-row sm:items-end'>
+      <div>
+        <p class='font-mono text-xs uppercase tracking-[0.14em] text-accent'>Archive / {String(projects.length).padStart(2, '0')} entries</p>
+        <h2 class='mt-2 text-2xl font-semibold tracking-tight'>Product and engineering work</h2>
+      </div>
+      <p class='max-w-sm text-sm leading-relaxed text-ink-muted'>Some commercial and internal projects have limited public detail. Links appear where the work is available.</p>
+    </div>
+
+    <ol>
+      {projects.map((project, index) => (
+        <li class='group grid gap-5 border-b border-line py-7 first:border-t sm:grid-cols-[3rem_1fr] lg:grid-cols-[3rem_1.15fr_1fr_12rem] lg:gap-8'>
+          <span class='font-mono text-xs text-ink-faint'>{String(index + 1).padStart(2, '0')}</span>
+          <div>
+            <div class='flex flex-wrap items-center gap-3'>
+              <h3 class='text-xl font-semibold tracking-tight text-ink transition-colors group-hover:text-accent sm:text-2xl'>{project.title}</h3>
+              <span class='font-mono text-[0.62rem] uppercase tracking-[0.12em] text-ink-faint'>{project.status}</span>
             </div>
+            <p class='mt-3 max-w-xl leading-relaxed text-ink-muted'>{project.description}</p>
+            {(project.appLink || project.githubLink) && (
+              <div class='mt-4 flex gap-5 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.1em]'>
+                {project.appLink && <a href={project.appLink} target='_blank' rel='noopener noreferrer' class='transition-colors hover:text-accent'>Live site ↗</a>}
+                {project.githubLink && <a href={project.githubLink} target='_blank' rel='noopener noreferrer' class='transition-colors hover:text-accent'>Source ↗</a>}
+              </div>
+            )}
           </div>
-        ))
-      }
-    </ul>
+          <ul class='flex flex-wrap content-start gap-x-4 gap-y-2 font-mono text-[0.68rem] uppercase tracking-[0.08em] text-ink-faint'>
+            {project.techStacks.map((tech) => <li>{tech}</li>)}
+          </ul>
+          <div class='hidden lg:block'>
+            {project.image ? (
+              <Image src={project.image} alt='' width={240} height={140} class='aspect-[12/7] w-full border border-line object-cover grayscale transition duration-500 group-hover:grayscale-0' />
+            ) : (
+              <div class='grid aspect-[12/7] place-items-center border border-dashed border-line bg-surface-2 font-mono text-3xl font-bold text-line'>{String(index + 1).padStart(2, '0')}</div>
+            )}
+          </div>
+        </li>
+      ))}
+    </ol>
   </section>
 
-  <div class='flex justify-center mt-12' id='hire-me-button'>
-    <a
-      href='/hire-me'
-      class='group relative px-6 py-3 font-medium text-white transition-colors duration-300 hover:text-black'>
-      <span class='absolute inset-0 w-full h-full bg-gradient-to-br from-orange-500 to-pink-500 rounded-lg'></span>
-      <span
-        class='absolute inset-0 w-full h-full transition-transform duration-300 transform translate-x-1 translate-y-1 bg-black rounded-lg group-hover:translate-y-0 group-hover:translate-x-0'
-      ></span>
-      <span class='relative group-hover:text-white'>Hire Me!</span>
-    </a>
-  </div>
+  <section class='border-x border-t border-line px-5 py-20 sm:px-8 lg:px-12 xl:px-16'>
+    <p class='font-mono text-xs uppercase tracking-[0.14em] text-accent'>Need something similar?</p>
+    <div class='mt-4 flex flex-col justify-between gap-8 md:flex-row md:items-end'>
+      <h2 class='max-w-[12ch] text-4xl font-semibold leading-[0.95] tracking-[-0.045em] sm:text-6xl'>Bring me the useful problem.</h2>
+      <a href='/hire-me' class='group inline-flex items-center gap-8 border-b border-ink pb-2 font-semibold transition-colors hover:border-accent hover:text-accent'>Start a project <span class='transition-transform group-hover:translate-x-1'>→</span></a>
+    </div>
+  </section>
 </Default>

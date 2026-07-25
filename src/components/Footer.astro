@@ -20,28 +20,29 @@ const links = [
 ];
 ---
 
-<footer
-  class='left-0 right-0 w-full py-4 px-6 bg-gradient-to-t from-background/90 to-transparent backdrop-blur-sm z-50'>
-  <div class='max-w-screen-xl mx-auto flex items-center justify-center gap-3 text-sm text-white/80'>
-    <span class='hover:text-white transition-colors duration-300'>&copy; {currentYear} ismiabbas.xyz</span>
-    <span class='text-white/60'>•</span>
-    <span>
-      Built with <a
-        href={links[0].href}
+<footer class='mt-24 w-full border-t border-line'>
+  <div
+    class='mx-auto flex max-w-[82rem] flex-col items-start justify-between gap-4 px-5 py-8 text-xs text-ink-faint sm:flex-row sm:items-center md:px-8'>
+    <span class='font-mono uppercase tracking-[0.14em]'>&copy; {currentYear} Abbas Puzi / Selangor, MY</span>
+    <div class='flex items-center gap-3'>
+      <span>
+        Built with <a
+          href={links[0].href}
+          target='_blank'
+          rel='noopener noreferrer'
+          class='font-medium text-ink-muted transition-colors duration-200 hover:text-accent'>
+          {links[0].label}
+        </a>
+      </span>
+      <span class='h-3 w-px bg-line'></span>
+      <a
+        href={links[1].href}
         target='_blank'
         rel='noopener noreferrer'
-        class='text-white hover:text-primary transition-colors duration-300 font-medium'>
-        {links[0].label}
+        class='opacity-60 transition-opacity duration-200 hover:opacity-100'
+        aria-label={links[1].label}>
+        <img src='/github-mark.svg' alt={links[1].label} class='h-4 w-4' />
       </a>
-    </span>
-    <span class='text-white/60'>•</span>
-    <a
-      href={links[1].href}
-      target='_blank'
-      rel='noopener noreferrer'
-      class='hover:opacity-80 transition-all duration-300 transform hover:scale-110'
-      aria-label={links[1].label}>
-      <img src={links[1].src} alt={links[1].label} class='h-4 w-4' />
-    </a>
+    </div>
   </div>
 </footer>

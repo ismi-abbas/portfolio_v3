@@ -1,15 +1,12 @@
 ---
 import Default from '../components/Default.astro';
+import PageHeader from '../components/PageHeader.astro';
 import { Calendar } from '../components/charts/Calendar';
 ---
 
-<Default
-  title='Coding Statistic'
-  description='My codestats from codestats.com'
-  pubDate={new Date()}
-  updatedDate={new Date()}
-  heroImage='/og-image.png'>
-  <div class='w-full px-5 md:px-0'>
+<Default title='Code Activity — Abbas Puzi' description='A live view of Abbas Puzi’s recent coding activity from CodeStats.' layout='wide'>
+  <PageHeader index='04' label='Code activity' title='The work leaves a trace.' description='A live, imperfect measure of keyboard activity across languages. Useful as a diary of momentum, not a scoreboard of engineering quality.' />
+  <section class='border-x border-line px-5 py-16 sm:px-8 sm:py-24 lg:px-12 xl:px-16'>
     <Calendar client:load />
-  </div>
+  </section>
 </Default>

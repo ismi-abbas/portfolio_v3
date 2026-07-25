@@ -1,124 +1,189 @@
 ---
-import { Image } from 'astro:assets';
 import BaseHead from '../components/BaseHead.astro';
 import Default from '../components/Default.astro';
-import { SITE_DESCRIPTION } from '../consts';
 
-const biography = [
+const projects = [
   {
-    date: '2025 - Present',
-    role: 'Senior Software Engineer',
-    company: 'Bloomthis Flora 💐',
-    description:
-      'Building and maintaining internal ERP system(OMNI) for Bloomthis Flora. Shaping the engineering culture.',
+    index: '01',
+    title: 'Walimah.co',
+    type: 'Product engineering',
+    description: 'A digital wedding invitation platform with custom themes and real-time guest management.',
+    stack: ['Next.js', 'Postgres', 'Vercel'],
+    href: 'https://walimah.co/',
   },
   {
-    date: '2024',
-    role: 'Web Developer',
-    company: 'CTOS Credit System 🏦',
-    description:
-      'Maintaining BAU web applications for credit reporting systems(B2B) and customer facing report purchase portal(B2C).',
+    index: '02',
+    title: 'Karbon Kore Store',
+    type: 'Headless commerce',
+    description: 'A focused storefront pairing Shopify commerce infrastructure with a custom product experience.',
+    stack: ['Next.js', 'Shopify', 'Tailwind'],
+    href: 'https://store.karbonko.re/',
   },
   {
-    date: '2023',
-    role: 'Software Engineer',
-    company: 'Petronas Digital (FPT Software) ⛽',
-    description:
-      'Basically a software vendor for Petronas. Deployed to work in Pipeline Management System project. First time touching production C# code and Angular(I hate it).',
+    index: '03',
+    title: 'WTF Tech',
+    type: 'Community platform',
+    description: 'An event and registration experience built for Karbon Kore’s creative technology community.',
+    stack: ['Next.js', 'Vercel', 'Open source'],
+    href: 'https://tech.karbon.wtf/',
+  },
+];
+
+const capabilities = [
+  {
+    number: 'A',
+    title: 'Product engineering',
+    description: 'From an ambiguous brief to a maintainable product people can use, test, and grow.',
   },
   {
-    date: '2022',
-    role: 'Software Developer',
-    company: 'Maybank 🏦',
-    description:
-      'Landed a job in Graduate Programme, NEXT. Doing mostly backend stuffs - APIs with Nodejs and some React for front-end.',
+    number: 'B',
+    title: 'Internal systems',
+    description: 'Operational software that replaces fragile processes with clear, reliable workflows.',
   },
+  {
+    number: 'C',
+    title: 'Platform integrations',
+    description: 'APIs and service connections designed around real business constraints, not demos.',
+  },
+];
+
+const experience = [
+  ['2025—Now', 'Senior Software Engineer', 'BloomThis Flora'],
+  ['2024', 'Web Developer', 'CTOS Credit Systems'],
+  ['2023', 'Software Engineer', 'Petronas Digital / FPT'],
+  ['2022', 'Software Developer', 'Maybank'],
 ];
 ---
 
 <html lang='en'>
   <head>
-    <BaseHead title='Abbas Puzi' description={SITE_DESCRIPTION} />
+    <BaseHead
+      title='Abbas Puzi — Software Engineer'
+      description='Product engineering, internal systems, and integrations built by Abbas Puzi in Selangor, Malaysia.'
+    />
   </head>
-  <Default>
-    <div class='flex justify-between w-full items-end'>
-      <div class='w-full flex gap-2 hover:scale-105 transition-transform duration-300 justify-center'>
-        <Image
-          src='/landing-page.webp'
-          alt='jom_launch'
-          width={200}
-          height={200}
-          class='object-cover object-left-top rounded-lg'
-        />
-      </div>
+  <Default layout='wide'>
+    <div class='portfolio-grid pointer-events-none absolute inset-x-0 top-[4.25rem] -z-10 h-[46rem]' aria-hidden='true'></div>
 
-      <div class='w-full text-white'>
-        <h1 class='text-4xl font-semibold'>Abbas Puzi</h1>
-        <h3 class='text-lg'>Digital <span class='bg-sky-800 px-1'>Craftsman</span></h3>
-      </div>
-
-      <!-- <div
-      class='max-w-lg bg-slate-700 mt-4 text-center p-2 w-full rounded-md text-lg font-medium backdrop-blur-lg backdrop-filter text-slate-200'>
-      <h3>Hello, I'm a Fullstack Developer based in Malaysia!</h3>
-    </div> -->
-    </div>
-
-    <section class='w-full text-white mt-4'>
-      <!-- <h1 class='underline underline-offset-4 decoration-2 decoration-slate-600 font-medium text-lg'>Bio</h1> -->
-      <div class='leading-relaxed tracking-wide mt-4 space-y-3 font-thin text-pretty'>
-        <p>
-          "Hey there! 👋 I’m Abbas, a software dev based here in Selangor, Malaysia. I love building cool web apps and
-          making the internet look good.
-        </p>
-        <p>
-          💻 Here is what I usually work with:
-          <ul class='list-disc list-inside ml-4 mt-2 space-y-1'>
-            <li><strong>Node.js</strong> - Can&apos;t stay away from JS</li>
-            <li><strong>TypeScript</strong> - Can&apos;t live without the types</li>
-            <li><strong>React & Next.js</strong> - Most comfortable with these</li>
-            <li><strong>Tailwind CSS</strong> - Do people still wring plain CSS?</li>
-          </ul>
-        </p>
-        <p>
-          🚀 I’m all about turning fun ideas into real, working products without the headache. I love a good challenge
-          and solving creative problems.
-        </p>
-        <p>Got a vision you want to bring to life? Let’s team up and build something awesome together!</p>
-      </div>
-
-      <section class='w-full text-white mt-4'>
-        <div class='flex items-center justify-between'>
-          <h1 class='underline underline-offset-4 decoration-2 decoration-slate-600 font-medium text-lg'>Career</h1>
-          <a
-            href='/resume.pdf'
-            target='_blank'
-            class='inline-flex items-center gap-1 text-sm text-neutral-400 hover:text-sky-500 transition-colors'>
-            <span>View Resume</span>
-            <svg xmlns='http://www.w3.org/2000/svg' class='size-4' viewBox='0 0 24 24'>
-              <path
-                fill='currentColor'
-                d='M13 19h-2v-8.25L8.75 13l-1.5-1.5L12 6.75l4.75 4.75l-1.5 1.5L13 10.75zm7 3H4v-9h2v7h12v-7h2z'></path>
-            </svg>
-          </a>
+    <section class='grid min-h-[calc(100svh-4.25rem)] grid-cols-1 border-x border-line lg:grid-cols-12'>
+      <div class='flex flex-col justify-between border-b border-line p-5 sm:p-8 lg:col-span-8 lg:border-b-0 lg:border-r lg:p-12 xl:p-16'>
+        <div data-reveal class='flex flex-wrap items-center justify-between gap-3 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-ink-faint'>
+          <span>Independent product engineering</span>
+          <span class='flex items-center gap-2 text-ink-muted'><span class='size-1.5 rounded-full bg-accent'></span> Products / systems / integrations</span>
         </div>
-        <div class='flex flex-col font-light mt-4 space-y-4'>
-          {
-            biography.map(({ date, role, company, description }) => (
-              <div class='flex flex-col space-y-1'>
-                <div class='flex items-center gap-2'>
-                  <span class='text-neutral-400 text-sm'>{date}</span>
-                  <span class='h-[1px] w-4 bg-neutral-700' />
-                  <span class='text-sky-500 font-medium'>{role}</span>
-                </div>
-                <div class='flex flex-col pl-6'>
-                  <span class='text-neutral-300'>{company}</span>
-                  <p class='text-sm text-neutral-400'>{description}</p>
-                </div>
-              </div>
-            ))
-          }
+
+        <div class='py-20 sm:py-24 lg:py-16'>
+          <p data-reveal style='--reveal-delay: 80ms' class='mb-5 font-mono text-xs uppercase tracking-[0.16em] text-accent'>
+            Abbas Puzi / Software engineer
+          </p>
+          <h1 data-reveal style='--reveal-delay: 120ms' class='max-w-[11ch] font-display text-[clamp(3.5rem,9vw,8.75rem)] font-semibold leading-[0.82] tracking-[-0.065em] text-ink'>
+            Software for the real world.
+          </h1>
+          <p data-reveal style='--reveal-delay: 180ms' class='mt-8 max-w-xl text-lg leading-relaxed text-ink-muted sm:text-xl'>
+            I design and build web products, internal systems, and integrations for teams that need software to do useful work.
+          </p>
         </div>
-      </section>
+
+        <div data-reveal style='--reveal-delay: 240ms' class='flex flex-col gap-6 border-t border-line pt-6 sm:flex-row sm:items-end sm:justify-between'>
+          <div class='flex flex-wrap gap-3'>
+            <a href='/contact' class='group inline-flex items-center gap-5 bg-ink px-5 py-3 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-background transition-colors hover:bg-accent'>
+              Start a conversation <span class='transition-transform group-hover:translate-x-1'>→</span>
+            </a>
+            <a href='#work' class='inline-flex items-center border border-line px-5 py-3 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-ink transition-colors hover:border-ink hover:bg-surface'>
+              See selected work
+            </a>
+          </div>
+          <span class='font-mono text-[0.68rem] uppercase leading-relaxed tracking-[0.12em] text-ink-faint'>Selangor, Malaysia<br />03°04′N / 101°31′E</span>
+        </div>
+      </div>
+
+      <aside class='relative min-h-[32rem] overflow-hidden bg-surface-2 lg:col-span-4'>
+        <img src='/landing-page.webp' alt='Abbas Puzi, software engineer' width='440' height='480' class='absolute inset-0 size-full object-cover object-top grayscale transition duration-700 hover:grayscale-0' />
+        <div class='absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-[oklch(0.12_0.01_55/0.88)] via-[oklch(0.12_0.01_55/0.32)] to-transparent p-6 pt-24 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-[oklch(0.94_0.01_75)] sm:p-8'>
+          <span>Portrait / 2026</span>
+          <span>Engineer<br />& builder</span>
+        </div>
+      </aside>
+    </section>
+
+    <section id='work' class='border-x border-t border-line px-5 py-20 sm:px-8 sm:py-28 lg:px-12 xl:px-16'>
+      <div class='grid gap-8 lg:grid-cols-12 lg:gap-12'>
+        <div class='lg:col-span-4'>
+          <p class='font-mono text-xs uppercase tracking-[0.16em] text-accent'>01 / Selected work</p>
+          <h2 class='mt-4 max-w-[9ch] text-[clamp(2.5rem,5vw,4.75rem)] font-semibold leading-[0.95] tracking-[-0.045em]'>Built to leave the prototype stage.</h2>
+        </div>
+        <div class='lg:col-span-8'>
+          <ol class='border-t border-line'>
+            {projects.map((project) => (
+              <li class='group border-b border-line'>
+                <a href={project.href} target='_blank' rel='noopener noreferrer' class='grid gap-5 py-7 sm:grid-cols-[3rem_1fr_auto] sm:items-start sm:gap-6'>
+                  <span class='font-mono text-xs text-ink-faint'>{project.index}</span>
+                  <div>
+                    <div class='flex flex-wrap items-baseline gap-x-3 gap-y-1'>
+                      <h3 class='text-2xl font-semibold tracking-tight text-ink transition-colors group-hover:text-accent sm:text-3xl'>{project.title}</h3>
+                      <span class='font-mono text-[0.68rem] uppercase tracking-[0.12em] text-ink-faint'>{project.type}</span>
+                    </div>
+                    <p class='mt-3 max-w-2xl leading-relaxed text-ink-muted'>{project.description}</p>
+                    <ul class='mt-4 flex flex-wrap gap-x-4 gap-y-2 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-ink-faint'>
+                      {project.stack.map((item) => <li>{item}</li>)}
+                    </ul>
+                  </div>
+                  <span class='hidden font-mono text-xl text-ink-faint transition-all group-hover:translate-x-1 group-hover:text-accent sm:block'>↗</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+          <a href='/projects' class='mt-7 inline-flex items-center gap-3 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-ink transition-colors hover:text-accent'>View the full work index <span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class='border-x border-t border-line bg-ink px-5 py-20 text-background sm:px-8 sm:py-24 lg:px-12 xl:px-16'>
+      <div class='flex flex-col justify-between gap-5 border-b border-background/20 pb-8 md:flex-row md:items-end'>
+        <div>
+          <p class='font-mono text-xs uppercase tracking-[0.16em] text-accent'>02 / Ways I can help</p>
+          <h2 class='mt-4 text-[clamp(2.5rem,5vw,4.75rem)] font-semibold leading-none tracking-[-0.045em]'>Useful from day one.</h2>
+        </div>
+        <p class='max-w-md leading-relaxed text-background/70'>A practical engineering partner for new builds, difficult systems, and the unglamorous details that make products reliable.</p>
+      </div>
+      <ol class='grid md:grid-cols-3'>
+        {capabilities.map((capability, index) => (
+          <li class:list={['py-8 md:py-10', index > 0 && 'border-t border-background/20 md:border-l md:border-t-0 md:pl-8', index < 2 && 'md:pr-8']}>
+            <span class='font-mono text-xs text-accent'>{capability.number}</span>
+            <h3 class='mt-12 text-2xl font-semibold tracking-tight'>{capability.title}</h3>
+            <p class='mt-3 max-w-sm leading-relaxed text-background/65'>{capability.description}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class='grid border-x border-t border-line lg:grid-cols-12'>
+      <div class='border-b border-line px-5 py-16 sm:px-8 lg:col-span-4 lg:border-b-0 lg:border-r lg:px-12 lg:py-24 xl:px-16'>
+        <p class='font-mono text-xs uppercase tracking-[0.16em] text-accent'>03 / Experience</p>
+        <h2 class='mt-4 text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-5xl'>Four industries.<br />One throughline.</h2>
+        <p class='mt-6 max-w-sm leading-relaxed text-ink-muted'>Shipping business-critical software across commerce, credit, energy, and banking.</p>
+      </div>
+      <div class='px-5 py-8 sm:px-8 lg:col-span-8 lg:px-12 lg:py-16 xl:px-16'>
+        <ol class='border-t border-line'>
+          {experience.map(([date, role, company]) => (
+            <li class='grid gap-2 border-b border-line py-5 sm:grid-cols-[7rem_1fr_auto] sm:items-baseline sm:gap-6'>
+              <span class='font-mono text-xs text-ink-faint'>{date}</span>
+              <strong class='font-medium text-ink'>{role}</strong>
+              <span class='text-sm text-ink-muted sm:text-right'>{company}</span>
+            </li>
+          ))}
+        </ol>
+        <a href='/resume.pdf' target='_blank' class='mt-7 inline-flex items-center gap-3 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-ink transition-colors hover:text-accent'>Open full résumé <span>↗</span></a>
+      </div>
+    </section>
+
+    <section class='relative overflow-hidden border-x border-t border-line px-5 py-24 sm:px-8 sm:py-32 lg:px-12 xl:px-16'>
+      <span class='pointer-events-none absolute -right-4 -top-14 font-mono text-[12rem] font-bold leading-none text-surface-2 sm:text-[18rem]' aria-hidden='true'>*</span>
+      <div class='relative max-w-4xl'>
+        <p class='font-mono text-xs uppercase tracking-[0.16em] text-accent'>Have a useful problem?</p>
+        <h2 class='mt-5 text-[clamp(3rem,7vw,7rem)] font-semibold leading-[0.9] tracking-[-0.055em]'>Let’s make it work.</h2>
+        <a href='/contact' class='group mt-10 inline-flex items-center gap-8 border-b border-ink pb-2 text-lg font-semibold transition-colors hover:border-accent hover:text-accent'>Tell me what you’re building <span class='transition-transform group-hover:translate-x-1'>→</span></a>
+      </div>
     </section>
   </Default>
 </html>
