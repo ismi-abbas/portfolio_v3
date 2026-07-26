@@ -1,5 +1,6 @@
 {
   "name": "portfolio-v3",
+  "account_id": "77bf4ce59d632db192ecd769bdcd7447",
   "main": "./dist/_worker.js/index.js",
   "compatibility_date": "2025-10-31",
   "assets": {
