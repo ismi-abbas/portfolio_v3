@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import { getPosts } from '../sanity/utils';
 
-export const prerender = false;
+export const prerender = true;
 
 export const GET: APIRoute = async ({ site }) => {
   const baseUrl = site ?? new URL('https://www.ismiabbas.xyz');

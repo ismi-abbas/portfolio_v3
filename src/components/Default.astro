@@ -4,14 +4,31 @@ import Header from './Header.astro';
 import Footer from './Footer.astro';
 import { VisualEditing } from '@sanity/astro/visual-editing';
 
-const { title, description, image, layout = 'default' } = Astro.props;
+const {
+  title,
+  description,
+  image,
+  imageAlt,
+  imageWidth,
+  imageHeight,
+  type,
+  layout = 'default',
+} = Astro.props;
 
 const visualEditingEnabled = import.meta.env.PUBLIC_SANITY_VISUAL_EDITING_ENABLED === 'true';
 ---
 
 <html lang='en'>
   <head>
-    <BaseHead title={title} description={description} image={image} />
+    <BaseHead
+      title={title}
+      description={description}
+      image={image}
+      imageAlt={imageAlt}
+      imageWidth={imageWidth}
+      imageHeight={imageHeight}
+      type={type}
+    />
   </head>
   <body class='flex w-full flex-col items-center bg-background text-ink'>
     <Header />

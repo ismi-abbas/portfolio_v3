@@ -26,6 +26,7 @@ export default defineType({
       title: 'Description',
       type: 'text',
       rows: 3,
+      validation: (Rule) => Rule.min(80).max(160).warning('Use 80 to 160 characters for social previews and search results.'),
     }),
     defineField({
       name: 'author',

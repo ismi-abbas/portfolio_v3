@@ -1,5 +1,4 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
 import Default from '../components/Default.astro';
 
 const projects = [
@@ -55,14 +54,10 @@ const experience = [
 ];
 ---
 
-<html lang='en'>
-  <head>
-    <BaseHead
-      title='Abbas Puzi — Software Engineer'
-      description='Product engineering, internal systems, and integrations built by Abbas Puzi in Selangor, Malaysia.'
-    />
-  </head>
-  <Default layout='wide'>
+<Default
+  title='Abbas Puzi — Software Engineer'
+  description='Product engineering, internal systems, and integrations built by Abbas Puzi in Selangor, Malaysia.'
+  layout='wide'>
     <div class='portfolio-grid pointer-events-none absolute inset-x-0 top-[4.25rem] -z-10 h-[46rem]' aria-hidden='true'></div>
 
     <section class='grid min-h-[calc(100svh-4.25rem)] grid-cols-1 border-x border-line lg:grid-cols-12'>
@@ -186,4 +181,3 @@ const experience = [
       </div>
     </section>
   </Default>
-</html>

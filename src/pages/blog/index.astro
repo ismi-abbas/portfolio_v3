@@ -1,10 +1,11 @@
 ---
+import { Image } from 'astro:assets';
 import Default from '../../components/Default.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import { urlFor } from '../../sanity/lib/urlFor';
 import { getPosts } from '../../sanity/utils';
 
-export const prerender = false;
+export const prerender = true;
 
 const posts = (await getPosts()).sort((a, b) => {
   const dateA = new Date(a.publishedAt ?? a._createdAt).getTime();
@@ -48,7 +49,7 @@ const posts = (await getPosts()).sort((a, b) => {
                 </div>
                 <div class='overflow-hidden border border-line bg-surface-2'>
                   {post.mainImage ? (
-                    <img src={urlFor(post.mainImage).width(1040).height(680).url()} alt='' width='520' height='340' loading='lazy' decoding='async' class='aspect-[13/8] size-full object-cover grayscale transition duration-700 group-hover:scale-[1.02] group-hover:grayscale-0' />
+                    <Image src={urlFor(post.mainImage).url()} alt='' width={520} height={340} class='aspect-[13/8] size-full object-cover grayscale transition duration-700 group-hover:scale-[1.02] group-hover:grayscale-0' />
                   ) : (
                     <div class='portfolio-grid grid aspect-[13/8] place-items-center font-mono text-5xl font-bold text-line'>{String(index + 1).padStart(2, '0')}</div>
                   )}

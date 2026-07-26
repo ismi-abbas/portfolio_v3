@@ -16,7 +16,7 @@ const sanityVersion = '4.12.0';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.ismiabbas.xyz/',
+  site: 'https://ismiabbas.xyz/',
   vite: {
     define: {
       'process.env.PKG_BUILD_VERSION': JSON.stringify(sanityVersion),
