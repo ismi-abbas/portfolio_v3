@@ -21,7 +21,7 @@ const visualEditingEnabled = import.meta.env.PUBLIC_SANITY_VISUAL_EDITING_ENABLE
         layout === 'wide' ? 'max-w-[82rem]' : 'mt-6 max-w-2xl md:px-6',
       ]}>
       <slot />
-      <VisualEditing enabled={visualEditingEnabled} />
+      {visualEditingEnabled && <VisualEditing enabled />}
     </main>
     <Footer />
   </body>

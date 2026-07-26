@@ -1,12 +1,20 @@
 {
   "name": "portfolio-v3",
+  "main": "./dist/_worker.js/index.js",
   "compatibility_date": "2025-10-31",
   "assets": {
     "directory": "./dist",
   },
+  "d1_databases": [
+    {
+      "binding": "CONTACT_DB",
+      "database_name": "portfolio-contact-submissions",
+      "database_id": "2acd0cde-3c34-49de-8c29-4012014d32c6"
+    }
+  ],
   "vars": {
     "PUBLIC_SANITY_PROJECT_ID": "twb7fz1z",
     "PUBLIC_SANITY_DATASET": "site-blog",
-    "PUBLIC_SANITY_VISUAL_EDITING_ENABLED": "true"
+    "PUBLIC_SANITY_VISUAL_EDITING_ENABLED": "false"
   }
 }

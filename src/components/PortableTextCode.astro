@@ -13,7 +13,7 @@ const { node } = Astro.props;
 const { code, language, filename } = node;
 ---
 
-<div class='relative my-8 overflow-hidden border border-line bg-[oklch(0.16_0.012_58)]'>
+<div class='code-block relative my-8 overflow-hidden border border-line bg-[oklch(0.16_0.012_58)]'>
   <div class='absolute right-0 top-0 z-10 flex border-b border-l border-[oklch(0.34_0.015_58)] bg-[oklch(0.2_0.012_58)]'>
     {filename && <div class='border-r border-[oklch(0.34_0.015_58)] px-3 py-2 font-mono text-[0.65rem] text-[oklch(0.74_0.14_43)]'>{filename}</div>}
     <button
@@ -25,6 +25,24 @@ const { code, language, filename } = node;
   </div>
   <Code code={code} lang={language as any} theme={'catppuccin-mocha'} />
 </div>
+
+<style>
+  .code-block :global(pre) {
+    margin: 0;
+    overflow-x: auto;
+    padding: 3.25rem 1.25rem 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    line-height: 1.7;
+    tab-size: 2;
+  }
+
+  .code-block :global(code) {
+    font-family: inherit;
+    font-size: inherit;
+    white-space: pre;
+  }
+</style>
 
 <script>
   const copyButtons = document.querySelectorAll('.copy-button');

@@ -12,10 +12,16 @@ const { PUBLIC_SANITY_PROJECT_ID, PUBLIC_SANITY_DATASET } = loadEnv(import.meta.
 
 const projectId = PUBLIC_SANITY_PROJECT_ID || 'twb7fz1z';
 const dataset = PUBLIC_SANITY_DATASET || 'site-blog';
+const sanityVersion = '4.12.0';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.ismiabbas.xyz/',
+  vite: {
+    define: {
+      'process.env.PKG_BUILD_VERSION': JSON.stringify(sanityVersion),
+    },
+  },
   markdown: {
     shikiConfig: {
       theme: 'catppuccin-mocha',
@@ -59,11 +65,11 @@ export default defineConfig({
     react(),
     partytown(),
     sanity({
-      projectId: 'twb7fz1z',
-      dataset: 'site-blog',
+      projectId,
+      dataset,
       useCdn: false,
       studioBasePath: '/studio',
-      apiVersion: '2025-01-01',
+      apiVersion: '2025-05-09',
     }),
   ],
   adapter: cloudflare(),

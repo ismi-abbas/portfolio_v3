@@ -15,38 +15,41 @@ interface Post extends SanityDocument {
   _updatedAt: string;
 }
 
-export const prerender = true;
+export const prerender = false;
 
-export async function getStaticPaths() {
-  const { data: posts } = await loadQuery<Post[]>({
-    query: `*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`,
-  });
-
-  return posts?.map(({ slug }) => ({ params: { slug: slug.current } }));
+const slug = Astro.params.slug;
+if (!slug) {
+  return new Response(null, { status: 404, statusText: 'Not found' });
 }
 
-const { params } = Astro;
 const { data: post } = await loadQuery<Post>({
   query: `*[_type == "post" && slug.current == $slug][0]`,
-  params: { slug: params.slug },
+  params: { slug },
 });
+
+if (!post) {
+  return new Response(null, { status: 404, statusText: 'Not found' });
+}
+
+const socialImage = post.mainImage ? urlFor(post.mainImage).width(1200).height(630).url() : undefined;
 ---
 
-<Default title={`${post?.title ?? 'Field Note'} — Abbas Puzi`} description={post?.description ?? 'A field note by Abbas Puzi.'} layout='wide'>
+<Default title={`${post.title} — Abbas Puzi`} description={post.description ?? 'A field note by Abbas Puzi.'} image={socialImage} layout='wide'>
   <article class='border-x border-line'>
-    <header class='grid border-b border-line lg:grid-cols-12'>
+    <header class='relative isolate grid overflow-hidden border-b border-line lg:grid-cols-12'>
+      <div class='portfolio-grid pointer-events-none absolute inset-0 -z-10' aria-hidden='true'></div>
       <div class='px-5 py-16 sm:px-8 sm:py-24 lg:col-span-9 lg:border-r lg:px-12 xl:px-16'>
         <a href='/blog' class='font-mono text-xs uppercase tracking-[0.14em] text-accent transition-colors hover:text-accent-strong'>← Field notes</a>
-        <h1 class='mt-6 max-w-[14ch] text-[clamp(3rem,7vw,7rem)] font-semibold leading-[0.9] tracking-[-0.055em]'>{post?.title}</h1>
-        {post?.description && <p class='mt-7 max-w-2xl text-lg leading-relaxed text-ink-muted sm:text-xl'>{post.description}</p>}
+        <h1 class='mt-6 max-w-[14ch] text-[clamp(3rem,7vw,7rem)] font-semibold leading-[0.9] tracking-[-0.055em]'>{post.title}</h1>
+        {post.description && <p class='mt-7 max-w-2xl text-lg leading-relaxed text-ink-muted sm:text-xl'>{post.description}</p>}
       </div>
       <div class='flex flex-col justify-end gap-3 p-5 sm:p-8 lg:col-span-3'>
         <span class='font-mono text-[0.65rem] uppercase tracking-[0.12em] text-ink-faint'>Last revised</span>
-        {post?._updatedAt && <FormattedDate date={new Date(post._updatedAt)} />}
+        {post._updatedAt && <FormattedDate date={new Date(post._updatedAt)} />}
       </div>
     </header>
 
-    {post?.mainImage && (
+    {post.mainImage && (
       <div class='border-b border-line bg-surface-2 p-3 sm:p-6'>
         <img width='1400' height='760' src={urlFor(post.mainImage).width(1600).url()} alt={post.title} class='max-h-[44rem] w-full object-cover' />
       </div>
@@ -60,7 +63,7 @@ const { data: post } = await loadQuery<Post>({
         </div>
       </aside>
       <div class='px-5 py-14 sm:px-8 sm:py-20 lg:col-span-9 lg:px-16 xl:px-24'>
-        <div class='prose prose-lg max-w-[46rem] text-ink-muted
+        <div class='article-content prose prose-lg max-w-[46rem] text-ink-muted
           prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-ink
           prose-p:leading-[1.8] prose-p:text-ink-muted
           prose-a:font-medium prose-a:text-accent prose-a:decoration-line prose-a:underline-offset-4 hover:prose-a:text-accent-strong
@@ -70,7 +73,7 @@ const { data: post } = await loadQuery<Post>({
           prose-ul:text-ink-muted prose-ol:text-ink-muted prose-li:marker:text-accent
           prose-blockquote:border-0 prose-blockquote:bg-surface-2 prose-blockquote:px-6 prose-blockquote:py-3 prose-blockquote:not-italic prose-blockquote:text-ink-muted
           prose-hr:border-line prose-img:border prose-img:border-line'>
-          <PortableText portableText={post?.body} />
+          <PortableText portableText={post.body} />
         </div>
 
         <div class='mt-16 border-t border-line pt-8'>
@@ -82,3 +85,31 @@ const { data: post } = await loadQuery<Post>({
     </div>
   </article>
 </Default>
+
+<style>
+  .article-content :global(code:not(pre code)) {
+    border: 1px solid var(--color-line);
+    background: var(--color-surface-2);
+    padding: 0.12em 0.35em;
+    color: var(--color-ink);
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    font-weight: 500;
+  }
+
+  .article-content :global(code:not(pre code)::before),
+  .article-content :global(code:not(pre code)::after) {
+    content: none;
+  }
+
+  .article-content :global(p > code:only-child) {
+    display: block;
+    overflow-x: auto;
+    border-color: oklch(0.34 0.015 58);
+    background: oklch(0.16 0.012 58);
+    padding: 1rem 1.25rem;
+    color: oklch(0.9 0.015 75);
+    line-height: 1.7;
+    white-space: pre;
+  }
+</style>
