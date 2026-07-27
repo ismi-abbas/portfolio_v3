@@ -15,6 +15,7 @@ module.exports = {
           DEFAULT: 'var(--color-accent)',
           strong: 'var(--color-accent-strong)',
           soft: 'var(--color-accent-soft)',
+          inverse: 'var(--color-accent-inverse)',
         },
         // Legacy tokens kept for pages not yet redesigned
         primary: '#872341',
@@ -22,9 +23,9 @@ module.exports = {
         tertiary: '#F05941',
       },
       fontFamily: {
-        display: ['Schibsted Grotesk', 'sans-serif'],
-        sans: ['Schibsted Grotesk', 'sans-serif'],
-        mono: ['Google Sans Code', 'monospace'],
+        display: ['Schibsted Grotesk Variable', 'sans-serif'],
+        sans: ['Schibsted Grotesk Variable', 'sans-serif'],
+        mono: ['Google Sans Code Variable', 'monospace'],
       },
       keyframes: {
         reveal: {

@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.ismiabbas.xyz/sitemap-index.xml
-Sitemap: https://www.ismiabbas.xyz/blog-sitemap.xml
+Sitemap: https://ismiabbas.xyz/sitemap-index.xml
+Sitemap: https://ismiabbas.xyz/blog-sitemap.xml

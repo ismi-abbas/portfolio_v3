@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a modern portfolio website built with Astro v5 and Sanity CMS. The site is deployed on Fly.io using Node.js standalone mode and features a content management system with visual editing capabilities.
 
-**Live Site:** https://www.ismiabbas.xyz/
+**Live Site:** https://ismiabbas.xyz/
 **Architecture:** Static Site Generation with React islands and headless CMS
 
 ## Development Commands
@@ -27,18 +27,21 @@ pnpm astro <cmd>  # Run Astro CLI commands directly
 ## Core Architecture
 
 ### Content Management
+
 - **Sanity Studio:** Available at `/studio` for content management
 - **Visual Editing:** Enabled with stega for real-time content editing
 - **Schema Structure:** Modular schema in `src/sanity/schema/` with Post, Author, Category, and BlockContent types
 - **API Version:** Uses Sanity API v2025-05-09
 
 ### Astro Configuration (astro.config.mjs)
+
 - **Integrations:** MDX, Tailwind CSS, React, Partytown, Sanity, Sitemap
 - **Adapter:** Node.js standalone mode for deployment
 - **Code Highlighting:** Shiki with catppuccin-mocha theme, supports 16+ languages
 - **Vite Config:** Production alias for react-dom/server.edge (React 19 compatibility)
 
 ### Key Technologies
+
 - **Framework:** Astro 5.7.11 with React 19.1.0 islands
 - **Styling:** Tailwind CSS with typography plugin
 - **Content:** Sanity 3.88.2 with PortableText and visual editing
@@ -48,6 +51,7 @@ pnpm astro <cmd>  # Run Astro CLI commands directly
 ## Project Structure
 
 ### Content Schema (`src/sanity/schema/`)
+
 - `post.ts` - Blog posts with author references, categories, and rich content
 - `author.ts` - Author information
 - `category.ts` - Post categories (many-to-many with posts)
@@ -55,12 +59,14 @@ pnpm astro <cmd>  # Run Astro CLI commands directly
 - `index.ts` - Schema registry exports
 
 ### Page Routes
+
 - Main pages: `/`, `/blog`, `/projects`, `/code-stats`, `/uses`, `/contact`, `/hire-me`
 - Dynamic: `/blog/[slug]` for individual blog posts
 - CMS: `/studio` for Sanity content management
 - RSS: `/rss.xml` for feed generation
 
 ### Key Components
+
 - `Default.astro` - Main layout wrapper
 - `BaseHead.astro` - SEO and metadata management
 - Header/Footer components for site navigation
@@ -68,6 +74,7 @@ pnpm astro <cmd>  # Run Astro CLI commands directly
 ## Environment Configuration
 
 Required environment variables:
+
 - `PUBLIC_SANITY_PROJECT_ID` - Sanity project ID
 - `PUBLIC_SANITY_DATASET` - Sanity dataset name
 

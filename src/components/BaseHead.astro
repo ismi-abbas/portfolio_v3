@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import '@fontsource-variable/google-sans-code/wght.css';
+import '@fontsource-variable/schibsted-grotesk/wght.css';
 
 export interface Props {
   title: string;
@@ -65,12 +67,5 @@ const imageType = imageExtension === 'jpg' || imageExtension === 'jpeg' ? 'image
 <meta name='twitter:image:alt' content={imageAlt} />
 <meta name='twitter:domain' content={siteURL.hostname} />
 
-<link rel='preconnect' href='https://fonts.googleapis.com' />
-<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
-<link
-  href='https://fonts.googleapis.com/css2?family=Google+Sans+Code:wght@300..800&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap'
-  rel='stylesheet'
-/>
-
-<script defer src='https://umami.ismiabbas.xyz/script.js' data-website-id='37cec946-0133-4132-b0f4-60b551330782'
+<script is:inline defer src='https://umami.ismiabbas.xyz/script.js' data-website-id='37cec946-0133-4132-b0f4-60b551330782'
 ></script>

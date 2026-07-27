@@ -5,18 +5,19 @@
 @layer base {
   :root {
     color-scheme: light;
-    --font-sans: 'Schibsted Grotesk', sans-serif;
-    --font-mono: 'Google Sans Code', monospace;
+    --font-sans: 'Schibsted Grotesk Variable', sans-serif;
+    --font-mono: 'Google Sans Code Variable', monospace;
     --color-background: oklch(0.968 0.009 75);
     --color-surface: oklch(0.99 0.006 75);
     --color-surface-2: oklch(0.927 0.014 72);
     --color-line: oklch(0.83 0.018 70);
     --color-ink: oklch(0.205 0.018 58);
     --color-ink-muted: oklch(0.43 0.018 58);
-    --color-ink-faint: oklch(0.58 0.018 58);
+    --color-ink-faint: oklch(0.47 0.018 58);
     --color-accent: oklch(0.61 0.19 35);
     --color-accent-strong: oklch(0.49 0.17 35);
     --color-accent-soft: oklch(0.91 0.045 42);
+    --color-accent-inverse: oklch(0.78 0.16 43);
     --color-grid: oklch(0.77 0.018 70 / 0.28);
   }
 
@@ -28,10 +29,11 @@
     --color-line: oklch(0.32 0.016 58);
     --color-ink: oklch(0.935 0.012 72);
     --color-ink-muted: oklch(0.73 0.015 70);
-    --color-ink-faint: oklch(0.57 0.014 68);
+    --color-ink-faint: oklch(0.59 0.014 68);
     --color-accent: oklch(0.72 0.17 43);
     --color-accent-strong: oklch(0.79 0.14 48);
     --color-accent-soft: oklch(0.28 0.055 35);
+    --color-accent-inverse: oklch(0.46 0.16 35);
     --color-grid: oklch(0.42 0.014 60 / 0.2);
   }
 

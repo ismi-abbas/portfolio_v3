@@ -1,0 +1,12 @@
+# Abbas Puzi
+
+> Portfolio of Abbas Puzi, a software engineer in Selangor, Malaysia who builds web products, internal systems, and platform integrations.
+
+## Main pages
+
+- [Home](https://ismiabbas.xyz/): Profile, selected work, capabilities, and experience.
+- [Projects](https://ismiabbas.xyz/projects): Selected software projects and case studies.
+- [Blog](https://ismiabbas.xyz/blog): Articles about software engineering and development.
+- [Talks](https://ismiabbas.xyz/talks): Technical talks and presentations.
+- [Contact](https://ismiabbas.xyz/contact): Contact details and ways to work together.
+- [Code stats](https://ismiabbas.xyz/code-stats): Public coding activity and statistics.

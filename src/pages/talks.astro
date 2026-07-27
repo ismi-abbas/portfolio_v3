@@ -1,0 +1,88 @@
+---
+import Default from '../components/Default.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const talks = [
+  {
+    date: '2025-08-20',
+    title: 'React Rendering Patterns',
+    event: 'JuniorDev x KLJS Meetup — Uni Edition',
+    venue: 'Multimedia University, Cyberjaya',
+    description:
+      'A practical tour of client-side rendering, server-side rendering, static generation, and server components — including where each approach shines and the trade-offs involved.',
+    href: 'https://www.meetup.com/junior-developers-malaysia/events/310491433/',
+  },
+];
+---
+
+<Default
+  title='Talks — Abbas Puzi'
+  description='Talks by Abbas Puzi about React, software engineering, and building for the web.'
+  layout='wide'>
+  <PageHeader
+    index='03'
+    label='Talks'
+    title='talks_and_ presentations'
+    description='A collection of talks and presentations by me on technical topics, software engineering, and building for the web. Some talks are recorded and linked where available.'
+  />
+
+  <section class='border-x border-line px-5 py-16 sm:px-8 sm:py-24 lg:px-12 xl:px-16'>
+    <div class='mb-8 flex items-end justify-between gap-6 border-b border-line pb-5'>
+      <div>
+        <p class='font-mono text-xs uppercase tracking-[0.14em] text-accent'>Speaking archive</p>
+        <h2 class='mt-2 text-2xl font-semibold tracking-tight'>
+          {talks.length}
+          {talks.length === 1 ? 'talk' : 'talks'}
+        </h2>
+      </div>
+      <span class='hidden font-mono text-[0.68rem] uppercase tracking-[0.12em] text-ink-faint sm:block'
+        >Newest first</span
+      >
+    </div>
+
+    <ol>
+      {
+        talks.map((talk, index) => (
+          <li class='group border-b border-line first:border-t'>
+            <a
+              href={talk.href}
+              target='_blank'
+              rel='noopener noreferrer'
+              class='grid gap-5 py-7 sm:grid-cols-[3rem_1fr_auto] sm:items-start sm:gap-6 lg:gap-10'>
+              <span class='font-mono text-xs text-ink-faint'>{String(index + 1).padStart(2, '0')}</span>
+              <div>
+                <p class='font-mono text-[0.68rem] uppercase tracking-[0.12em] text-accent'>
+                  <time datetime={talk.date}>
+                    {new Date(talk.date).toLocaleDateString('en-GB', {
+                      year: 'numeric',
+                      month: 'short',
+                      day: 'numeric',
+                    })}
+                  </time>
+                </p>
+                <h3 class='mt-3 max-w-[18ch] text-3xl font-semibold leading-tight tracking-[-0.035em] text-ink transition-colors group-hover:text-accent sm:text-4xl'>
+                  {talk.title}
+                </h3>
+                <p class='mt-3 font-mono text-[0.68rem] uppercase leading-relaxed tracking-[0.1em] text-ink-faint'>
+                  {talk.event} / {talk.venue}
+                </p>
+                <p class='mt-5 max-w-2xl leading-relaxed text-ink-muted'>{talk.description}</p>
+                <span class='mt-7 inline-flex items-center gap-4 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.1em]'>
+                  View event{' '}
+                  <span class='transition-transform group-hover:translate-x-1' aria-hidden='true'>
+                    ↗
+                  </span>
+                </span>
+              </div>
+              <span
+                class='hidden font-mono text-xl text-ink-faint transition-all group-hover:translate-x-1 group-hover:text-accent sm:block'
+                aria-hidden='true'>
+                ↗
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+</Default>

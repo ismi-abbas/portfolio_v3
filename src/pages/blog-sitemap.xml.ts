@@ -4,7 +4,7 @@ import { getPosts } from '../sanity/utils';
 export const prerender = true;
 
 export const GET: APIRoute = async ({ site }) => {
-  const baseUrl = site ?? new URL('https://www.ismiabbas.xyz');
+  const baseUrl = site ?? new URL('https://ismiabbas.xyz');
   const posts = await getPosts();
   const locations = [
     new URL('/blog', baseUrl).href,
