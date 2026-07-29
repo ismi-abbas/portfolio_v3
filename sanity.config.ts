@@ -1,6 +1,7 @@
 import { codeInput } from '@sanity/code-input';
 import { visionTool } from '@sanity/vision';
 import { defineConfig } from 'sanity';
+import { markdownSchema } from 'sanity-plugin-markdown';
 import { structureTool } from 'sanity/structure';
 import { schemaTypes } from './src/sanity/schemas';
 
@@ -24,6 +25,7 @@ export default defineConfig({
           ]),
     }),
     codeInput(),
+    markdownSchema(),
     visionTool(),
   ],
   schema: {
