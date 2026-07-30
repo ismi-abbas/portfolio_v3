@@ -64,7 +64,7 @@ export default defineType({
     }),
     defineField({
       name: 'body',
-      title: 'Body',
+      title: 'Body (Portable Text)',
       type: 'array',
       of: [
         {
@@ -117,6 +117,12 @@ export default defineType({
           },
         },
       ],
+    }),
+    defineField({
+      name: 'markdownBody',
+      title: 'Body (Markdown)',
+      type: 'markdown',
+      description: 'When populated, this is rendered instead of the Portable Text body.',
     }),
   ],
   preview: {

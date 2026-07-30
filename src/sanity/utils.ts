@@ -34,6 +34,7 @@ export async function getPost(slug: string): Promise<Post | null> {
     mainImage,
     publishedAt,
     body,
+    markdownBody,
     author->{
       _id,
       name,

@@ -11,6 +11,7 @@ export interface Post {
   mainImage?: any;
   publishedAt: string;
   body?: PortableTextBlock[];
+  markdownBody?: string;
   author?: Author;
   categories?: Category[];
   _createdAt: string;

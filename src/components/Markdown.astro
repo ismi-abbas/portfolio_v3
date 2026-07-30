@@ -1,0 +1,19 @@
+---
+import { marked } from 'marked';
+import sanitizeHtml from 'sanitize-html';
+
+interface Props {
+  markdown: string;
+}
+
+const { markdown } = Astro.props;
+const html = sanitizeHtml(await marked.parse(markdown), {
+  allowedTags: [...sanitizeHtml.defaults.allowedTags, 'img'],
+  allowedAttributes: {
+    ...sanitizeHtml.defaults.allowedAttributes,
+    img: ['src', 'alt', 'title', 'width', 'height', 'loading'],
+  },
+});
+---
+
+<Fragment set:html={html} />

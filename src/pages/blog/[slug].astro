@@ -2,6 +2,7 @@
 import type { Image, SanityDocument } from '@sanity/types';
 import Default from '../../components/Default.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
+import Markdown from '../../components/Markdown.astro';
 import PortableText from '../../components/PortableText.astro';
 import { loadQuery } from '../../sanity/lib/load-query';
 import { urlFor } from '../../sanity/lib/urlFor';
@@ -12,6 +13,7 @@ interface Post extends SanityDocument {
   mainImage?: Image;
   slug: { current: string };
   body: any;
+  markdownBody?: string;
   _updatedAt: string;
 }
 
@@ -113,7 +115,7 @@ const socialImage = post.mainImage
           prose-ul:text-ink-muted prose-ol:text-ink-muted prose-li:marker:text-accent
           prose-blockquote:border-0 prose-blockquote:bg-surface-2 prose-blockquote:px-6 prose-blockquote:py-3 prose-blockquote:not-italic prose-blockquote:text-ink-muted
           prose-hr:border-line prose-img:border prose-img:border-line'>
-          <PortableText portableText={post.body} />
+          {post.markdownBody ? <Markdown markdown={post.markdownBody} /> : <PortableText portableText={post.body} />}
         </div>
 
         <div class='mt-16 border-t border-line pt-8'>
